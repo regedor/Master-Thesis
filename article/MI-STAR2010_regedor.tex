@@ -1,0 +1,273 @@
+\documentclass[mistar]{acmtrans2m}
+\usepackage{cite}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{threeparttable}
+% Os seguintes packages são necessários caso escreva em português
+%\usepackage[latin1]{inputenc}
+%\usepackage[T1]{fontenc}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newdef{definition}[theorem]{Definition}
+\newdef{remark}[theorem]{Remark}
+
+\newcommand{\mr}[2]{\multirow{#1}{*}{#2}}
+
+%Altere os seguintes dois parâmetros.
+%Os parâmetros, normalmente nome do autor no primeiro e  título do artigo no segundo, serão inseridos nos cabeçalhos das páginas pares e impares respectivamente.
+\markboth{Miguel Regedor}{Analysing and Measuring Open Source Projects}
+\title{Analysing and Measuring Open Source Projects, state-of-the-art}
+\author{MIGUEL REGEDOR\\Universidade do Minho}
+            
+\begin{abstract} 
+Thousands of open source software projects are available for collaboration in platforms like Github or Sourceforge.
+However, there is no systematic information about the quality of those projects.
+
+Few users have the ability to assess the quality of a project by looking at source code. 
+An application able to do an automatic analysis of a software package and to generate a hight level overview would enable users to make better choices, and help developers by giving hints on how to improve their software.
+
+This paper discuss what should be taken into account to develop such an application, with the focus on Github, and what benefits can be expected.
+\end{abstract}
+ 
+\category{D.2.7}{Software Engineering}{Distribution, Maintenance, and Enhancement}
+\category{D.2.8}{Software Engineering}{Metrics}
+\category{F.3.0}{Logics and meanings of programs}{General}
+\category{K.7.3}{The Computing Profession}{Testing, Certification, and Licensing}
+
+%Insira um, ou mais, dos seguintes termos em \terms
+%Algorithms; Design; Documentation; Economics; Experimentation; Human factors; Languages; Legal aspects; Management; Measurement; Performance; Reliability; Security; Standardization; Theory; Veri?cation; 
+\terms{Measurement} 
+  
+\keywords{Static code analysis, Software Metrics, Open-Source, MI-STAR, Universidade do Minho}
+            
+\begin{document}
+\setcounter{page}{1}%Alterar "1" para a página a ser indicada pela equipa do MI-STAR.
+            
+\begin{bottomstuff} 
+Author full name: Carlos Miguel Janeiro Regedor Dias da Torre\\Author email: miguelregedor@gmail.com 
+\end{bottomstuff}
+            
+\maketitle
+
+\section{Introduction}
+Nowadays, Open Source Software (OSS) is well disseminated, thousands of OSS packages can be found online, and free to download, 
+in Open Source Project Hosting (OSPH) websites like SourceForge \cite{sourceforge2010},
+Google Code \cite{googlecode2010}, or GitHub \cite{github2010}.
+Those websites (usually in conjunction with a CVS) make it easy for developers, all around the globe, 
+to collaborate in Open Source Sofware Projects (OSSP), and also work as a way to make software available to users. 
+
+The last years growth of OSS means that now OSS is not only used by computer spcialists. 
+The market share for top servers across the million busiest sites was 66.82\% for the open source web server, Apache, 
+comparing to 16.87\% for Microsoft web servers in May 2010 \cite{Necraft}.
+Even governments started noticing open source, during the lasts years, and in some case adopted it\cite{hahn2002government}.
+
+\textit{John Powell} \footnote{John Powell, CEO, President, and Co-founder, Alfresco Software Inc.} 
+has declared that, mesuring the savings that people are making in licence fees, the open-source industry is worth 60 billion dollars.
+From the custmers perspective open-source can be now considered the largest software industry in the world.\cite{Asay2008}
+
+Big industries usally have a strict organization model, that is not the truth here. Open Source cummunities work in a kind of anarkik way.
+Some big projects, for example \textit{Ubuntu} \footnote{\url{http://www.ubuntu.com} description.}, have companies supporting it. 
+But most of the projects are not that big, 
+sometimes it is hard to distinguish the project developers from the project customers/users,
+and because of that a bug report and a wantted feature can get indistinguishable too. 
+The specification of an open source sofware project evolves in an organic way. 
+
+
+
+Can sofware that is developed in such anarkik way be trusted as a high quality product? Yes, big open source projects, 
+for instance Linux distributions such as Ubuntu, have proved it, but how can these sofware quality be mesured?
+In traditional sofware, the most basic meaning of quality is comunly recognized as lack of "bugs", and the meeting of the functional requirements.
+But quality is not simply based on that. Many sofware devlopment companies do monitor custumer satisfaction as a quality index, 
+for instace, IBM ranks their sofware products in levels of CUPRIMDSO (Capability, Usability, performance, reliability, instalability, 
+mantainability, documentation, service and overall). Almost every sofware company have similar quality atributes. 
+An impotant caractheristic about quality atributes is that they have interrelationships. They can be conflictive or support one another. For example, the higher the functional complexity of the software, the harder it becomes to achieve maintainability.
+\cite{kan2002metrics}
+
+
+
+The quality of a software system \cite{gousios2007software} depends, among other things, in update frequency, quantity of documentation, tests coverage, number and type of its dependencies and good programming practices. By analysing those parameters a user can make a better choice when picking a software for specific a task~\cite{marchenko2007predicting}.
+
+The open source sofware organic organization, developers can contrinbute to any project and the specification can change all the time.  
+Because of that mantainability and documentation 
+(mantainability and documentation have a support one another relationship, and are somehow related with all other quality atributes ) 
+is the fundamental quality attribute for majority of open source projects. 
+Open source communities have a tendency to create create coding standards, it is a natural process, those standards are not rules but instead good practices that are spread through the community, and everybody does it that way. Projects following the stantdards increse their mantainability, and make it easier for project new commers.
+ 
+When a user/developer finds a new OSSP, for example in github, 
+the things that will most influence the time needed to have a better understand of the project, to make use of it, or to collaborate in it,
+are the quality of the documentation, and the codebase readbility.  
+Although the OSPH websites provide many useful information about the hosted projects, 
+currently, they do not give a quick answer to the following questions: 
+Does this project have good documentation? Does the code follow standards? How similar is it to other projects? 
+A OSSP is built up from hundreds, sometimes thousands, of files. It can be coded in many different computer languages.
+To manually analyse a software project is a very hard and time consuming task, and not all users have the ability to answer the previous questions by looking at the codebase. 
+
+With that in mind, a system capable of automatically analysing and producing reports about a given OSSP 
+would enable users to make better choices, and developers to further improve their software.
+
+
+
+\section{Open Source Project Hosting Platforms}
+
+An open source project hosting platform is the central tool that supports and co-ordinates the development of an open source project,
+ normaly it is in a form of a web site.
+
+Since 1999 (year that SourceForge was launch), many OSPH sites were creeated to host open source projects.
+OSPH sites can offer diferent features, 
+like codebase \footnote{The term codebase means the whole collection of source code used to build a particular application or component.} hosting
+(a project codebase is typically stored in a source control repository), code review, bug tracking, web hosting, wiki, mailling list, etc
+
+The table \ref{table:OSPHWebSites} on page \pageref{table:OSPHWebSites} shows a list of the most well kwnon open source project hosting web sites.
+By looking at this table we note that SourceForge is the most well established OSPH service, it is also one of earliest (launched in 1999), 
+hosts more than 230,000 projects and has more than 2 million registered users. 
+
+GitHub is one of the youngest OSPH web sites (launched in 2008). 
+However, in only two years, it drew more than 500,000 users (one quarter of the sourceforge users) and is hosting more than 1,500,000 projects. 
+The only version control system provided by GitHub is git 
+\footnote {Git is a free \& open source, distributed version control system that Linus Torvalds developed to help manage Linux kernel development.},
+ and because GitHub projects are in fact git repositories, to make branches and merges is incredbly easy in GitHub. 
+Althought branching was considered a bad practice, it turned out that using git it can in fact improve the developers collaboration and organization.
+So the main diferantiors factors are the 
+
+
+\begin{table}[h]
+\begin{threeparttable}
+\begin{tabular}{|c|c|c|c|c|c|} \hline 
+\multicolumn{6}{|c|}{Open Source Project Hosting Web Sites} \\ \hline 
+Name & Established & Available VCS & Users & Projects & Alex rank \tnote{a} \\\hline
+\mr{5}{SourceForge}      &\mr{5}{1999}  &CVS            &\mr{5}{2,000,000}   &\mr{5}{236,319}          &\mr{5}{136}            \\
+                         &              &SVN            &                    &                         &                       \\
+                         &              &Bazar          &                    &                         &                       \\
+                         &              &GIT            &                    &                         &                       \\
+                         &              &Mercurial      &                    &                         &                       \\\hline 
+\mr{1}{GitHub}           &\mr{1}{2008}  &GIT            &\mr{1}{505,000}     &\mr{1}{1,516,000}        &\mr{1}{742}            \\\hline 
+\mr{2}{Google Code }     &\mr{2}{2006}  &SVN            &\mr{2}{?}           &\mr{2}{250,000}          &\mr{2}{900\tnote{b}}   \\
+                         &              &Mercurial      &                    &                         &                       \\\hline 
+\mr{3}{Code Plex}        &\mr{3}{2006}  &SVN            &\mr{3}{151,782}     &\mr{3}{15.955}           &\mr{3}{2,343}          \\
+                         &              &Microsoft TFS  &                    &                         &                       \\
+                         &              &Mercurial      &                    &                         &                       \\\hline 
+\mr{2}{Assembla}         &\mr{2}{2006}  &SVN            &\mr{2}{180,000}     &\mr{2}{60,000}           &\mr{2}{6,628}          \\
+                         &              &GIT            &                    &                         &                       \\\hline 
+\mr{1}{Launchpad}        &\mr{1}{2005}  &Bazar          &\mr{1}{1,140,345}   &\mr{1}{19,016}           &\mr{1}{12,466}         \\\hline 
+\mr{4}{BerliOS}          &\mr{4}{2000}  &CVS            &\mr{4}{47,285}      &\mr{4}{5,448}            &\mr{4}{17,299}         \\
+                         &              &SVN            &                    &                         &                       \\
+                         &              &GIT            &                    &                         &                       \\
+                         &              &Mercurial      &                    &                         &                       \\\hline 
+\mr{1}{Bitbucket}        &\mr{1}{2008}  &Mercurial      &\mr{1}{51,600}      &\mr{1}{27,769}           &\mr{1}{12,047}         \\\hline 
+\mr{1}{Gitorious}        &\mr{1}{2008}  &GIT            &\mr{1}{?}           &\mr{1}{8,336}            &\mr{1}{28,531}         \\\hline 
+\mr{5}{GNU Savannah}     &\mr{5}{2000}  &CVS            &\mr{5}{48,593}      &\mr{5}{3,233}            &\mr{5}{48,286}         \\
+                         &              &SVN            &                    &                         &                       \\
+                         &              &Bazar          &                    &                         &                       \\
+                         &              &Arch           &                    &                         &                       \\
+                         &              &GIT            &                    &                         &                       \\
+                         &              &Mercurial      &                    &                         &                       \\\hline 
+\end{tabular}
+\begin{tablenotes}
+  \item    Data were retrieved on 2010-12-20, from each of the OSPH Websites, and using Alexa rank website.
+  \item[a] Alexa rank represents the approximate number of websites, in the world, that have a higher popularity than the given site
+           (the smaller the better).
+  \item[b] This value is an approximation.
+\end{tablenotes}
+\end{threeparttable}
+\caption{Open Source Project Hosting Web Sites}
+\label{table:OSPHWebSites}
+\end{table}
+
+\section{Assessing Open-source software}
+
+The most simple operation in science and the lowest level of measurement is classification. In classifying we attempt to sort elements into categories with respect to a certain attribute. \cite{kan2002metrics}
+
+\subsection{Sofware quality}
+In Sofware, quality is an abstract concept, it is comunly recognized as lack of "bugs", and the meeting of the functional requirements.
+However, quality can be perceived and interpreted differently based on the actual context, objectives and interests of each project.
+Many sofware devlopment companies do monitor custumer satisfaction as a quality index, 
+for instace, IBM ranks their sofware products in levels of CUPRIMDSO:
+\begin{itemize}
+\item Capability/Functionality (Refers to the software meating of the functional requirements)
+\item Usability (Refers to the required effort to learn, and operate the software)
+\item Performance/Efficiency (Refers to the sofware performance and resource consumption)
+\item Reliability (Refers to sofware fault tolerance and recoverability)
+\item Instalability/Portability (Refers to the required effort to install or transfer the software to another environment)
+\item Maintainability (Refers to the required effort to modify the software)
+\item Documentation/Information (Refers to the coverage and accessability of the software documentation)
+\item Service (Refers to the company monotoring and service)
+\item Overall (Refers to a overall classification base on the other attributes)
+\end{itemize}
+Almost every sofware company have similar quality atributes. \cite{kan2002metrics}
+ISO/IEC 9126 provides a framework for the evaluation of software quality (The goal is to achive quality in use, in other words, quality from the user prespective) \cite{bevan1999quality}
+It defines six software quality attributes:
+\begin{itemize}
+\item Functionality (Refers to the software meating of the functional requirements)
+\item Reliability (Refers to sofware fault tolerance and recoverability)
+\item Usability (Refers to the required effort to learn, and operate the software)
+\item Efficiency (Refers to the sofware performance and resource consumption)
+\item Maintainability (Refers to the required effort to modify the software)
+\item Portability (Refers to the required effort to transfer the software to another environment)
+\end{itemize}
+Quality atributes have interrelationships. They can be conflictive or support one another. 
+For example, the higher the functional complexity of the software, the harder it becomes to achieve maintainability.\cite{kan2002metrics}
+
+Because of the OSP bazar style and continous develepment process, it is intuitive that the maintainability, and documentation attributes 
+have big influence to the overall quality, and continuous progress, of an OSP
+(mantainability and documentation have support relationships
+\footnote{postive influence}
+with usability, reliability and availability attributes, but might be conflictive with functionality and performance attributes).
+
+Failure to meet functionality often leads to late changes and increased costs in the development process.
+The sofware industry, and researchers have been mostly interested on testing methodologies mostly focused on
+functional requirements, and payed little attention to non-functional requirements.
+
+There are several challenges and difficulties, in assessing non-functional quality attributes for software projects.
+For example, security is a non-functional requirement that needs to be addressed in every software project. 
+Therefore a badly-written software may be functional, but subject to buffer overflow attacks.\cite{gousios2007software}
+
+However, to create a sistematic way to mesure non-functional attributes on GitHub projects would benefit the open source in general.
+
+
+\subsection{Available Metrics}
+If we want to mesure somthing we need metrics. 
+
+There are around two thousand documented software metrics, but there is few information on how those metrics relate to each other. 
+Most of them simply have different names but give similar information.
+The major challenge in this work is to discover how important the information given by those metrics is, 
+and how to interpret their values to assess the quality attributes of an OSP using a \textit{ranking system}
+\footnote{Something easly readable, like a five stars system. For example a project would be ranked with five stars in documentation,
+ and four stars in code Maintainability. }.
+
+
+
+Open source communities have a tendency to create create coding standards, it is a natural process, those standards are not rules but instead good practices that are spread through the community, and everybody does it that way. Projects following the stantdards increse their mantainability, and make it easier for project new commers.
+ 
+
+When a user/developer finds a new OSSP, for example in github, 
+the things that will most influence the time needed to have a better understand of the project, to make use of it, or to collaborate in it,
+are the quality of the documentation, and the codebase readbility.  
+Although the OSPH websites provide many useful information about the hosted projects, 
+currently, they do not give a quick answer to the following questions: 
+Does this project have good documentation? Does the code follow standards? How similar is it to other projects? 
+A OSSP is built up from hundreds, sometimes thousands, of files. It can be coded in many different computer languages.
+To manually analyse a software project is a very hard and time consuming task, and not all users have the ability to answer the previous questions by looking at the codebase. 
+
+
+
+
+\subsection{Available Tools}
+Like it was described in the introduction, there is a need the mesure and quantify the quality of OSS.  
+
+
+\section{Conclusion}
+coisas boas
+
+%Bibliografia
+\bibliography{regedor}%substituir o parâmetro "bibtext" pelo nome do ficheiro (sem extensão) que contém a bibliografia BibTex
+\bibliographystyle{acmtrans}
+
+\begin{received}
+\end{received}
+\end{document}
+
+
