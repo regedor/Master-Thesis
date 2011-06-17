@@ -1,0 +1,259 @@
+\documentclass[14pt,compress]{beamer}
+\mode<presentation>{\usetheme{Copenhagen}} 
+\usepackage{tikz}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage[english,portuges]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyvrb}
+\usepackage{url}
+\usepackage{multicol}
+\usepackage{color}
+\usepackage{listings}
+\usepackage[T1]{fontenc}
+\usepackage{ae}
+\usepackage{ulem}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{threeparttable}
+
+\lstset{language=[LaTeX]TeX}
+
+\newcommand{\mr}[2]{\multirow{#1}{*}{#2}}
+
+
+\defbeamertemplate*{headline}{Copenhagen theme}
+{%
+  \leavevmode%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,right]{section in head/foot}%
+  \usebeamerfont{section in head/foot}\insertsectionhead\hspace*{2ex}
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,left]{subsection in head/foot}%
+  \usebeamerfont{subsection in head/foot}\hspace*{2ex}\insertsubsectionhead
+  \end{beamercolorbox}%
+}
+
+
+\defbeamertemplate*{footline}{ntnu theme}
+{%
+  \leavevmode%
+  \hbox{\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm]{author in head/foot}%
+    \usebeamerfont{author in head/foot}%\insertframenumber{}
+	\hfill\insertshortauthor
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+
+\definecolor{myblue}{rgb}{0.4,0.5,1}
+\setbeamercolor{structure}{fg=myblue}
+\setbeamertemplate{navigation symbols}{}
+
+
+\title[Analysing and Measuring Open Source Projects]{Analysing and Measuring Open Source Projects}
+\institute{MI-STAR 2011, UCE15, Universidade do Minho}
+\author[Miguel Regedor]{\small{Miguel Regedor, \texttt{miguelregedor@gmail.com} }}
+\date{31 de Janeiro de 2011}
+
+
+\begin{document}
+
+\begin{frame}[plain]
+	\begin{center}
+	%\pgfimage[width=0.30\textwidth]{img/bglogo}
+	\maketitle
+	\end{center}
+\end{frame}
+
+
+\begin{frame}{Tabel of Contents}\small{\tableofcontents[hideallsubsections]}\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Section Introduction
+\section{Context/Motivation}
+%\begin{frame}{Tabel of Contents}\small{\tableofcontents[currentsection,hideallsubsections]}\end{frame}
+\frame{\frametitle{Open Source Software}
+  Nowadays, Open Source Software is disseminated
+  \begin{block}{Open Source Projects}
+    \begin{itemize}
+    \item Android
+    \item Apache
+    \item Mozilla Firefox
+    \item Open Office
+    \item Ubuntu 
+    \end{itemize}
+  \end{block}
+}
+
+\frame{\frametitle{Open Source Software}
+  \begin{itemize}
+  \item Thousands of OSS packages can be found online and free to download
+\pause
+  \item OSS is not only used by computer specialists
+\pause
+  \item Open Source can be now considered the largest software industry in the world
+  \end{itemize}
+\pause
+  \begin{block}{~}
+    Measuring the savings that people are making in licence fees, the open source industry is worth 60 billion dollars.
+  \end{block}
+}
+
+\frame{\frametitle{Development Process}
+  Open Source communities work in a \textit{bazaar style}
+\pause
+  \begin{block}{Traditional Software Development Process}
+    \begin{itemize}
+    \item Similar to building cathedrals
+    \item Few specialized individuals working in isolation
+    \end{itemize}
+  \end{block}
+  \begin{block}{Open Source Development Process}
+    \begin{itemize}
+    \item Chaotic way
+    \item Resemble a great babbling \textit{bazaar}.
+    \end{itemize}
+  \end{block}
+}
+
+\frame{\frametitle{Quality}
+  Can software that is developed in such chaotic way be trusted as a high quality product?
+\pause
+  \begin{block}{~}
+  The shock is that in fact the \textit{bazaar style} seemed to work
+  \end{block}
+\pause
+  However, how can the quality of an open source software project be measured?
+}
+
+\frame{\frametitle{Meusuring Open Source Sofware quality}
+    \begin{itemize}
+    \item A OSSP is built up from hundreds, sometimes thousands, of files
+\pause
+    \item To analyse manually a software project is a very hard and time consuming task
+    \end{itemize}
+\pause
+  \begin{block}{With that in mind}
+    A system capable of automatically analysing and producing reports would enable users to make better choices,
+    and developers to further improve their software.
+  \end{block}
+}
+
+\frame{\frametitle{Open Source Project Hosting Web Sites}
+  \tiny{\begin{table}
+  \begin{tabular}{|c|c|c|c|c|c|} \hline 
+  Name & Established & Available VCS & Users & Projects & Alexa rank \\\hline
+  \mr{5}{SourceForge}      &\mr{5}{1999}  &CVS            &\mr{5}{2,000,000}   &\mr{5}{236,319}          &\mr{5}{136}            \\
+                           &              &SVN            &                    &                         &                       \\
+                           &              &Bazar          &                    &                         &                       \\
+                           &              &GIT            &                    &                         &                       \\
+                           &              &Mercurial      &                    &                         &                       \\\hline 
+  \mr{1}{GitHub}           &\mr{1}{2008}  &GIT            &\mr{1}{505,000}     &\mr{1}{1,516,000}        &\mr{1}{742}            \\\hline 
+  \mr{2}{Google Code }     &\mr{2}{2006}  &SVN            &\mr{2}{?}           &\mr{2}{250,000}          &\mr{2}{900}            \\
+                           &              &Mercurial      &                    &                         &                       \\\hline 
+  \mr{3}{Code Plex}        &\mr{3}{2006}  &SVN            &\mr{3}{151,782}     &\mr{3}{15.955}           &\mr{3}{2,343}          \\
+                           &              &Microsoft TFS  &                    &                         &                       \\
+                           &              &Mercurial      &                    &                         &                       \\\hline 
+  \mr{2}{Assembla}         &\mr{2}{2006}  &SVN            &\mr{2}{180,000}     &\mr{2}{60,000}           &\mr{2}{6,628}          \\
+                           &              &GIT            &                    &                         &                       \\\hline 
+  \mr{1}{Launchpad}        &\mr{1}{2005}  &Bazar          &\mr{1}{1,140,345}   &\mr{1}{19,016}           &\mr{1}{12,466}         \\\hline 
+  \mr{4}{BerliOS}          &\mr{4}{2000}  &CVS            &\mr{4}{47,285}      &\mr{4}{5,448}            &\mr{4}{17,299}         \\
+                           &              &SVN            &                    &                         &                       \\
+                           &              &GIT            &                    &                         &                       \\
+                           &              &Mercurial      &                    &                         &                       \\\hline 
+  \mr{1}{Bitbucket}        &\mr{1}{2008}  &Mercurial      &\mr{1}{51,600}      &\mr{1}{27,769}           &\mr{1}{12,047}         \\\hline 
+  \mr{1}{Gitorious}        &\mr{1}{2008}  &GIT            &\mr{1}{?}           &\mr{1}{8,336}            &\mr{1}{28,531}         \\\hline 
+  \end{tabular}
+  \end{table}}
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Assessing Open Source Software
+\section{Assessing Open Source Software}
+%\begin{frame}{Tabel of Contents}\small{\tableofcontents[currentsection,hideallsubsections]}\end{frame}
+\frame{\frametitle{Assessing Open Source Software}
+  \small{\begin{block}{IISO/IEC 912 software quality attributes}
+    \begin{itemize}
+    \item {\bf Functionality   } (meeting of the functional requirements)
+    \item {\bf Reliability     } (fault tolerance and recoverability)
+    \item {\bf Usability       } (effort to learn, and operate the software)
+    \item {\bf Efficiency      } (performance and resource consumption)
+    \item {\bf Maintainability } (effort to modify the software)
+    \item {\bf Portability     } (effort to transfer to another environment)
+    \end{itemize}
+  \end{block}}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Software Metrics
+\section{Software Metrics}
+%\begin{frame}{Tabel of Contents}\small{\tableofcontents[currentsection,hideallsubsections]}\end{frame}
+\frame{\frametitle{Software Metrics}
+  \begin{itemize}
+  \item Lines of Code
+\pause
+  \item Cyclomatic Complexity
+\pause
+  \item Fan-In and Fan-Out
+\pause
+  \item Object-Oriented Metrics
+\pause
+  \item Coding Standards?
+  \end{itemize}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Available Tools
+\section{Available Tools}
+%\begin{frame}{Tabel of Contents}\small{\tableofcontents[currentsection,hideallsubsections]}\end{frame}
+\frame{\frametitle{Available Tools}
+  \small{\begin{itemize}
+  \item {\bf FindBugs}    find "bugs" in Java Programs
+  \item {\bf FxCop}       reports information about the assemblies
+  \item {\bf PMD}         scans Java source code for potential problems
+  \item {\bf PreFast}     identifies defects in C/C++ programs 
+  \item {\bf RATS}        finds C/C++, Perl and Python security problems 
+  \item {\bf SWAAT}       scans Java, JSP, ASP .Net and PHP
+  \item {\bf Flawfinder}  scans C and C++
+  \end{itemize}}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Future Work
+\section{Conclusion: Summary and Future Work}
+%\begin{frame}{Tabel of Contents}\small{\tableofcontents[currentsection,hideallsubsections]}\end{frame}
+\frame{\frametitle{Conclusion: Summary and Future Work}
+  \begin{block}{Karatsuba Algorithm (1960)} Divide and Conquer \end{block}
+}
+
+\frame{\frametitle{Future Work}
+  \begin{enumerate}
+  \item Chose a language: Ruby
+  \pause
+  \item Select consensual good and bad projects
+  \pause
+  \item Find patterns
+  \pause
+  \item Create a systematic way to measure it
+  \pause
+  \item Continue the work
+  \end{enumerate}
+
+}
+
+\frame{\frametitle{Analysing and Measuring Open Source Projects}
+  \begin{block}{~} Questions? \end{block}
+}
+
+
+\end{document}
+
+

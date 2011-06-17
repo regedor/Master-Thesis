@@ -1,0 +1,41 @@
+oRails
+  BDD vs TDD
+  cucumber
+  rspec
+  standards
+
+  dificuldade de aprendizagem vs benefits
+
+vantagens 
+
+The role of best practices in assessing software quality
+
+
+- intro open source
+- quality Maintainability good practices
+- ruby
+  - ruby on rails
+  - Good Practices
+  - BDD vs TDD
+  - cucumber
+  - rspec
+
+- compare projects
+
+
+
+The role of best practices in assessing software quality
+
+  - Intro (open source, ruby community)
+  - Assessing oss
+     - Classic software metrics
+     - Best practices
+  - Best practices in ruby on rails projects
+  - assessing ruby rails projects
+  - Conclusion 
+
+
+
+
+
+
