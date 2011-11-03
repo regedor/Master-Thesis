@@ -1,0 +1,430 @@
+\documentclass[mistar]{acmtrans2m}
+%\usepackage{cite}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{threeparttable}
+\usepackage{url}
+
+% Os seguintes packages são necessários caso escreva em português
+%\usepackage[latin1]{inputenc}
+%\usepackage[T1]{fontenc}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newdef{definition}[theorem]{Definition}
+\newdef{remark}[theorem]{Remark}
+
+\newcommand{\mr}[2]{\multirow{#1}{*}{#2}}
+
+%Altere os seguintes dois parâmetros.
+%Os parâmetros, normalmente nome do autor no primeiro e  título do artigo no segundo, serão inseridos nos cabeçalhos das páginas pares e impares respectivamente.
+\markboth{Miguel Regedor}{Analysing and Measuring Open Source Projects}
+\title{Analysing and Measuring Open Source Projects, state-of-the-art}
+\author{MIGUEL REGEDOR\\Universidade do Minho}
+            
+\begin{abstract} 
+Thousands of open source software projects are available for collaboration in platforms like Github or Sourceforge.
+However, there is no systematic information about the quality of those projects.
+
+Few users have the ability to assess the quality of a project by looking at source code. 
+An application able to perform automatic analysis of a software package and to generate a hight level overview of the code would enable users to make better choices about what software to use, and help developers by giving hints on how to improve their software.
+
+This paper discusses what should be taken into account to when developing such an application, with the focus on Github, and what benefits can be expected.
+\end{abstract}
+ 
+\category{D.2.7}{Software Engineering}{Distribution, Maintenance, and Enhancement}
+\category{D.2.8}{Software Engineering}{Metrics}
+\category{F.3.0}{Logics and meanings of programs}{General}
+\category{K.7.3}{The Computing Profession}{Testing, Certification, and Licensing}
+
+%Insira um, ou mais, dos seguintes termos em \terms
+%Algorithms; Design; Documentation; Economics; Experimentation; Human factors; Languages; Legal aspects; Management; Measurement; Performance; Reliability; Security; Standardization; Theory; Veri?cation; 
+\terms{Measurement} 
+  
+\keywords{Static code analysis, Software Metrics, Open-Source, MI-STAR, Universidade do Minho}
+            
+\begin{document}
+\setcounter{page}{1}%Alterar "1" para a página a ser indicada pela equipa do MI-STAR.
+            
+\begin{bottomstuff} 
+Author full name: Carlos Miguel Janeiro Regedor Dias da Torre\\Author email: miguelregedor@gmail.com 
+\end{bottomstuff}
+            
+\maketitle
+
+
+%% INTRODUCTION
+\section{Introduction}
+Nowadays, Open Source Software (OSS) is well disseminated.
+Thousands of OSS packages can be found online, and free to download, 
+in Open Source Project Hosting (OSPH) websites like SourceForge \cite{sourceforge2010},
+Google Code \cite{googlecode2010}, or GitHub \cite{github2010}.
+Those websites, usually in conjunction with a Version Control System (VCS), make it easy for developers, all around the globe, 
+to collaborate in Open Source Software Projects (OSSP), and also act as a way to make software available to users. 
+
+The market share for top servers across the million busiest sites was 66.82\% for the open source web server, Apache, 
+much higher than the 16.87\% for Microsoft web servers in May 2010.
+\cite{netcraft2010}
+Even governments started noticing open source, during the last few years, and in some case adopted it\cite{hahn2002government}.
+The big acceptance of OSS means that now OSS is not only used by computer specialists. 
+
+\textit{John Powell} \footnote{John Powell, CEO, President, and Co-founder, Alfresco Software Inc.} 
+has declared that measuring the savings that people are making in licence fees, the open-source industry is worth 60 billion dollars.
+From the customers perspective open source can be now considered the largest software industry in the world.\cite{Asay2008}
+
+Usually large industries have a strict organization model, that is not the way open source communities operates. 
+Open Source communities work in a kind of bazaar style. 
+Raymond \cite{raymondcathedral} compares the traditional software development process to built cathedrals,
+few specialized individuals working in isolation. 
+While open source development seemed to resemble a great babbling bazaar. \cite{raymondcathedral}
+But OSS is not developed, all the time, in bazaar style.
+Currently, big open source projects can have companies supporting them, and each community can have particular habits.
+However, most projects are not that big, 
+sometimes it is hard to distinguish the project developers from the project customers/users,
+and because of that a bug report and a wanted feature can get indistinguishable too. 
+The specification of an open source software project evolves in an organic way. \cite{capiluppicathedral}
+
+
+Can software that is developed in such chaotic way be trusted as a high quality product?
+The shock is that in fact the bazaar style seemed to work. \cite{halloran2002high} 
+Some big projects, for instance Linux distributions such as 
+\textit{Ubuntu} \footnote{\url{http://www.ubuntu.com} Free OS.}, are the proof of it.
+However, how can the quality of this sofware be measured?
+
+Traditionally, the most basic meaning of software quality is commonly recognized as lack of "bugs", and the meeting of the functional requirements.
+But quality is not simply based on that. \cite{gousios2007software}
+The quality of a software system depends, among other things, on update frequency, quantity of documentation, test coverage, 
+number and type of its dependencies and good programming practices.
+By analysing those parameters a user can make a better choice when picking software for a specific task. \cite{marchenko2007predicting}
+
+When a user/developer finds a new OSSP, for example in 
+\textit{GitHub} 
+\footnote{GitHub is a web-based hosting service for projects that use the Git revision control system. 
+It is written using Ruby on Rails by GitHub, Inc  \url{http://www.ubuntu.com
+}},
+the things that will most influence the time needed to have a better understanding of the project, to use, or collaborate in it,
+are the quality of the documentation and the source code readability. \cite{crowston2003defining} 
+Although the OSPH websites provide plenty of useful information about the hosted projects, 
+currently, they do not give a quick answer to the following questions: 
+Does this project have good documentation? Does the code follow standards? How similar is it to other projects? 
+A OSSP is built up from hundreds, sometimes thousands, of files. It can be coded in many different computer languages.
+To manually analyse a software project is a very hard and time consuming task, and not all users have the ability to answer the previous questions by looking at the source code. 
+
+With that in mind, a system capable of automatically analysing and producing reports about a given OSSP 
+would enable users to make better choices, and developers to further improve their software.
+
+
+\pagebreak[5]
+%% Open Source Project Hosting Platforms}
+\section{Open Source Project Hosting Platforms}
+
+An open source project hosting platform is the central tool that supports and co-ordinates the development of an open source project,
+ normally it is in a form of a web site.
+
+Since 1999 (year that SourceForge was launched), many OSPH sites were created to host open source projects.
+OSPH sites offer different features, 
+like codebase \footnote{The term codebase means the whole collection of source code used to build a particular application or component.} hosting
+(a project codebase is typically stored in a source control repository), code review, bug tracking, web hosting, wiki, mailing list, etc
+\cite{binkley2006animated}
+
+Table \ref{table:OSPHWebSites} on page \pageref{table:OSPHWebSites} shows a list of the most well known OSPH web sites.
+By looking at this table we can see that SourceForge is the most well established OSPH service.
+It is also one of oldest, 
+hosts more than 230,000 projects and has more than 2 million registered users.\cite{christley2005collection} 
+
+GitHub is one of the youngest OSPH web sites (launched in 2008). 
+However, in only two years, it drew more than 500,000 users (one quarter of sourceforge users) and is hosting more than 1,500,000 projects. 
+The only version control system provided by GitHub is git 
+\footnote {Git is a free \& open source, distributed version control system that Linus Torvalds developed to help manage Linux kernel development.},
+and because GitHub projects are in fact git repositories, 
+it is incredibly easy to make branches and merges in GitHub. 
+Although branching was considered a bad practice, 
+it turned out that using git it can in fact improve the developers collaboration and organization. __CITE NEEDED__
+
+However, the main reasons for GitHub popularity are the social aspects. __CITE NEEDED__
+Users and projects have public profiles and activity feeds which display activity on public projects such as commits, comments, forks, etc.
+Hosting a Git repository is not hard but co-ordinating efforts of forking and merging amongst people is tough. 
+With a system like Github, it becomes a lot easier. \cite{petercooper2010}
+With so many high profile projects on board (
+jQuery, 
+reddit, 
+Sparkle, 
+curl, 
+Ruby on Rails, 
+node.js, 
+ClickToFlash, 
+Erlang/OTP, 
+CakePHP, 
+Redis)
+\cite{github2010}, it is easy to imagine GitHub could be the next SourceForge.
+
+The above are the reasons why we will focus our study in GitHub.
+
+\begin{table}[H]
+\begin{threeparttable}
+\begin{tabular}{|c|c|c|c|c|c|} \hline 
+\multicolumn{6}{|c|}{Open Source Project Hosting Web Sites} \\ \hline 
+Name & Established & Available VCS & Users & Projects & Alex rank \tnote{a} \\\hline
+\mr{5}{SourceForge}      &\mr{5}{1999}  &CVS            &\mr{5}{2,000,000}   &\mr{5}{236,319}          &\mr{5}{136}            \\
+                         &              &SVN            &                    &                         &                       \\
+                         &              &Bazar          &                    &                         &                       \\
+                         &              &GIT            &                    &                         &                       \\
+                         &              &Mercurial      &                    &                         &                       \\\hline 
+\mr{1}{GitHub}           &\mr{1}{2008}  &GIT            &\mr{1}{505,000}     &\mr{1}{1,516,000}        &\mr{1}{742}            \\\hline 
+\mr{2}{Google Code }     &\mr{2}{2006}  &SVN            &\mr{2}{?}           &\mr{2}{250,000}          &\mr{2}{900\tnote{b}}   \\
+                         &              &Mercurial      &                    &                         &                       \\\hline 
+\mr{3}{Code Plex}        &\mr{3}{2006}  &SVN            &\mr{3}{151,782}     &\mr{3}{15.955}           &\mr{3}{2,343}          \\
+                         &              &Microsoft TFS  &                    &                         &                       \\
+                         &              &Mercurial      &                    &                         &                       \\\hline 
+\mr{2}{Assembla}         &\mr{2}{2006}  &SVN            &\mr{2}{180,000}     &\mr{2}{60,000}           &\mr{2}{6,628}          \\
+                         &              &GIT            &                    &                         &                       \\\hline 
+\mr{1}{Launchpad}        &\mr{1}{2005}  &Bazar          &\mr{1}{1,140,345}   &\mr{1}{19,016}           &\mr{1}{12,466}         \\\hline 
+\mr{4}{BerliOS}          &\mr{4}{2000}  &CVS            &\mr{4}{47,285}      &\mr{4}{5,448}            &\mr{4}{17,299}         \\
+                         &              &SVN            &                    &                         &                       \\
+                         &              &GIT            &                    &                         &                       \\
+                         &              &Mercurial      &                    &                         &                       \\\hline 
+\mr{1}{Bitbucket}        &\mr{1}{2008}  &Mercurial      &\mr{1}{51,600}      &\mr{1}{27,769}           &\mr{1}{12,047}         \\\hline 
+\mr{1}{Gitorious}        &\mr{1}{2008}  &GIT            &\mr{1}{?}           &\mr{1}{8,336}            &\mr{1}{28,531}         \\\hline 
+\mr{5}{GNU Savannah}     &\mr{5}{2000}  &CVS            &\mr{5}{48,593}      &\mr{5}{3,233}            &\mr{5}{48,286}         \\
+                         &              &SVN            &                    &                         &                       \\
+                         &              &Bazar          &                    &                         &                       \\
+                         &              &Arch           &                    &                         &                       \\
+                         &              &GIT            &                    &                         &                       \\
+                         &              &Mercurial      &                    &                         &                       \\\hline 
+\end{tabular}
+\begin{tablenotes}
+  \item    Data retrieved on 2010-12-20, from each of the OSPH Websites, and using Alexa rank website.
+  \item[a] Alexa rank represents the approximate number of websites, in the world, that have a higher popularity than the given site
+           (the smaller the better).
+  \item[b] This value is an approximation.
+\end{tablenotes}
+\end{threeparttable}
+\caption{Open Source Project Hosting Web Sites}
+\label{table:OSPHWebSites}
+\end{table}
+
+
+
+\section{Assessing Open Source Software}
+The simplest operation in science and the lowest level of measurement is classification.  \cite{kan2002metrics} 
+
+By assessing OSS we mean to sort OSS projects into an ordinal scale
+\footnote{Ordinal scale refers to the measurement operations through which the subjects can be compared in order.}
+This can be achieved by defining a \textit{ranking system}
+\footnote{
+  Raking system example: to classify a quality attribute, for instance the project documentation, according to its quality with 
+  five, four, three, two or one star.
+} and by placing OSS projects into quality categories with respect to certain quality attributes.
+First we need to find a way of quantifying those OSS quality attributes.
+
+
+
+%% Open Source Project Hosting Platforms}
+\subsection{Software quality}
+In software, quality is an abstract concept. It is commonly recognized as lack of "bugs", and the meeting of the functional requirements.
+However, quality can be perceived and interpreted differently based on the actual context, objectives and interests of each project.
+Many software development companies do monitor costumer satisfaction as a quality index, 
+for instance, IBM ranks their software products in levels of CUPRIMDSO:__CITE NEEDED__
+\begin{itemize}
+\item Capability/Functionality (refers to the software meeting its functional requirements)
+\item Usability (refers to the required effort to learn, and operate the software)
+\item Performance/Efficiency (refers to the software performance and resource consumption)
+\item Reliability (refers to software fault tolerance and recoverability)
+\item Instalability/Portability (refers to the required effort to install or transfer the software to another environment)
+\item Maintainability (refers to the required effort to modify the software)
+\item Documentation/Information (refers to the coverage and accessibility of the software documentation)
+\item Service (refers to the company monitoring and service)
+\item Overall (refers to an overall classification based on the other attributes)
+\end{itemize}
+Almost every sofware company have similar quality attributes. \cite{kan2002metrics}
+ISO/IEC 9126 provides a framework for the evaluation of software quality (The goal is to achieve quality in use, in other words, quality from the user perspective) \cite{bevan1999quality}
+IISO/IEC 912 defines six software quality attributes:
+\begin{itemize}
+\item Functionality (Refers to the software meeting of the functional requirements)
+\item Reliability (Refers to software fault tolerance and recoverability)
+\item Usability (Refers to the required effort to learn, and operate the software)
+\item Efficiency (Refers to the software performance and resource consumption)
+\item Maintainability (Refers to the required effort to modify the software)
+\item Portability (Refers to the required effort to transfer the software to another environment)
+\end{itemize}
+Quality attributes have interrelationships. 
+They can be 
+conflictive\footnote{negative influence} or 
+support\footnote{positive influence} one another. 
+For example, the higher the functional complexity of the software, the harder it becomes to achieve maintainability.\cite{kan2002metrics}
+
+Because of the OSP bazaar style and continuous development process, it is intuitive that the maintainability and documentation attributes 
+have a big influence on the overall quality and continuous progress, of an OSP
+(maintainability and documentation have support relationships
+
+with usability, reliability and availability attributes, but might be conflictive with functionality and performance attributes). __CITE_NEED__
+
+Failure to meet functionality often leads to late changes and increased costs in the development process.
+The software industry and researchers have been mostly interested on testing methodologies 
+that focus on functional requirements and pay little attention to non-functional requirements. __CITE_NEEDED_
+
+There are several challenges and difficulties, in assessing non-functional quality attributes for software projects.
+For example, security is a non-functional requirement that needs to be addressed in every software project. 
+Therefore a badly-written software may be functional, but subject to buffer overflow attacks.\cite{gousios2007software}
+
+However, a sistematic way to measure non-functional attributes on sofware projects would benefit sofware development in general.
+
+
+\subsection{Available Metrics}
+To classify OSS with regards to a certain quality attribute, we need to find wich factors influence it. 
+Then we need a way to measure that attribute. If we need to measure we need metrics.
+
+Fortunately, there are around two thousand documented software metrics, but there is few information on how those metrics relate to each other. 
+Most of them simply have different names but give similar information. __CITE_NEEDED__
+The major challenge, to create a sistematic way to measure the quality (based on non-functional attributes) of sofware project, 
+is to discover how important the information given by those metrics is, if the calculation effort pays off,
+how to interpret their values and find \textit{correlations}
+\footnote{Correlation is probably the most widely used statistical method to assess relationships among observational data.}__CITE_NEED__ 
+ to assess the quality attributes of an OSP.
+
+
+
+\subsubsection{Lines of Code}
+A line of code is any line of program text that is not a comment or blank line, 
+regardless of the number of statements or fragments of statements in the line. 
+This specifically includes all lines containing program headers, declarations, and executable and non-executable statements. \cite{conte1986software}
+The lines of code (LOC) metric is anything but simple. 
+The major problem comes from the ambiguity of the operational definition, the actual counting.
+In the early days of Assembler programming, in which one physical line was the same as one instruction, the LOC definition was clear.
+With the availability of high-level languages the one-to-one correspondence broke down.
+Differences between physical lines and instruction statements (or logical lines of code) 
+and differences among languages contribute to the huge variations in counting LOCs.
+In Boehm's well-known book \cite{boehm2009software}, 
+the LOC counting method counts lines as physical lines and includes executable lines, 
+data definitions, and comments. 
+Even within the same language, the methods and algorithms used by different counting tools can cause significant differences in the final counts.
+
+Next several variations are discribed \cite{jones1986programming}: 
+
+\begin{itemize}
+\item Count only executable lines. 
+\item Count executable lines plus data definitions. 
+\item Count executable lines, data definitions, and comments. 
+\item Count executable lines, data definitions, comments, and job control language. 
+\item Count lines as physical lines on an input screen. 
+\item Count lines as terminated by logical delimiters. 
+\end{itemize}
+
+
+%% AVAILABLE TOOLS
+\subsubsection{Cyclomatic Complexity}
+The measurement of cyclomatic complexity \cite{mccabe1976complexity} was designed to indicate a program's testability and maintainability. It is the classical graph theory cyclomatic number, indicating the number of regions in a graph. As applied to software, it is the number of linearly independent paths that comprise the program. As such it can be used to indicate the effort required to test a program. To determine the paths, the program procedure is represented as a strongly connected graph with unique entry and exit points. The general formula to compute cyclomatic complexity is: 
+$$M = V(g) = e - n + 2p$$
+__how it relates to the control statements (ifs, loops, etc...) of source code__
+where
+\begin{itemize}
+\item \emph{$V(G)$} is the cyclomatic number of G 
+\item \emph{$e$   } is the number of edges 
+\item \emph{$n$   } is the number of nodes 
+\item \emph{$p$   } is the number of unconnected parts of the graph 
+\end{itemize}
+
+
+%% AVAILABLE TOOLS
+\subsubsection{Fan-In and Fan-Out}
+fan-in and fan-out are perhaps the most common design structure metrics, which are based on the ideas of coupling \cite{yourdon1979structured}: 
+
+\begin{itemize}
+\item \emph{Fan-in } is a count of the modules that call a given module 
+\item \emph{Fan-out} is a count of modules that are called by a given module 
+\end{itemize}
+
+In general, modules with a large fan-in are relatively small and simple,
+and are usually located at the lower layers of the design structure. 
+In contrast, modules that are large and complex are likely to have a small fan-in. __CITE_NEED__
+
+
+%% AVAILABLE TOOLS
+\subsubsection{Object-Oriented Metrics}
+Since the predominant languges in GitHub projects are object-oriented (OO), we should pay particular attention to OO related metrics
+Classes and methods are the basic constructs of OO technology. 
+The amount of function provided by an OO software can be estimated based on the number of identified classes and methods or their variants.
+Therefore, it is natural that the basic OO metrics are related to classes, methods and their size.
+
+The pertinent question therefore is what should the optimum value be for OO metrics. There may not be one correct answer,
+but based on his experience in OO software development, Lorenz proposed eleven metrics as OO design metrics called rules of thumb.
+\cite{lorenz1994object}
+
+\begin{itemize}
+\item \emph{Average Method Size (LOC)}: Should be less than 8 LOC for Smalltalk and 24 LOC for C++ 
+\item \emph{Average Number of Methods per Class}: Should be less than 20. Bigger averages indicate too much responsibility in too few classes. 
+\item \emph{Average Number of Instance Variables per Class}: Should be less than 6. More instance variables indicate that one class is doing more than it should. 
+\item \emph{Class Hierarchy Nesting Level (Depth of Inheritance Tree, DIT)}: Should be less than 6, starting from the framework classes or the root class. 
+\item \emph{Number of Subsystem/Subsystem Relationships}: Should be less than the number in metric 6. 
+\item \emph{Number of Class/Class Relationships in Each Subsystem}: Should be relatively high. This item relates to high cohesion of classes in the same subsystem. If one or more classes in a subsystem don't interact with many of the other classes, they might be better placed in another subsystem. 
+\item \emph{Average Number of Comment Lines (per Method)}: Should be greater than 1. 
+\end{itemize}
+
+
+Open source communities have a tendency to create create coding standards. It is a natural process. 
+Standards are not rules but instead good practices that are spread through the community and everybody does it that way. 
+Projects following the standards increase their maintainability, and make it easier for project new comers.
+
+__explain how coding standards affect quality__
+
+
+%% AVAILABLE TOOLS
+\subsection{Available Tools}
+Source Code Analysis tools are designed to analyse source code and/or compiled versions of the code in order to help find flaws. 
+Ideally, such tools would automatically find flaws with a high degree of confidence that what is found is indeed a flaw. However, this is beyond the state of the art for many types of application flaws. Thus, such tools frequently serve as aids for an analyst to help them zero in on relevant portions of code so they can find flaws more efficiently, rather than a tool that simply finds flaws automatically.
+
+Next a list of some free tools:
+\begin{itemize}
+\item FindBugs - Find Bugs (including some security flaws) in Java Programs
+\item FxCop (Microsoft) - FxCop is an application that analyses managed code assemblies (code that targets the .NET Framework common language runtime) and reports information about the assemblies, such as possible design, localization, performance, and security improvements.
+\item PMD - PMD scans Java source code and looks for potential code problems (this is a code quality tool that does not focus on security issues)
+\item PreFast (Microsoft) - PREfast is a static analysis tool that identifies defects in C/C++ programs
+\item RATS (Fortify) - Scans C, C++, Perl, PHP and Python source code for security problems like buffer overflows and TOCTOU (Time Of Check, Time Of Use) race conditions
+\item SWAAT - Simplistic Beta Tool - Languages: Java, JSP, ASP .Net, and PHP
+\item Flawfinder - Scans C and C++
+\end{itemize}
+
+Tools like the ones listed above analyze code without
+executing it, but point out what they consider to be potential weaknesses. The most
+typical example of what those tools can find probably is calls to the emph{gets} function in
+the C programming language: this function is inherently insecure and can lead to buffer
+overflows. Specially crafted user input values can, for instance, allow an attacker to access
+or modify confidential data or even take control of any computer executing that piece of
+software.
+
+Because these tools need to "understand" the code being analyzed, they are necessarily very language specific. 
+
+
+%% CONCLUSION
+\section{Conclusion}
+Nowadays, thousands of open-source software packages can be found and freely donwloaded online.
+GitHub is a web-based hosting service for projects that use the Git revision control system.
+It hosts more than 1 million open-source projects.
+
+When a user/developer finds a new OSSP in github 
+the things that will most influence the time needed to understand the project, to use or collaborate with it
+are the quality of the documentation and the codebase readability.  
+Although OSPH websites provide a lot of useful information about the hosted projects
+they do not currently give a quick answer to the following questions: 
+Does this project have good documentation? Does the code follow standards? How similar is it to other projects? 
+A OSSP is built up from hundreds, sometimes thousands, of files. It can be coded in many different computer languages.
+To manually analyse a software project is a very hard and time consuming task, and not all users have the ability to answer the previous questions by looking at the codebase. 
+
+With that in mind, a system capable of automatically analysing and producing reports about a given OSSP __CONTINUA__
+
+
+\nocite{*}
+%Bibliografia
+\bibliographystyle{acmtrans}
+%\bibliographystyle{plain}
+\bibliography{regedor}%substituir o parâmetro "bibtext" pelo nome do ficheiro (sem extensão) que contém a bibliografia BibTex
+
+\begin{received}
+\end{received}
+\end{document}
+
+

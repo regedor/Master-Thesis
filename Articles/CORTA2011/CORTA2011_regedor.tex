@@ -335,7 +335,7 @@ After running the gem and counting the occurrences, the following results were o
 \begin{tabular}{|l||c|c|c|c|c|c|c|} \hline 
 \multicolumn{8}{|c|}{Rails Best Practices Results} \\ \hline 
 \textbf{Best Practice}& \textbf{Rubytime}& \textbf{Notes}& \textbf{Tracks}&  \textbf{Handy Ant}& \textbf{Retrospectiva}& \textbf{Redmine}& \textbf{Clockingit} \\\hline\hline
-\emph{Add model virtual attribute           }              &   -  &   2  &   7  &   - &   - &   5 &   4  \\ \hline 
+\emph{\tnote{a}Add model virtual attribute           }              &   -  &   2  &   7  &   - &   - &   5 &   4  \\ \hline 
 \emph{Always add db index                   }              &   -  &   -  &   -  &  43 &   - &   - &  51  \\ \hline 
 \emph{Isolate seed data                     }              &   -  &   -  &   -  &   - &   - &  79 &  17  \\ \hline 
 \emph{Law of demeter                        }              &  20  &  38  &  45  &   6 &  30 & 164 &  85  \\ \hline  
@@ -359,6 +359,34 @@ After running the gem and counting the occurrences, the following results were o
 \emph{Keep finders on their own model       }              &   8  &   4  &   1  &   - &  11 &   - &   -  \\ \hline  
 \emph{Total                                 }              & 109  & 156  & 402  & 450 & 559 & 834 & 864  \\ \hline 
 \end{tabular}
+
+\begin{tablenotes}
+     \item[a] Add model virtual attribute           
+     \item[b] Always add db index                   
+     \item[c] Isolate seed data                     
+     \item[d] Law of demeter                        
+     \item[e] Move code into controller             
+     \item[f] Move code into model                  
+     \item[g] Move model logic into model           
+     \item[h] Move finder to named\_scope           
+     \item[i] Needless deep nesting                 
+     \item[j] Not use default root                  
+     \item[l] Notes  use query attribute            
+     \item[m] Overuse route customizations          
+     \item[n] Remove trailing whitespace            
+     \item[o] Use factory method                    
+     \item[p] Replace instance var with local var   
+     \item[q] Use before\_filter                    
+     \item[r] Wrong email content\_type             
+     \item[s] Use query attribute                   
+     \item[t] Use say with time in migrations       
+     \item[u] Use scopes access                     
+     \item[v] User model association                
+     \item[x] Keep finders on their own model       
+     \item[z] Total                                 
+
+\end{tablenotes}
+
 \end{threeparttable}
 }
 \end{center}

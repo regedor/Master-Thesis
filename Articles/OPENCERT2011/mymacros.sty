@@ -1,0 +1,252 @@
+
+%%%% Hoare Logic / WPC
+
+\newcommand{\mysmall}{\scriptsize}
+\newenvironment{myprooftree}{\mysmall\begin{prooftree}}{\end{prooftree}}
+
+\newcommand{\V}{\mathcal{V}}
+\newcommand{\VP}{\mathcal{V_P}}
+\newcommand{\VL}{\mathcal{V_L}}
+
+\newcommand{\HL}{\mathsf{H}}%
+\newcommand{\Hg}{\mathsf{Hg}}%
+\newcommand{\Hga}{\mathsf{Hga}}%
+\newcommand{\Hgi}{\mathsf{Hgi}}%
+\newcommand{\Hu}{\mathsf{Hu}}%
+\newcommand{\NAT}{\mathbb{N}}%
+
+\newcommand{\erA}{\mathsf{er_{\rm A}}}%
+\newcommand{\erI}{\mathsf{er_{\rm I}}}%
+
+\newcommand{\eval}[3]{(#1,#2)\Downarrow #3}%
+
+\newcommand{\pmap}{\hookrightarrow}%
+\newcommand{\upstate}[2]{{#1}_{#2}}%
+
+
+
+\newcommand{\precond}{precondition\xspace}
+\newcommand{\preconds}{preconditions\xspace}
+\newcommand{\postcond}{postcondition\xspace}
+\newcommand{\postconds}{postconditions\xspace}%
+\newcommand{\vcgen}{VCGen\xspace}
+\newcommand{\vcgens}{VCGens\xspace}
+
+
+\newcommand{\hoatri}[3]{\{#1\}\,#2\,\{#3\}}
+\newcommand{\hoatrinl}[3]{\{#1\}\\ #2\\ \{#3\}}
+\newcommand{\hoatrit}[3]{[#1]\,#2\,[#3]}
+\newcommand{\dlmod}[2]{[#1]\, #2}
+\newcommand{\M}[0]{\mathcal{M}}
+\def\lsem{[ \! [}
+\def\rsem{] \! ]}
+\def\bsem#1{\lsem {#1} \rsem}
+\newcommand{\mean}[2]{\M \bsem{#1}(#2)}
+\newcommand{\valids}[2]{\M, #1 \models #2}
+\newcommand{\valid}[1]{\M \models #1}
+\newcommand{\isvalid}[1]{\models #1}
+
+\newcommand{\bool}{\mathbf{bool}}
+\newcommand{\intg}{\mathbf{int}}
+\newcommand{\var}{\mathbf{var}}
+\newcommand{\expr}[1]{\mathbf{Exp}[#1]}%
+\newcommand{\com}{\mathbf{Comm}}%
+\newcommand{\Acom}{\mathbf{AComm}}%
+\newcommand{\Icom}{\mathbf{IComm}}%
+\newcommand{\assert}{\mathbf{Assert}}%
+\newcommand{\spec}{\mathbf{Spec}}%
+\newcommand{\PROG}{\mathbf{PROG}}%
+\newcommand{\ICOMM}{\mathbf{ICOMM}}%
+\newcommand{\prog}{\mathbf{Prog}}%
+\newcommand{\proc}{\mathbf{Proc}}%
+
+\newcommand{\block}[1]{\{#1\}}
+\newcommand{\skp}{\mathbf{skip}}
+\newcommand{\sep}{\, ; \,}
+\newcommand{\asgn}[2]{#1 := #2}
+\newcommand{\ifte}[3]{\mathbf{if}\; #1\; \mathbf{then}\; #2\;
+  \mathbf{else}\; #3}
+\newcommand{\ifteg}[4]{\mathbf{if}\; #1 \impl #2 \talloblong #3 \impl #4\;
+  \mathbf{fi}}
+\newcommand{\choice}[2]{#1 \talloblong #2}
+\newcommand{\while}[2]{\mathbf{while}\ #1\ \mathbf{do}\ #2}%
+%\newcommand{\whileinv}[3]{\mathbf{while}\, \{#1\}\, (#2)\, \mathbf{do}\ #3}
+\newcommand{\whileinv}[3]{\mathbf{while}\ #2\ \mathbf{do}\, \{#1\}\, #3}%
+\newcommand{\doo}[2]{\mathbf{do}\; #1 \impl #2 \;\mathbf{od}}
+\newcommand{\assrt}[1]{\mathbf{assert}\, #1}
+\newcommand{\assume}[1]{\mathbf{assume}\, #1}
+\newcommand{\try}[2]{\mathbf{try}\, #1\, \mathbf{catch}\, #2}
+\newcommand{\throw}{\mathbf{throw}}
+
+
+\newcommand{\true}{\mathtt{true}}%
+\newcommand{\false}{\mathtt{false}}%
+\newcommand{\eq}{==}
+\newcommand{\negg}{\,!\,}%
+\newcommand{\dif}{\,!\!=}%
+\newcommand{\andd}{\; \&\&\,}
+\newcommand{\orr}{\; \| \,}
+%\newcommand{\fall}[2]{\forall\, #1.\, #2}
+\newcommand{\fall}[2]{\mathtt{Forall}\, #1.\, #2}
+%\newcommand{\exs}[2]{\exists\, #1.\, #2}
+\newcommand{\exs}[2]{\mathtt{Exists}\, #1.\, #2}
+\newcommand{\impl}{ \to }%
+\newcommand{\divv}{\, \mathtt{div} \,}%
+\renewcommand{\mod}{\, \mathtt{mod} \,}%
+\newcommand{\semmod}{\, \mathsf{mod} \,}%
+\newcommand{\states}{\Sigma}
+\newcommand{\lift}[1]{#1_{\bot}}
+\newcommand{\cond}[3]{\mathsf{cond}(#1,#2,#3)}
+\newcommand{\arr}[2]{#1[#2]}
+\newcommand{\struct}[2]{#1.#2}
+\newcommand{\flift}[1]{#1_{\bot\!\!\!\bot}}%
+
+
+
+
+\newcommand{\prcpi}[3]{\mathsf{wp}^{#1}(#2,#3)}%
+\newcommand{\prc}[2]{\mathsf{wp}(#1,#2)}%
+\newcommand{\pprc}{\mathsf{wp}}%
+\newcommand{\prcexc}[3]{\mathsf{wp}\,(#1,#2,#3)}
+\newcommand{\wprc}[2]{\mathit{wp}.#1.#2}
+\newcommand{\wppt}[1]{\mathit{wp}.#1}
+\newcommand{\allstt}[1]{#1}
+%\newcommand{\allstt}[1]{[\; #1 \;]}
+%\newcommand{\allst}[1]{\models #1}
+\newcommand{\allst}[2]{\models #1 \impl #2}
+%\newcommand{\allstt}[1]{\mathrm{allst}(#1)}
+%\DeclareMathOperator{\allstt}{\mathrm{allst}}
+\newcommand{\vc}[1]{\mathsf{VC}(#1)}%
+\newcommand{\vcg}[1]{\mathsf{VCG}(#1)}%
+\newcommand{\vcaux}[2]{\mathsf{VC}(#1, #2)}%
+\newcommand{\vcauxpi}[3]{\mathsf{VC_{aux}^{\mathrm{#1}}}(#2, #3)}%
+\newcommand{\vcgexc}[3]{\mathsf{VC_{aux}}\,(#1, #2, #3)}
+\newcommand{\vvc}{\mathsf{VC}}%
+\newcommand{\vvcg}{\mathsf{VCG}}%
+\newcommand{\vvcaux}{\mathsf{VC_{aux}}}%
+\newcommand{\vcgu}[1]{\mathsf{VCGu}(#1)}%
+\newcommand{\vvcgu}{\mathsf{VCGu}}%
+
+\newcommand{\setupd}[3]{#1\, ; #2 := #3}
+\newcommand{\apupd}[2]{#1(#2)}
+\newcommand{\emptyupd}{\emptyset}
+\newcommand{\emptyprog}{\varepsilon}
+\newcommand{\hoatriupd}[4]{\{#1\}[#2]\,#3\,\{#4\}}
+\newcommand{\hoatrinexc}[4]{\{#1\}\, #2\,\{#3\}\{\!|#4|\!\}}
+\newcommand{\hoatriexc}[3]{\{#1\}\, #2\,\{\!|#3|\!\}}
+
+
+\newcommand{\annot}[1]{\{ #1 \}\,}
+
+\DeclareMathOperator{\Fib}{\mathrm{Fib}}
+\DeclareMathOperator{\fibb}{\mathbf{fib}}
+
+\newcommand{\U}{\mathcal{U}}%
+\newcommand{\T}[1]{\mathcal{T}(#1)}
+\newcommand{\app}[2]{#1@#2}
+
+\DeclareMathOperator{\dom}{\mathsf{dom}}
+
+\newcommand{\lra}{\longrightarrow}
+
+\newcommand{\updtrans}[1]{\stackrel{#1}{\lra}}
+%\newcommand{\conf}[5]{\langle \hoatriupd{#1}{#2}{#3}{#4}, #5
+%\rangle}
+\newcommand{\stopp}{\textbf{stop}}
+
+%\newcommand{\boolemb}[1]{\lfloor {#1} \rfloor}
+\newcommand{\boolemb}[1]{#1}
+
+\newcommand{\f}{\mathbf{f}}
+\newcommand{\g}{\mathbf{g}}
+\newcommand{\p}{\mathbf{p}}
+\newcommand{\rr}{\mathbf{r}}
+\newcommand{\q}{\mathbf{q}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\call}[1]{\mathbf{call}\, #1}
+\newcommand{\fcall}[1]{\mathbf{fcall}\, #1}
+\newcommand{\return}[1]{\mathbf{return}\, #1}
+\newcommand{\procdef}[2]{\mathbf{proc}\; #1 = #2}
+\newcommand{\funcdef}[2]{\mathbf{fun}\; #1 = #2}
+% \newcommand{\procdef}[2]{#1 = #2}
+% \newcommand{\funcdef}[2]{#1 = #2}
+\newcommand{\pre}[1]{\mathbf{pre}\;#1\ }
+\newcommand{\post}[1]{\mathbf{post}\;#1\ }
+\newcommand{\preop}[1]{\mathbf{pre}(#1)}
+\newcommand{\postop}[1]{\mathbf{post}(#1)}
+\newcommand{\paramop}[1]{\mathbf{params}(#1)}
+\newcommand{\bodyop}[1]{\mathbf{body}(#1)}
+\newcommand{\old}[1]{#1\tilde\ }
+%\newcommand{\old}{\mathsf{old}}%
+\newcommand{\preopp}[2]{\mathbf{pre}_{#1}(#2)}
+\newcommand{\postopp}[2]{\mathbf{post}_{#1}(#2)}
+\newcommand{\bodyopp}[2]{\mathbf{body}_{#1}(#2)}
+\newcommand{\paramopp}[2]{\mathbf{param}_{#1}(#2)}
+\newcommand{\result}{\textit{result}}
+\newcommand{\subst}[2]{#2/#1}
+\newcommand{\sqnc}[1]{\overline{#1}}
+\newcommand{\vars}[1]{\mathcal{N}(#1)}
+\newcommand{\procnames}[1]{\mathcal{P}(#1)}
+\newcommand{\preopa}[1]{\overline{\preop{#1}}}
+\newcommand{\postopa}[1]{\overline{\postop{#1}}}
+
+
+%\newcommand{\array}[2]{#1[#2]}
+
+
+%%
+\newcommand{\alarm}[1]{\marginpar{\tiny #1}}
+
+\renewenvironment{proof}{\textit{Proof.}}{\hfill$\Box$\\ }%
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                              FRAMES                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\doframeit#1{\vbox{%
+  \hrule height\fboxrule
+    \hbox{%
+      \vrule width\fboxrule \kern\fboxsep
+      \vbox{\kern\fboxsep #1\kern\fboxsep }%
+      \kern\fboxsep \vrule width\fboxrule }%
+    \hrule height\fboxrule }}
+
+
+\def\frameit{\smallskip \advance \linewidth by -7.5pt \setbox0=\vbox \bgroup
+\strut \ignorespaces }
+
+\def\endframeit{\ifhmode \par \nointerlineskip \fi \egroup
+\doframeit{\box0}}
+
+
+
+
+
+
+%%%%%%%%%%%
+% Slicing
+%%%%%%%%%%%
+
+\newtheorem{defin}{Definition}
+\newtheorem{prop}{Proposition}
+%\newtheorem{lemma}{Lemma}
+\newcommand{\porteq}[2]{#1 \preceq #2}
+%\newcommand{\pslice}[2]{\mathsf{slice^{post}}(#1,#2)}
+\newcommand{\pslice}[3]{\mathsf{slice}(#1,#2,#3)}
+\newcommand{\cslice}[1]{\mathsf{slice}(#1)}
+\newcommand{\clslice}[1]{\mathsf{clslice}(#1)}
+%\newcommand{\rslice}[2]{\mathsf{rslice_{#1}^{post}}(#2)}
+\newcommand{\rslice}[2]{\mathsf{procslice_{#1}}(#2)}
+%\newcommand{\progslice}[2]{\mathsf{progslice_{#1}^{post}}(#2)}
+\newcommand{\progslice}[2]{\mathsf{progslice_{#1}}(#2)}
+\newcommand{\refines}[4]{#2 \sqsubseteq_{#1,#4} #3}
+\newcommand{\isslice}[4]{#3\triangleleft_{(#1,#2)}#4}
+\newcommand{\issliceprogopen}[2]{\issliceprog{o}{#1}{#2}}
+\newcommand{\issliceprogclosed}[2]{\issliceprog{c}{#1}{#2}}
+\newcommand{\issliceprog}[3]{#2 \triangleleft_{#1} #3}
+\newcommand{\VCS}[1]{\mathsf{Verif}(#1)}
+\newcommand{\cw}[2]{#1 \leq #2}
