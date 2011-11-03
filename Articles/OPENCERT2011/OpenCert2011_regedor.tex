@@ -356,15 +356,15 @@ can be used instead.
 %% ASSESSING RUBY ON RAILS PROJECTS
 \section{Assessing Ruby on Rails Projects} \label{sec:assessing_ror}
 After deciding that some \emph{procedure} is a \emph{best practice},
-it would be handy to find a way to automatically verify weather that practice is being followed by
+it would be handy to find a way to automatically verify whether that practice is being followed by
 the developers of a given project.
 With that in mind, an open source ruby gem was created (by the authors of Rails best practices web site) 
-with the objective of automatically produce a report that shows where,
+with the objective of automatically producing a report that shows where,
 in the source code,  a project is failing to obey to consensual practices.
-At moment of writing, this gem can check for 28 kinds of best practices (from the 70 described in that web site).
+At the moment of writing, this gem can check for 28 kinds of best practices (from the 70 described in that web site).
 
-However, one of the first things that we have noticed when we have applied  this gem to OSS projects,
-is that the biggest and renowned projects have much more errors than the small and unknown projects.
+However, one of the first things that we have noticed when we have applied this gem to OSS projects,
+is that the biggest and most renown projects have much more errors than the smaller and unknown projects.
 This nonsense has a simple  interpretation.
 %The majority of RoR projects found in github are simple projects, in most cases, developed by a single user.
 Small projects (like the majority of RoR projects found in github) are simple software packages,  often 
@@ -373,10 +373,10 @@ These applications are so simple that many times the code is almost entirely cre
 Usually, when code is not written by humans, it has few mistakes concerning those recommendations.
 
 \subsection{First Study}\label{subsec:first_study}
-Having the above into account, we decided to run the rail best practices gem on similar RoR (Ruby on Rails) projects.
+Having taken the above into account, we decided to run the rails best practices gem on similar RoR (Ruby on Rails) projects.
 Seven \emph{time tracking} or \emph{project management} open source systems were chosen.
 After running the gem and counting
-\textsf{not best practices (NBPs)}\footnote{In fact, Rails best practices gem do not find best practices in the source code.
+\textsf{not best practices (NBPs)}\footnote{In fact, Rails best practices gem does not find best practices in the source code.
   It does the opposite, it discovers when the code is not written according to a best practice, in other words, 
   it identifies bad practices (similar to the detection of code smells).
   We decided to name those occurrences NBP.
@@ -432,11 +432,11 @@ occurrences, the following results were obtained:
 
 Rubytime seems to have the best results and Clockingit the worst. 
 The fact is that very good user reviews can be found about Rubytime.
-However, Tracks obtained an unexpected high score, since it has been very low maintained 
+However, Tracks obtained an unexpected high score, since it has been very sparsely maintained 
 (old code has higher probability of not following the current best practices).
 As explained before, those values are not really measuring if a project follows best practices 
 but instead measuring when it fails.
-This should be also be taken into consideration. 
+This should also be taken into consideration. 
 
 The most evident problem here is that best practices are not being weighted and neither the size of the project considered.
 For instance, if the developers have the habit of leaving trailing white spaces, 
@@ -484,7 +484,7 @@ By doing that, a new set of results emerge.
 
 Those results are much more likely to be helpful in terms of understanding if a project is or is not following 
 best practices.
-The numbers reflect much more the community reviews and the our expectations.
+The numbers reflect both the community reviews and our own estimates much more.
 
 
 \subsection{Second Study}\label{subsec:second_study}
@@ -507,7 +507,7 @@ Basically, after collecting the GitHub URLs for each project, we followed the ne
 \begin{itemize}
 \item \emph{Retrieve GitHub information}, in this step we get the followers and forks(and more info that might me used in further analyses).
 \item \emph{Download the project repository}.
-\item \emph{Run rails best practices gems}, at this point, we get the non witdh NBPs and files checked for each one of the 28 checkers.
+\item \emph{Run rails best practices gems}, at this point, we get the non weighted NBPs and files checked for each one of the 28 checkers.
 \item \emph{Calculate the Weighted Global NBPs}, we divide each checker NBPs by the files checked and sum it.
 \end{itemize}
 
@@ -575,8 +575,6 @@ For future work, we are considering more correlations with other variables that 
 %%--------------------------------------
 %% CONCLUSION
 \section{Conclusion} \label{sec:conclusion}
-at this point is easy to convert the Global NBPs into a 5 stars score.
-
 Nowadays, thousands of open-source software packages can be found and freely downloaded online.
 github is a web-based hosting service for projects that use the Git revision control system.
 It hosts more than 1 million open-source projects.
