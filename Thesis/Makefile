@@ -7,6 +7,7 @@ all: *.tex *.bib
 	pdflatex $(NAME)
 	rm -f *.aux *.toc *. *.bbl *.blg  *.log *.nav *.out *.snm *.vrb
 	rm -f *.lo*
+	rm -f chapters/*.aux chapters/*.toc chapters/*. chapters/*.bbl chapters/*.blg  chapters/*.log chapters/*.nav chapters/*.out chapters/*.snm chapters/*.vrb chapters/*.lo*
 
 check:
 	aspell -l en -c -t *.tex
@@ -14,3 +15,5 @@ check:
 clean:
 	rm -f *.aux *.toc *. *.bbl *.blg  *.log *.nav *.out *.snm *.vrb
 	rm -f *.lo*
+	rm -f chapters/*.aux chapters/*.toc chapters/*. chapters/*.bbl chapters/*.blg  chapters/*.log chapters/*.nav chapters/*.out chapters/*.snm chapters/*.vrb chapters/*.lo*
+
