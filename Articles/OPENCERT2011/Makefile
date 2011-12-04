@@ -1,4 +1,4 @@
-NAME=OpenCert2011_regedor
+NAME=rbps
 
 all: *.tex *.bib
 	pdflatex $(NAME) 

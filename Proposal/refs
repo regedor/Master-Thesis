@@ -1,0 +1,46 @@
+# ^ DeMarco, Tom. Controlling Software Projects: Management, Measurement and Estimation. ISBN 0-13-171711-1. 
+# ^ Kaner, Dr. Cem, Software Engineer Metrics: What do they measure and how do we know?, http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.1.2542&rep=rep1&type=pdf 
+# ^ a b Binstock, Andrew. "Integration Watch: Using metrics effectively". SD Times. BZ Media. http://www.sdtimes.com/link/34157. Retrieved 19 October 2010. 
+# ^ Kolawa, Adam. "When, Why, and How: Code Analysis". The Code Project. http://www.codeproject.com/KB/interviews/Code_Review.aspx. Retrieved 19 October 2010. 
+# ^ "Descriptive Information (DI) Metric Thresholds". Land Software Engineering Centre. http://www.lsec.dnd.ca/qsd_current_version/eng_support/di/metrics.htm. Retrieved 19 October 2010. 
+# ^ Lincke, Rüdiger; Lundberg, Jonas; Löwe, Welf (2008), "Comparing software metrics tools", International Symposium on Software Testing and Analysis 2008: pp. 131-142
+
+
+# ^ A J Sojev. "Basis Path Testing". http://users.csc.calpoly.edu/~jdalbey/206/Lectures/BasisPathTutorial/index.html. 
+# ^ a b c d e McCabe (December 1976). "A Complexity Measure" ([dead link]). IEEE Transactions on Software Engineering: 308–320. http://www.literateprogramming.com/mccabe.pdf. 
+# ^ a b Belzer, Kent, Holzman and Williams (1992). Encyclopedia of Computer Science and Technology. CRC Press. pp. 367–368. 
+# ^ Harrison (October 1984). "Applying Mccabe's complexity measure to multiple-exit programs". Software: Practice and Experience (J Wiley & Sons). 
+# ^ a b McCabe, Watson (1996). "Structured Testing: A Testing Methodology Using the Cyclomatic Complexity Metric". http://hissa.nist.gov/HHRFdata/Artifacts/ITLdoc/235/title.htm. 
+# ^ Stein et al; Cox, Glenn; Etzkorn, Letha (2005). "Exploring the relationship between cohesion and complexity". Journal of Computer Science 1 (2): 137–144. doi:10.3844/jcssp.2005.137.144. http://www.scipub.org/fulltext/jcs/jcs12137-144.pdf. 
+# ^ Rich Sharpe. "McCabe Cyclomatic Complexity: the proof in the pudding". Enerjy. http://www.enerjy.com/blog/?p=198. 
+# ^ Kan (2003). Metrics and Models in Software Quality Engineering. Addison-Wesley. pp. 316–317. ISBN 0201729156. 
+# ^ Les Hatton (2008). "The role of empiricism in improving the reliability of future software". http://www.leshatton.org/Documents/TAIC2008-29-08-2008.pdf.
+
+
+    * The Halstead metrics  - Extensive discussion on the calculation and use of Halstead Metrics in an object-oriented environment (with specific reference to Java).
+    * Calculation of Halstead metrics - Measurement of Halstead Metrics.
+    * [1] - Maintainability Index in Microsoft's Visual Studio and its relation to the Halstead complexity measure
+
+
+
+   1. ^ MM Lehmam LA Belady; Program Evolution - Processes of Software Change 1985
+   2. ^ Henry, S.; Kafura, D. IEEE Transactions on Software Engineering Volume SE-7, Issue 5, Sept. 1981 Page(s): 510 - 518
+   3. ^ Chidamber, S.R.; Kemerer, C.F. IEEE Transactions on Software Engineering Volume 20, Issue 6, Jun 1994 Page(s):476 - 493
+
+   1. ^ a b Pressman 2005, p. 746
+   2. ^ Pressman 2005, p. 388
+   3. ^ Crosby, P., Quality is Free, McGraw-Hill, 1979
+   4. ^ McConnell 1993, p. 558
+   5. ^ DeMarco, T., Management Can Make Quality (Im)possible, Cutter IT Summit, Boston, April 1999
+   6. ^ Musa, J.D, A. Iannino, and K. Okumoto, Engineering and Managing Software with Reliability Measures, McGraw-Hill, 1987
+   7. ^ Pressman 2005, p. 762
+   8. ^ a b Cem Kaner http://www.kaner.com/pdfs/metrics2004.pdf
+   9. ^ Douglass Hoffman http://www.softwarequalitymethods.com/Papers/DarkMets%20Paper.pdf
+
+
+   1. ^ DeMarco, Tom. Controlling Software Projects: Management, Measurement and Estimation. ISBN 0-13-171711-1. 
+   2. ^ Kaner, Dr. Cem, Software Engineer Metrics: What do they measure and how do we know?, http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.1.2542&rep=rep1&type=pdf 
+   3. ^ a b Binstock, Andrew. "Integration Watch: Using metrics effectively". SD Times. BZ Media. http://www.sdtimes.com/link/34157. Retrieved 19 October 2010. 
+   4. ^ Kolawa, Adam. "When, Why, and How: Code Analysis". The Code Project. http://www.codeproject.com/KB/interviews/Code_Review.aspx. Retrieved 19 October 2010. 
+   5. ^ "Descriptive Information (DI) Metric Thresholds". Land Software Engineering Centre. http://www.lsec.dnd.ca/qsd_current_version/eng_support/di/metrics.htm. Retrieved 19 October 2010. 
+   6. ^ Lincke, Rüdiger; Lundberg, Jonas; Löwe, Welf (2008), "Comparing software metrics tools", International Symposium on Software Testing and Analysis 2008: pp. 131-142

@@ -1,7 +1,0 @@
-\beamer@endinputifotherversion {3.10pt}
-\select@language {portuges}
-\beamer@sectionintoc {1}{Context/Motivation}{3}{0}{1}
-\beamer@sectionintoc {2}{Assessing Open Source Software}{17}{0}{2}
-\beamer@sectionintoc {3}{Software Metrics}{18}{0}{3}
-\beamer@sectionintoc {4}{Available Tools}{23}{0}{4}
-\beamer@sectionintoc {5}{Conclusion: Summary and Future Work}{24}{0}{5}

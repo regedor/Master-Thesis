@@ -1,0 +1,101 @@
+\thispagestyle{empty}
+\chapter{Open Source}\label{chap:open_source}
+
+
+%% Open Source Project Hosting Platforms}
+\section{What is Open Source?}
+
+Escrever, aqui!
+
+\section{Open Source Project Hosting Platforms}
+
+\begin{table}[H]
+\begin{threeparttable}
+\begin{tabular}{|c|c|c|c|c|c|} \hline 
+\multicolumn{6}{|c|}{Open Source Project Hosting Web Sites} \\ \hline 
+Name & Established & Available VCS & Users & Projects & Alexa rank \tnote{a} \\\hline
+\mr{5}{SourceForge}      &\mr{5}{1999}  &CVS            &\mr{5}{2,000,000}   &\mr{5}{236,319}          &\mr{5}{136}            \\
+                         &              &SVN            &                    &                         &                       \\
+                         &              &Bazar          &                    &                         &                       \\
+                         &              &GIT            &                    &                         &                       \\
+                         &              &Mercurial      &                    &                         &                       \\\hline 
+\mr{1}{GitHub}           &\mr{1}{2008}  &GIT            &\mr{1}{505,000}     &\mr{1}{1,516,000}        &\mr{1}{742}            \\\hline 
+\mr{2}{Google Code }     &\mr{2}{2006}  &SVN            &\mr{2}{?}           &\mr{2}{250,000}          &\mr{2}{900\tnote{b}}   \\
+                         &              &Mercurial      &                    &                         &                       \\\hline 
+\mr{3}{Code Plex}        &\mr{3}{2006}  &SVN            &\mr{3}{151,782}     &\mr{3}{15.955}           &\mr{3}{2,343}          \\
+                         &              &Microsoft TFS  &                    &                         &                       \\
+                         &              &Mercurial      &                    &                         &                       \\\hline 
+\mr{2}{Assembla}         &\mr{2}{2006}  &SVN            &\mr{2}{180,000}     &\mr{2}{60,000}           &\mr{2}{6,628}          \\
+                         &              &GIT            &                    &                         &                       \\\hline 
+\mr{1}{Launchpad}        &\mr{1}{2005}  &Bazar          &\mr{1}{1,140,345}   &\mr{1}{19,016}           &\mr{1}{12,466}         \\\hline 
+\mr{4}{BerliOS}          &\mr{4}{2000}  &CVS            &\mr{4}{47,285}      &\mr{4}{5,448}            &\mr{4}{17,299}         \\
+                         &              &SVN            &                    &                         &                       \\
+                         &              &GIT            &                    &                         &                       \\
+                         &              &Mercurial      &                    &                         &                       \\\hline 
+\mr{1}{Bitbucket}        &\mr{1}{2008}  &Mercurial      &\mr{1}{51,600}      &\mr{1}{27,769}           &\mr{1}{12,047}         \\\hline 
+\mr{1}{Gitorious}        &\mr{1}{2008}  &GIT            &\mr{1}{?}           &\mr{1}{8,336}            &\mr{1}{28,531}         \\\hline 
+\mr{5}{GNU Savannah}     &\mr{5}{2000}  &CVS            &\mr{5}{48,593}      &\mr{5}{3,233}            &\mr{5}{48,286}         \\
+                         &              &SVN            &                    &                         &                       \\
+                         &              &Bazar          &                    &                         &                       \\
+                         &              &Arch           &                    &                         &                       \\
+                         &              &GIT            &                    &                         &                       \\
+                         &              &Mercurial      &                    &                         &                       \\\hline 
+\end{tabular}
+\begin{tablenotes}
+  \item    Data retrieved on 2010-12-20, from each of the OSPH Websites, and using Alexa rank website.
+  \item[a] Alexa rank represents the approximate number of websites, in the world, that have a higher popularity than the given site
+           (the smaller the better).
+  \item[b] This value is an approximation.
+\end{tablenotes}
+\end{threeparttable}
+\caption{Open Source Project Hosting Websites}
+\label{table:OSPHWebSites}
+\end{table}
+
+An open source project hosting platform is the central tool that supports and co-ordinates the development of an open source project,
+ normally it is in a form of a website.
+
+Since 1999 (year that SourceForge was launched), many OSPHW were created to host open source projects.
+OSPH sites offer different features, 
+like codebase \footnote{The term codebase means the whole collection of source code used to build a particular application or component.} 
+hosting (a project codebase is typically stored in a source control repository), 
+code review, bug tracking, web hosting, wiki, mailing list, etc~\cite{binkley2006animated}.
+
+Table \ref{table:OSPHWebSites} shows a list of the most well known OSPHW.
+By looking at this table we can see that SourceForge is the most well established OSPHW.
+It is also one of oldest, 
+hosts more than 230,000 projects and has more than 2 million registered users~\cite{christley2005collection}.
+
+GitHub is one of the youngest OSPHW (launched in 2008). 
+However, in only two years, it drew more than 500,000 users (one quarter of sourceforge users) and is hosting more than 1,500,000 projects. 
+The only version control system provided by GitHub is 
+git\footnote{\url{http://git-scm.com/}. 
+  Git is a free \& open source, distributed version control system that Linus Torvalds developed to help manage Linux kernel development.
+}.
+Because GitHub projects are in fact git repositories, 
+it is incredibly easy to make branches and merges in GitHub. 
+Although branching was considered a bad practice, 
+it turned out that using git, it can in fact improve the developers collaboration and organization.
+Hosting a Git repository is not hard but co-ordinating efforts of forking and merging amongst people is tough. 
+With a system like Github, it becomes a lot easier~\cite{petercooper2010}.
+However, the main reason for GitHub popularity are the social aspects.
+Users and projects have public profiles and activity feeds which display activity on public projects such as commits, comments, forks, etc.
+Furthermore, with so many high profile projects on board (
+jQuery, 
+reddit, 
+Sparkle, 
+curl, 
+Ruby on Rails, 
+node.js, 
+ClickToFlash, 
+Erlang/OTP, 
+CakePHP, 
+Redis), 
+it is easy to imagine that GitHub could be the next SourceForge.
+
+The above are the reasons why I believe that to build a software, like the one described in the introduction, with focus on GitHub projects, would benefit a big open-source community. 
+
+\section{Need to Assess Open Source Projects}
+
+Escrever, aqui!
+

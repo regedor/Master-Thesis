@@ -1,0 +1,235 @@
+\documentclass{beamer}
+
+\usepackage{color}
+\usepackage{pgf}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{eurosym}
+\usepackage{float}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{threeparttable}
+
+\newcommand{\mr}[2]{\multirow{#1}{*}{#2}}
+
+\definecolor{darkgreen}{rgb}{0,0.7,0}
+\definecolor{darkred}{RGB}{177,51,60}
+
+\usetheme{Warsaw}
+\setbeamercolor{frametitle}{bg=darkred}
+\setbeamercolor{block title}{bg=darkred}
+\setbeamercolor{title}{bg=darkred}
+\setbeamertemplate{headline}{}
+\setbeamercolor{structure}{fg=darkred}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}
+{
+  \makebox[1\paperwidth][c] % full-width center-aligned box
+
+  \makebox[1\paperwidth][r] % full-width right-aligned box
+  {\insertframenumber{} / \inserttotalframenumber \hspace{5px}}
+
+  \vspace{5px}
+}
+\setbeamertemplate{itemize items}[default]
+\setbeamertemplate{enumerate items}[default]
+
+
+\title[The Role of Best Practices in Assessing Software Quality]{The Role of Best Practices in Assessing Software Quality}
+\institute{University of Minho}
+\author[Miguel Regedor]{\textbf{Miguel Regedor}, Pedro Rangel Henriques, Daniela da Cruz}
+\date{5th International Workshop on Foundations and Techniques for \\ Open Source Software Certification \\ Montevideo, Uruguay, 14-15 November 2011}
+
+
+\begin{document}
+\begin{frame}[plain]
+  \begin{center}
+    %\pgfimage[width=0.30\textwidth]{img/bglogo}
+    \maketitle
+  \end{center}
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\begin{frame}{Tabel of Contents}\small{\tableofcontents[currentsection,hideallsubsections]}\end{frame}
+
+
+%\section{Context/Motivation}
+\frame{\frametitle{Context: OSS}
+  Nowadays, Open Source Software is disseminated as a natural practice among SW developers
+  \begin{block}{Open Source Projects}
+    \begin{itemize}
+    \item Android
+    \item Apache
+    \item Mozilla Firefox
+    \item Open Office
+    \item Ubuntu
+    \end{itemize}
+  \end{block}
+}
+
+%\section{Context/Motivation}
+\frame{\frametitle{Context: OSS}
+  \begin{itemize}
+  \item Thousands of Open Source SW packages can be found online and free to download
+  \item Open Source Project Hosting Web Sites
+  \end{itemize}
+
+  \tiny{\begin{table}
+  \begin{tabular}{|c|c|c|c|c|c|} \hline
+  Name & Established & Available VCS & Users & Projects & Alexa rank \\\hline
+  \mr{5}{SourceForge}      &\mr{5}{1999}  &CVS            &\mr{5}{2,000,000}   &\mr{5}{236,319}          &\mr{5}{136}            \\
+                           &              &SVN            &                    &                         &                       \\
+                           &              &Bazar          &                    &                         &                       \\
+                           &              &GIT            &                    &                         &                       \\
+                           &              &Mercurial      &                    &                         &                       \\\hline
+  \mr{1}{\textbf{GitHub}}           &\mr{1}{2008}  &GIT            &\mr{1}{505,000}     &\mr{1}{1,516,000}        &\mr{1}{742}            \\\hline
+  \mr{2}{Google Code }     &\mr{2}{2006}  &SVN            &\mr{2}{?}           &\mr{2}{250,000}          &\mr{2}{900}            \\
+                           &              &Mercurial      &                    &                         &                       \\\hline
+  \mr{3}{Code Plex}        &\mr{3}{2006}  &SVN            &\mr{3}{151,782}     &\mr{3}{15.955}           &\mr{3}{2,343}          \\
+                           &              &Microsoft TFS  &                    &                         &                       \\
+                           &              &Mercurial      &                    &                         &                       \\\hline
+  \mr{2}{Assembla}         &\mr{2}{2006}  &SVN            &\mr{2}{180,000}     &\mr{2}{60,000}           &\mr{2}{6,628}          \\
+                           &              &GIT            &                    &                         &                       \\\hline
+  \mr{1}{Launchpad}        &\mr{1}{2005}  &Bazar          &\mr{1}{1,140,345}   &\mr{1}{19,016}           &\mr{1}{12,466}         \\\hline
+  \mr{4}{BerliOS}          &\mr{4}{2000}  &CVS            &\mr{4}{47,285}      &\mr{4}{5,448}            &\mr{4}{17,299}         \\
+                           &              &SVN            &                    &                         &                       \\
+                           &              &GIT            &                    &                         &                       \\
+                           &              &Mercurial      &                    &                         &                       \\\hline
+  \mr{1}{Bitbucket}        &\mr{1}{2008}  &Mercurial      &\mr{1}{51,600}      &\mr{1}{27,769}           &\mr{1}{12,047}         \\\hline
+  \mr{1}{Gitorious}        &\mr{1}{2008}  &GIT            &\mr{1}{?}           &\mr{1}{8,336}            &\mr{1}{28,531}         \\\hline
+  \end{tabular}
+  \end{table}}
+}
+
+
+%\section{Context/Motivation}%\section{Context/Motivation}
+\frame{\frametitle{Context: OSS quality}
+%  Can Open Source Software be trusted as a high quality product?
+%
+We need to be confident in a SW Project developed under this framework!\\
+
+So, we search for an answer to the question:\\
+\begin{center}
+\emph{How can the quality of an OSS Project be measured?}
+\end{center}
+}
+
+\frame{\frametitle{Motivation}
+
+In this context, we propose to consider the role of \emph{best practices in SW development}\\
+
+\begin{center}to improve  the quality assessment of an OSS Project\end{center}
+}
+
+%\begin{frame}{Topics}
+%\thispagestyle{empty}
+%\small{\tableofcontents[hideallsubsections]}
+%\end{frame}
+
+\section{Open Source Software}
+\frame{\frametitle{Open Source Software}
+  \begin{itemize}
+  \item Open Source Software(OSS) packages can be found in public web-based repositories
+  \item OSS is not only used by computer specialists
+  \item Open Source can be now considered the largest software industry in the world involving billions of dollars.
+  \end{itemize}
+}
+
+\frame{\frametitle{OSS: Development Process}
+\begin{center}Development Process\end{center}
+}
+
+\frame{\frametitle{OSS: Development Process}
+  Open Source communities work in a \textit{bazaar style}
+  \begin{block}{Traditional Software Development Process}
+    \begin{itemize}
+    \item Similar to building cathedrals; like an orchestra.
+    \item Few specialized individuals working in controlled and closed environment
+    \end{itemize}
+  \end{block}
+  \begin{block}{Open Source Development Process}
+    \begin{itemize}
+    \item Chaotic way
+    \item Resemble a great babbling \textit{bazaar}.
+    \end{itemize}
+  \end{block}
+}
+
+\frame{\frametitle{OSS: Quality}
+  Can software that is developed in such chaotic way be \textbf{trusted} as a high quality product?
+  \begin{block}{~}
+  The shock is that in fact the \textit{bazaar style} seems to work !
+  \end{block}
+  However, it is mandatory to create a method to measure the quality of the OSS Projects (OSSP)
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Assessing Open Source Software
+\section{Assessing Open Source Software}
+\frame{\frametitle{Measuring OSS Quality}
+  An obvious answer is to apply traditional SW-Metrics to OSSPs.\\
+  This implies 
+  \begin{itemize}
+    \item to elect a set of SW characteristics that impact in the product quality
+    \item to define a formula to associate with each one a numerical value
+    \item to learn how to read those values to make statements about the quality
+  \end{itemize}
+  However, we want to go further, and measure how programmers comply with the best practices.
+}
+
+
+\frame{\frametitle{(Traditional) Software Characteristics}
+  \small{\begin{block}{ISO/IEC 912 software quality attributes}
+    \begin{itemize}
+    \item {\bf Functionality   } (meeting of the functional requirements)
+    \item {\bf Reliability     } (fault tolerance and recoverability)
+    \item {\bf Usability       } (effort to learn, and operate the software)
+    \item {\bf Efficiency      } (performance and resource consumption)
+    \item {\bf Maintainability } (effort to modify the software)
+    \item {\bf Portability     } (effort to transfer to another environment)
+    \end{itemize}
+  \end{block}}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Software Metrics
+%\section{Software Metrics}
+
+\frame{\frametitle{(Traditional) Software Metrics}
+  \begin{itemize}
+  \item Lines of Code
+  \item Number of Components (packages, procedures, ...)
+  \item Size and complexity of Data Structure 
+  \item Cyclomatic Complexity (control flow and structural  complexity)
+  \item Fan-In and Fan-Out (component dependencies)
+  \item Object-Oriented Metrics (number of classes, methods, attributes, dependencies, etc.)
+%  \item Coding Standards?
+  \end{itemize}
+}
+
+\section{Best Practices}
+\frame{\frametitle{Best Practices in OSS development}
+  \begin{block}{~}
+  Best Practices are not formal rules but instead a set of \emph{recommendations} that are spread
+  through the community and everybody does it that way.
+  \end{block}
+  Best Practices provide a set of pragmatic suggestions/tips on code writing in order to improve the program
+ Readability, Maintainability, Portability, and also its Usability,  and Efficiency.
+   
+  Furthermore, best practices discourage the use of bad patterns, poor error checking, etc,
+}
+
+\frame{\frametitle{The Question}
+\begin{center}Are best practices and the project quality truly related?\end{center}
+}
+
+\end{document}
+
+

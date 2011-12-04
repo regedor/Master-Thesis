@@ -1,0 +1,36 @@
+\thispagestyle{empty}
+\chapter{Best Practices}\label{chap:best_practices}
+
+
+\section{Best Practices in OSSP development} \label{sec:best_practices}
+Open source communities have a tendency to create coding standards. It is a natural and evolutive process.
+Standards are not rules but instead best practices that are spread through the community and everybody does it that way.
+Furthermore, best practices discourage:
+\begin{itemize}
+\item Poor performance (due to bad patterns)
+\item Poor error checking (defensive programming)
+\item Inconsistent exception handling / Maintainability (long-term quality)
+\end{itemize}
+When a developer follows the standards and best practices, the project maintainability is increased.
+Consequently, project new comers will find it easier to understand the project codebase~\cite{dromey2002model}.
+
+However, there is little work done concerned with measuring coding standards by automatic analyzing source code.
+A plausible explanation for that is the fact that best practices are not a set of immutable rules,
+they are a continuous evolution and improvement of development methodologies.
+Communities are constantly creating rules and best practices, even without noticing it.
+It is not possible to write down a list of best practices without some ambiguities.
+Nevertheless, it is still possible, to use metrics on the source code and, by analyzing their values,
+to find hints to help answering weather some methodological approaches
+were taken into account during the project development process.
+
+At first glance, best practices metrics are for classic metrics as natural as medicine is for science.
+But, it is not the case.
+In fact, classic metrics, on their own, do not give much information about a project.
+In many cases, best practices can be the key to understand what should be the optimum value for a classic metric,
+for instance, how many lines of code should a ruby method have?
+
+Of course, those questions are subjective.
+However by analyzing renowned projects, developers opinions and so on, it is possible to find the best practice
+and that gives a plausible answer to the optimum value.
+
+We believe that, actually, best practices can give a meaning to metrics.
