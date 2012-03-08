@@ -144,6 +144,126 @@ To make this proposal clearer and stronger,
 community is taken as a starting target (Section 3).
 At last but not least, to support our proposal a case-study is shown, in Section 4: seven Ruby OSSP are measured and compared.
 
+
+%%--------------------------------------
+%% OPEN SOURCE
+\section{Open Source} \label{sec:open_source}
+
+Open source describes practices in production and development where everybody as access to the product source materials.
+Definition from \url{http://opensource.org/}:
+\begin{quote}\emph{
+  Open source is a development method for software that harnesses the power of distributed peer review and transparency of process.
+  The promise of open source is better quality, higher reliability, more flexibility, lower cost, 
+  and an end to predatory vendor lock-in.
+}\end{quote}
+
+Generically, open source refers to a computer software in which the source code is available, free of charge, to the general public for use, modification and redistribution.
+
+Nevertheless, in the past few years, the concept of \emph{open source} 
+has been widely used, not just in computer software, but in every industry.
+Actually, new concepts, like 
+\emph{open design}\footnote{
+  Open design is the development of physical products, machines and systems through use of publicly shared design information.
+} or 
+\emph{open religions}\footnote{
+  Open-source religions attempt to employ open-source methodologies in the creation of religious belief systems.
+},
+emerged from it.
+A simple metaphoric example: 
+\begin{quote}\emph{
+A restaurant would be open source if the chef reveals to the general public his cooking techniques and recipes.
+Consequently, by revealing his secrets, other people can start doing the same dishes and even improve his techniques.
+}\end{quote}
+That might not be a good bet for a restaurant, but its proved to be a good one in software development.
+
+\subsection{Open Source Software Development}
+Previously, in the introduction it was said that large industries have a strict organization model and
+that it is not the way open source communities operates.
+Open Source communities work in what can be called \textit{bazaar style}.
+This term was introduced by \cite{raymondcathedral}. 
+
+Of course, OSS is not developed, all the time, in the same way. 
+Each community have particular habits. 
+Different development and management methodologies, more traditional or more agile, can be used.
+Currently, the truth is that the most successful communities organize themselves 
+in a similar way as professional and proprietary companies, 
+and some of the big open source projects have big companies supporting them, 
+but that it is not charity.
+Imagine the consequences of a having a handful of highly motivated eyes going through the code, 
+constantly reviewing it, correcting and adding to it.
+People working not because they were told to, but because it is their own will.
+Those communities are the strength of OSS and the companies behind it.
+
+OS development makes possible to a project to reach a high quality level,
+in much less time and with fewer financial investment, comparing to traditional software development.
+Nevertheless those OSP still follow the OS core rules, 
+and those projects are community driven, the users and developers must feel engaged to it.
+
+It is obvious that companies need to make money, 
+but even if their software is free and open source, new ways of income can be explored, 
+for example charge for support, related services, donations, etc. 
+
+The well known open source browser, Firefox, 
+is the descent of the graphical web browser named Mosaic released by Netscap in 1993.
+When Microsoft bundled Internet Explorer with Windows, it was obvious that Netscape was doomed.
+But, they turned project into open source, created the Mozilla Foundation, 
+and the community gathered around it, helping the company regain the lost market. 
+
+This and other examples shows OS develoment as one of the most effective development models, today. 
+As a fact, many companies are trying to explore these business models.
+
+
+\subsection{Open Source Project Hosting Platforms}
+
+The strength of the open source development model comes from the user base and the power given to it. 
+Users should fill out bug reports, submit feature requests, etc. 
+Because the developers can be spread all around the globe there there is the need of effective administered communication channels,
+for better cooperation and co-ordination. 
+
+An open source project hosting platform is the central tool that supports and co-ordinates the development of an open source project,
+normally it is in a form of a website.
+
+Since 1999 (year that SourceForge was launched), many open source project hosting websites (OSPHWs) were created to host open source projects.
+OSPHWs offer different features, 
+like codebase \footnote{The term codebase means the whole collection of source code used to build a particular application or component.} 
+hosting (a project codebase is typically stored in a source control repository), 
+code review, bug tracking, web hosting, wiki, mailing list, etc~\cite{binkley2006animated}.
+
+GitHub is one of the youngest OSPHW (launched in 2008). 
+However, in only two years, it drew more than 500,000 users (one quarter of sourceforge users) and is hosting more than 1,500,000 projects. 
+The only version control system provided by GitHub is 
+Git\footnote{\url{http://git-scm.com/}. 
+  Git is a free \& open source, distributed version control system that Linus Torvalds developed to help manage Linux kernel development.
+}.
+Because GitHub projects are in fact git repositories, 
+it is incredibly easy to make branches and merges in GitHub. 
+Although branching was considered a big pain in older version control systems, 
+it turned out that using git, it can in fact improve the developers collaboration and organization.
+This happens because of the distributed philosophy and implementation of git
+Hosting a Git repository is not hard but co-ordinating efforts of forking and merging amongst people is tough. 
+With a system like Github, it becomes a lot easier~\cite{petercooper2010}.
+However, the main reason for GitHub popularity are the social aspects.
+Users and projects have public profiles and activity feeds which display activity on public projects such as commits, comments, forks, etc.
+Furthermore, with so many high profile projects on board (
+jQuery, 
+reddit, 
+Sparkle, 
+curl, 
+Ruby on Rails, 
+node.js, 
+ClickToFlash, 
+Erlang/OTP, 
+CakePHP, 
+Redis), 
+it is easy to imagine that GitHub could be the next SourceForge.
+
+The reasons above allow us to believe that GitHub has a strong and growing open source community, 
+that it is an important platform both for users and developers. 
+Because of that and the high number of ruby on rails projects hosted here,
+It was decided to focus this study on GitHub projects
+
+
+
 %%--------------------------------------
 %% Assessing Open Source Software
 \section{Assessing Open Source Software} \label{sec:assessing}
@@ -257,20 +377,42 @@ but based on his experience in OO software development, Lorenz proposed eleven m
 \end{itemize}
 
 %%--------------------------------------
-%% SOFTWARE METRICS
+%% Best Practices
 \section{Best Practices in OSSP development} \label{sec:best_practices}
 Open source communities have a tendency to create coding standards. It is a natural and evolutive process.
-Standards are not rules but instead best practices that are spread through the community and everybody does it that way.
-Furthermore, best practices discourage:
+We can call those natural standards: best practices. 
+Best practices are not rules, but instead the methods thought as being the way best to achieving something, 
+they are spread through the community and everybody does it that way.
+It obvious that when a developer follows standards and best practices, the project maintainability is increased.
+Consequently, project new comers will find it easier to understand the project code~\cite{dromey2002model}.
+But there is more than that: following best practices discourage:
 \begin{itemize}
 \item Poor performance (due to bad patterns)
 \item Poor error checking (defensive programming)
 \item Inconsistent exception handling / Maintainability (long-term quality)
 \end{itemize}
-When a developer follows the standards and best practices, the project maintainability is increased.
-Consequently, project new comers will find it easier to understand the project codebase~\cite{dromey2002model}.
 
-However, there is little work done concerned with measuring coding standards by automatic analyzing source code.
+And, to get this same benefits, companies define standards, sets of rules for their workers.
+However, those rules are defined by the few people on top and then spread down on the pyramid.
+Many times, those rules are not well thought by the project leaders and that can block the progress.
+In the other side, the apparently chaos of open source also need these rules, 
+but oppositely to companies coding standards and rules that work in top down system, 
+best practices happen in a bottom up or distributive system, 
+everybody can try different ways of doing things, 
+but the ones with better results are most likely to be copied.
+
+A simple metaphor explains this difference:
+\begin{quote}\emph{
+  Companies use traffic lights where open source communities use roundabouts.
+}\end{quote}
+
+Both, the strict company standards (traffic lights) and the OSP best practices (roundabouts) are ways to regulate intersections.
+The the results of traffic lights is more easy to predict, it system doesn't depend that much in the driver skills,
+but it will be often to have drivers stooped, alone, losing precious time, at the crossroads waiting for a green light.
+On the other side, the roundabout depends much more in the quality of the driver, 
+but if they are good enough, it open the possibility to a much more efficient traffic jam.
+
+There is little work done concerned with measuring coding standards by automatic analyzing source code.
 A plausible explanation for that is the fact that best practices are not a set of immutable rules,
 they are a continuous evolution and improvement of development methodologies.
 Communities are constantly creating rules and best practices, even without noticing it.
@@ -284,12 +426,13 @@ But, it is not the case.
 In fact, classic metrics, on their own, do not give much information about a project.
 In many cases, best practices can be the key to understand what should be the optimum value for a classic metric,
 for instance, how many lines of code should a ruby method have?
-
 Of course, those questions are subjective.
-However by analyzing renowned projects, developers opinions and so on, it is possible to find the best practice
+However, by analyzing renowned projects, developers opinions and so on, it is possible to find out a best practice
 and that gives a plausible answer to the optimum value.
-
 We believe that, actually, best practices can give a meaning to metrics.
+
+Software projects can benefit a lot from using best practices.
+But, what is a best practice after all?
 
 
 %% RUBY
