@@ -1,122 +1,440 @@
-\documentclass[a4paper,12pt, twoside]{report}
-\usepackage[T1]{fontenc}
-%\usepackage[portuges]{babel}
-\usepackage[latin1]{inputenc}
-\usepackage{geometry}
-\usepackage{graphics}
-\usepackage{setspace}
-\usepackage{thumbpdf}
-\usepackage{fancyhdr}
-\usepackage{lastpage}
-\usepackage{alltt}
-\usepackage{graphicx}
-\usepackage{verbatim}
+\documentclass[a4paper,
+               11pt,
+               titlepage,
+               listof=totoc,
+               bibliography=totoc,
+               abstract,
+               twoside,
+               open=right,
+               numbers=noenddot,
+               cleardoublepage=empty,
+               chapterprefix=on]{scrreprt}
+
+% Setup for fullpage
+\usepackage{a4wide}
+
+% Margin Setup
+\setlength\oddsidemargin{0.3in}
+\setlength\evensidemargin{-0.3in}
+\setlength\headsep{15pt}
+\setlength\footskip{30pt}
+
+\usepackage{amsmath}
+
+% Font definitions
+\usepackage{mathspec}
+\defaultfontfeatures{Mapping=tex-text,BoldFeatures={Weight=2}}
+
+% Redifine section and description fonts to the normal font
+\renewcommand{\sectfont}{\normalfont\bfseries}
+\renewcommand{\descfont}{\normalfont\bfseries}
+
+\setmainfont[
+        Scale=0.95,
+        Extension=.otf,
+        UprightFont= *-regular,
+        BoldFont=*-bold,
+        ItalicFont=*-italic,
+        BoldItalicFont=*-bolditalic,
+    ]{texgyreheros}
+
+\setmathfont[
+        Scale=0.95,
+        Extension=.otf,
+        UprightFont= *-regular,
+        BoldFont=*-bold,
+        ItalicFont=*-italic,
+        BoldItalicFont=*-bolditalic,
+    ]{TeX Gyre Schola}
+        
+\setmonofont[
+        Scale=0.95,
+        Extension=.otf,
+        UprightFont= *-regular,
+        BoldFont=*-bold,
+        ItalicFont=*-italic,
+        BoldItalicFont=*-bolditalic,
+    ]{texgyrecursor}
+
+% \usepackage{xunicode}
+    
+% Language definitions
+\usepackage{polyglossia}
+\setmainlanguage[variant=uk]{english}
+\setotherlanguage{portuges}
+
+% Fancy page styles
+\usepackage{scrpage2}
+
+\renewcommand{\chaptermark}[1] % 
+{\markboth{\chaptername\ \thechapter.\ #1}{}} 
+
+\renewcommand{\sectionmark}[1] % 
+{\markright{\thesection.\ #1}}
+
+\renewcommand{\headfont}{\bfseries\fontsize{9}{11}\selectfont}
+\renewcommand{\pnumfont}{\bfseries\fontsize{9}{11}\selectfont}
+
+\newpagestyle{fancy}{(0pt,0pt)                          % Outer header line
+                    {\MakeUppercase{\headmark} \hfill}   % Even page header
+                    {\hfill \MakeUppercase{\headmark}}   % Odd page header
+                    {}                            % Onesided page header
+                    (\textwidth,0.5pt)}                 % Inner header line
+                    {(\textwidth,0.5pt)                 % Inner footer line 
+                    {\pagemark \hfill}                   % Even page footer
+                    {\hfill \pagemark}                   % Odd page footer
+                    {\hfill \pagemark \hfill}             % Onesided page footer
+                    (0pt,0pt)}                          % Outer footer line
+
+\renewpagestyle{plain}{(0pt,0pt)              % Outer header line
+                      {}                % Even page header
+                      {}                % Odd page header
+                      {}                % Onesided page header
+                      (0pt,0pt)}              % Inner header line
+                      {(\textwidth,0.5pt)     % Inner footer line 
+                      {\pagemark \hfill}       % Even page footer
+                      {\hfill \pagemark}       % Odd page footer
+                      {\hfill \pagemark \hfill} % Onesided page footer
+                      (0pt,0pt)}              % Outer footer line
+
+\renewcommand*{\partpagestyle}{empty} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                  Colors and Graphics                  %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Color setup
 \usepackage{color}
-\usepackage{url}
-\usepackage{epsf}
-\usepackage{listings}
-\usepackage[refpages]{gloss}
-\usepackage{array}
-\usepackage{longtable}
-\usepackage{multirow}
-\usepackage{amsmath, amsthm, amssymb}
-\usepackage{slashbox}
-\usepackage{rotating}
+\usepackage{xcolor}
+
+% GraphicX package
 \usepackage{graphicx}
+
+% Defining extra colors
+\definecolor{dark-blue}{cmyk}{1.0,1.0,0.0,0.1}
+\definecolor{dark-green}{cmyk}{1.0,0,1.0,0.4}
+\definecolor{dark-red}{cmyk}{0,1.0,1.0,0.3}
+\definecolor{navy-blue}{cmyk}{1.0,1.0,0.0,0.1}
+\definecolor{light-gray}{gray}{0.95}
+
+% Wrap text around figures
+\usepackage{wrapfig}
+
+% Professional looking tables
+\usepackage{booktabs}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                  Source code inputing                 %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{listings}
+\renewcommand{\lstlistlistingname}{List of Listings}
+
+%%%%%%%%%%%% Settings for Listings
+%%%%%%%%%%%\lstset{ %
+%%%%%%%%%%%	language=Java,							% choose the language of the code
+%%%%%%%%%%%	basicstyle=\ttfamily\footnotesize,		% the size of the fonts that are used for the code
+%%%%%%%%%%%	keywordstyle=\bfseries,					% set the keyword style
+%%%%%%%%%%%	%numbers=left,							% where to put the line-numbers
+%%%%%%%%%%%	numberstyle=\scriptsize,				% the size of the fonts that are used for the line-numbers
+%%%%%%%%%%%	stepnumber=2,							% the step between two line-numbers. If it's 1 each line 
+%%%%%%%%%%%											% will be numbered
+%%%%%%%%%%%	numbersep=5pt,							% how far the line-numbers are from the code
+%%%%%%%%%%%	backgroundcolor=\color{white},			% choose the background color. You must add \usepackage{color}
+%%%%%%%%%%%	showspaces=false,						% show spaces adding particular underscores
+%%%%%%%%%%%	showstringspaces=false,					% underline spaces within strings
+%%%%%%%%%%%	showtabs=false,							% show tabs within strings adding particular underscores
+%%%%%%%%%%%	frame=none,								% adds a frame around the code
+%%%%%%%%%%%	%abovecaptionskip=-.8em,
+%%%%%%%%%%%	%belowcaptionskip=.7em,
+%%%%%%%%%%%	tabsize=2,								% sets default tabsize to 2 spaces
+%%%%%%%%%%%	captionpos=b,							% sets the caption-position to bottom
+%%%%%%%%%%%	breaklines=true,						% sets automatic line breaking
+%%%%%%%%%%%	breakatwhitespace=false,				% sets if automatic breaks should only happen at whitespace
+%%%%%%%%%%%	title=\lstname,							% show the filename of files included with \lstinputlisting;
+%%%%%%%%%%%											% also try caption instead of title
+%%%%%%%%%%%	escapeinside={\%*}{*)},					% if you want to add a comment within your code
+%%%%%%%%%%%	morekeywords={*,...}					% if you want to add more keywords to the set
+%%%%%%%%%%%}
+
+
+\usepackage{listings}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{framed}
+\usepackage{caption}
 \usepackage{float}
+\usepackage{xspace}
+
+
+
+\usepackage{tabularx}
+
+\usepackage{enumerate}
+\usepackage{url}
+\usepackage{epstopdf}
+
+\usepackage{setspace}
+\usepackage{booktabs}
+%\linespread{1.3}
+\onehalfspace
+
+\newcommand{\tab}{\hspace*{2em}}
+\usepackage{epigraph}
+\usepackage{todonotes}
+
+\lstloadlanguages{Ruby}
+% Setting up snippet environment
+\lstnewenvironment{rubycode}[2]{
+  \lstset{
+    caption=#1, 
+    label=#2,
+    language=Ruby,
+	basicstyle=\ttfamily\color{black},
+	commentstyle = \ttfamily\color{blue},
+	keywordstyle=\ttfamily\color{red},
+	stringstyle=\color{dark-green},
+    xrightmargin=10pt,
+    framextopmargin=0pt,
+    framexleftmargin=17pt,
+    framexrightmargin=17pt,
+    framexbottommargin=4pt,
+    breaklines=true,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2,
+    backgroundcolor=\color{light-gray}}
+}{}
+
+
+
+
+
+
+% Arrow diagrams
+\usepackage[all]{xy}
+
+% Use dot within TeX
+\usepackage{dot2texi}
+\usepackage{tikz}
+\setoutputdir{dot/}
+\usetikzlibrary{shapes,arrows}
+
+% Better looking bibliography references
+
+
+
+
+
+
+
+
+
+\usepackage[hyperpageref]{backref}
+\renewcommand*{\backref}[1]{}
+\renewcommand*{\backrefalt}[4]{%
+\ifcase #1 %
+(Not cited.)%
+\or
+ \textbf{Cited} on page~#2.%
+\else
+ \textbf{Cited} on pages~#2.%
+\fi}
+\renewcommand*{\backrefsep}{, }
+\renewcommand*{\backreftwosep}{ and~}
+\renewcommand*{\backreflastsep}{ and~}
+\usepackage{natbib}
+\usepackage[algoruled,linesnumbered,shortend]{algorithm2e}
+%\usepackage{algorithmic}
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+% Getting things done in LaTeX
+\usepackage{todonotes}
+
+% Better list handling
+\usepackage{enumitem}
+
+% Hyperlinks and Bookmarks setup
+\usepackage{hyperref}
+\usepackage{bookmark}
+
+% Hyperlink and Bookmark settings
+\hypersetup{
+%    bookmarks=true,							% show bookmarks bar?
+	bookmarksnumbered=true,
+	plainpages=false,					 	
+    unicode=true,					 		% non-Latin characters in Acrobatâ€™s bookmarks
+    pdffitwindow=true,						% window fit to page when opened
+    pdfstartview={FitW},					% fits the width of the page to the window
+    %pdftitle={My title},					% title
+    pdfauthor={Tiago Alves Veloso},			% author
+    %pdfsubject={Subject},					% subject of the document
+    pdfcreator={Tiago Alves Veloso},		% creator of the document
+    pdfproducer={Tiago Alves Veloso},		% producer of the document
+    %pdfkeywords={keyword1} {key2} {key3},	% list of keywords
+    %pdfnewwindow=true,						% links in new window
+    colorlinks=true,						% false: boxed links; true: colored links
+    linkcolor=dark-blue,					% color of internal links
+    citecolor=dark-green,					% color of links to bibliography
+    filecolor=magenta,						% color of file links
+    urlcolor=navy-blue						% color of external links
+}
+
+% Create better looking section cross-reference links
+\usepackage[capitalise]{cleveref}
+
+\newcommand\fancyref[1]{ %
+  \hyperref[#1]{\cref*{#1}: \nameref*{#1}}
+}
+
+% Index of terms and acronyms
+\usepackage[acronym,shortcuts]{glossaries}
+\renewcommand{\glossarymark}[1]{\markboth{\MakeUppercase{#1}}{\MakeUppercase{#1}}}
+\renewcommand{\glsclearpage}{\cleardoublepage}
+\setlength{\glspagelistwidth}{\textwidth}
+\setlength{\glslistdottedwidth}{.75\hsize}
+
+\makeatletter
+\newcommand\ackname{Acknowledgements}
+\if@titlepage
+  \newenvironment{acknowledgements}{%
+      \titlepage
+      \null\vfil
+      \@beginparpenalty\@lowpenalty
+      \begin{center}%
+        \bfseries \ackname
+        \@endparpenalty\@M
+      \end{center}}%
+     {\par\vfil\null\endtitlepage}
+\else
+  \newenvironment{acknowledgements}{ %
+      \if@twocolumn
+        \section*{\ackname}%
+      \else
+        \small
+        \begin{center}%
+          {\bfseries \ackname\vspace{-.5em}\vspace{\z@}}%
+        \end{center}%
+        \quotation
+      \fi}
+      {\if@twocolumn\else\endquotation\fi}
+\fi
+\makeatother
+
+\usepackage{dtklogos}
+
+\usepackage{multirow}
 \usepackage{threeparttable}
-
-\makegloss
-
-%\usepackage{makeidx}  %for make an index 
-%\usepackage{glossary} %for make glossary
-%\makeglossary
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% DEFINITIONS & COMMANDS %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\mr}[2]{\multirow{#1}{*}{#2}}
 
-%margens:
-\geometry{verbose,a4paper,tmargin=30mm,bmargin=30mm,lmargin=30mm,rmargin=30mm}
+% Project Name
+\def\project{Analysing and Mesuring Open Source Projects}
 
-%Cabeçalho e roda-pe
-\pagestyle{fancy}
-\fancyhf{}
-\renewcommand{\sectionmark}[1]{\markboth{ \thesection.\ \emph{#1}}{}}
-\renewcommand{\chaptermark}[1]{\markboth{ \thechapter.\ \emph{#1}}{}}
-%odd pages
-\fancyhead[RO]{\leftmark}
-%even pages
-\fancyhead[LE]{\small{\it Analysing and Mesuring Open-Source projects}}
-\fancyfoot[CE,CO]{\thepage}
+% Title
+\title{}
 
-% ESTILO PARA O LISTING - GERAL
-\lstset{basicstyle=\small,
-numbers=left, numberstyle=\tiny, numbersep=5pt, 
-breaklines=true, mathescape=true, frame=tB}
+% Author
+\author{Miguel Regedor \\ University of Minho}
 
+% Supervisor
+\def\supervisor{
+\begin{description}
+\item[Main Supervisor] \textsf{Pedro Rangel Henriques}, from University of Minho.
+\item [Co-Supervisor] \textsf{Daniela da Cruz}, from University of Minho.
+\end{description}
+}
+
+% Date
+\date{\today}
+
+\newcommand{\reminder}[1]{\fbox{{\color{blue} #1}}}
+
+\makeglossaries
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                       Document                        %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
-\begin{titlepage}
-  \thispagestyle{empty}
-  \begin{figure}[htbp]
-  \begin{center}
-  \includegraphics[]{Images/DI-UM}
-  \end{center}
-  \end{figure}
-  {\centering \large
-  {\large\bf \textbf{University of Minho} \\ Informatics Department}\\
-  \vspace{1cm}
-  \bf{Master in Informatics}\\
-  \vspace{5cm}
-  {\LARGE \bf {Analysing and Mesuring Open-Source Projects}}\\
-  \vspace{1.5cm}
-  %{\Large \bf {Subtitulo}}\\
-  \vspace {2cm}
-  {\large {Carlos Miguel Janeiro Regedor Dias da Torre}}\\
-  \vspace{1cm}
-  \vspace{1cm}
-  }
-  \flushleft{ \emph{Supervised by:}
-  \vspace{0.4cm}
-  \begin{description}
-  \item[Main Supervisor] \textsf{Pedro Rangel Henriques}, form University of Minho.
-  \item [Co-Supervisor] \textsf{Daniela da Cruz}, form University of Minho.
-  \end{description}
-  }
-  \vspace {1.5cm}
-  \textbf{Braga, \today}\\
-  \pagebreak
-\end{titlepage}
-
-\pagenumbering{roman} \setcounter{page}{1}
-
-\include{Abstract}
-\include{Resumo}
-\include{Acknowledgements}
-\tableofcontents
-\listoffigures
-\listoftables
-\lstlistoflistings
-\printgloss{teseGloss}
-%\break
-\include{Dedication}
-\pagenumbering{arabic}
-%line spacing to 1.5 
-\setstretch{1.3}
-
-\include{chapters/Introduction}
-\include{chapters/Open_Source}
-\include{chapters/Software_Metrics}
-\include{chapters/Best_Practices}
-\include{chapters/Ruby_on_Rails}
-\include{chapters/Assessing_RoR}
-\include{chapters/Gorgeous_Code}
-\include{chapters/Conclusion}
-
-\bibliographystyle{plain}
-\addcontentsline{toc}{chapter}{Bibliography}
-\bibliography{regedor}
-
+  
+  % Add acronym definitions
+  
+  % Cover page
+  \pagenumbering{alph}
+  \pagestyle{empty}
+  \input{minichapters/title}
+  
+  \include{minichapters/Abstract}
+  \include{minichapters/Resumo}		
+  \include{minichapters/Acknowledgements}
+  
+  \cleardoublepage
+  
+  \pagenumbering{roman}
+  \setcounter{page}{3}
+  \pagestyle{fancy}
+  
+  % Document
+  \cleardoublepage
+  \phantomsection
+  \addcontentsline{toc}{chapter}{Contents}
+  \tableofcontents
+  
+  \cleardoublepage
+  \listoffigures
+  
+  \cleardoublepage
+  \listoftables
+  
+  \cleardoublepage
+  \lstlistoflistings
+  
+  % Add list of acronyms
+  
+  \cleardoublepage
+  \include{minichapters/Dedication}
+  
+  \cleardoublepage
+  \pagenumbering{arabic}
+  \setcounter{page}{3}
+  	
+  \include{chapters/Introduction}
+  \include{chapters/Open_Source}
+  \include{chapters/Ruby_on_Rails}
+  \include{chapters/Software_Metrics}
+  \include{chapters/Best_Practices}
+  \include{chapters/Assessing_RoR}
+  \include{chapters/Gorgeous_Code}
+  \include{chapters/Conclusion}
+  
+  \bookmarksetup{startatroot} % Ends last part.
+  \addtocontents{toc}{\bigskip} % Making the table of contents look good.
+  \cleardoublepage
+  
+  %\bibliographystyle{plain}
+  %\addcontentsline{toc}{chapter}{Bibliography}
+  \bibliographystyle{alpha}
+  \renewcommand\bibname{References}
+  \bibliography{regedor}
+  
+  % Add index of terms
+  
+  \appendix
+  \renewcommand\chaptername{Appendix}
+  
+  % Add appendix chapters
 \end{document}

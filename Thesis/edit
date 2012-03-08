@@ -1,1 +1,1 @@
-mate *.tex chapters/*.tex
+mate regedor.bib *.tex chapters/ tables/ minichapters/

@@ -1,18 +1,50 @@
 \thispagestyle{empty}
 \chapter{Best Practices}\label{chap:best_practices}
 
+Best practices are not rules, they are standards followed by a specific community. 
+A best practice is something that most people agrees with, 
+although it might not be scientifically proven,
+it seems to be the best way of handling a problem.
+In this chapter we will understand how important best practices are for open source communities, 
+and explorer some examples of best practices from the ruby community.
 
-\section{Best Practices in OSSP development} \label{sec:best_practices}
+
+
+\section{Best Practices in OSSP} \label{sec:best_practices_ossp}
 Open source communities have a tendency to create coding standards. It is a natural and evolutive process.
-Standards are not rules but instead best practices that are spread through the community and everybody does it that way.
-Furthermore, best practices discourage:
+We can call those natural standards as best practices. 
+Best practices are not rules, but instead the methods thought as best for achieving something, 
+they are spread through the community and everybody does it that way.
+It obvious that when a developer follows standards and best practices, the project maintainability is increased.
+Consequently, project new comers will find it easier to understand the project codebase~\cite{dromey2002model}.
+But there is more than that: following best practices discourage:
 \begin{itemize}
 \item Poor performance (due to bad patterns)
 \item Poor error checking (defensive programming)
 \item Inconsistent exception handling / Maintainability (long-term quality)
 \end{itemize}
-When a developer follows the standards and best practices, the project maintainability is increased.
-Consequently, project new comers will find it easier to understand the project codebase~\cite{dromey2002model}.
+
+And, to get this benefits, companies define standards, sets of rules for their workers.
+However, those rules are defined by the few people on top and then spread down in the pyramid.
+Many times, those rules are not well thought by the leaders and it blocks the progress.
+In the other side, the apparently chaos of open source also need these rules, 
+but oppositely to companies coding standards and rules that work in top down system, 
+best practices are bottom up, best practices spread in a distributive way,
+everybody can try different ways of doing things, but the ones with better results are most likely to be copied.
+
+A simple metaphor explains the difference:
+Companies use traffic lights where open source communities use roundabouts.
+
+
+Both rules and standards are ways to regulate intersections.
+
+The rules are traffic lights offer many guarantees of safety, but in many cases there will be drivers alone at the crossroads waiting for a green light.
+
+The roundabout also imposes some restrictions but it gives more power to its users.
+
+
+
+
 
 However, there is little work done concerned with measuring coding standards by automatic analyzing source code.
 A plausible explanation for that is the fact that best practices are not a set of immutable rules,
@@ -30,7 +62,165 @@ In many cases, best practices can be the key to understand what should be the op
 for instance, how many lines of code should a ruby method have?
 
 Of course, those questions are subjective.
-However by analyzing renowned projects, developers opinions and so on, it is possible to find the best practice
+However, by analyzing renowned projects, developers opinions and so on, it is possible to find out a best practice
 and that gives a plausible answer to the optimum value.
 
 We believe that, actually, best practices can give a meaning to metrics.
+
+
+
+\section{Best practices Examples} \label{sec:best_practices_examples}
+We understood that software projects can benefit a lot from using best practices.
+However, what is a best practice after all?
+The truth is that everything can be a best practice, for example:
+the use of two spaces to indent code and no tabs, 
+writing unit tests for your code,
+the way files are organized inside a project, etc.
+Some of those things might look like a matter of taste,
+but every worthy ruby developer uses two spaces to indent code.
+This is the standard for the ruby community.
+JavaScript programers use 4 spaces
+and in the Java world 8 spaces is considered the best.
+
+It is important to notice,
+that we can find virtually no ruby programmers advocating different indentation, 
+but we can find Java communities with advocating different indentations.
+This fact can make you strongly sure that 2 spaces for ruby is a best practice,
+but not completly sure about the 8 spaces for Java since there is people advocating 4 spaces and 
+also tabs or no tabs.
+
+To consider this conventions a best practice, it is important to understand if the
+opinion is strong through the community.
+
+When a best best practice is found, the first obvious benefit for using it,
+is that the project maintainability is increased,
+this happens simply because people in the community is expecting to found the code indented with two spaces.
+
+However, maybe something more can be inferred here:
+altho is does not make any difference to the program itself, 
+supposedly using two or more spaces does not affect directly the code quality, 
+it is reasonable to infer that the developer is new to ruby if he does not now the standards, 
+and the developer experience is likely related to the code quality. 
+
+In the end, having said it seems plausible to believe that there is a correlation between this two variables.
+The quantity of best practices followed
+
+It is understood that best practices are specific to a certain community.
+
+
+Best practices can be related to code formatting:
+\begin{itemize}
+\item \emph{Use two spaces to indent code and no tabs}, it is a matter of taste but every worthy ruby developer do it that way.
+\item \emph{Remove trailing whitespace}, trailing whitespace makes noises in version control systems.
+\end{itemize}
+
+Can be related to syntax:
+\begin{itemize}
+\item \emph{Avoid return where not required}.
+\item \emph{Suppress superfluous parentheses}, when calling methods, but keep them when calling \"functions\" 
+(when you use the return value in the same line).
+\end{itemize}
+
+Can be related to naming:
+\begin{itemize}
+\item \emph{Use snake\_case for methods}.
+\item \emph{Other method naming conventions}: Use map over collect, find over detect, find\_all over select, size over length.
+\end{itemize}
+
+And can also be specific to a framework:
+\begin{itemize}
+\item \emph{Law of Demeter}, A model should only talk to its immediate association.
+\item \emph{Move code into controller}, according to MVC architecture, there should not be logic codes in view.
+\item \emph{Isolate seed data}, do not insert seed data during migrations, a 
+rake task\footnote{ Rakefiles work in similar way to Makefiles but are written in ruby. It is a simple way to write code to automate repetitive tasks. }
+can be used instead.
+\item \emph{Do not use default route}, When using a RESTful design. The default RoR routes can cause a security problems.
+\item \emph{Replace Complex Creation with Factory Method}, Sometimes you will build a complex model with params, current\_user and other logics in controller, but it makes your controller too big, you should move them into model with a factory method.
+\end{itemize}
+
+
+
+
+
+%% RUBY
+\section{Best Practices in Rails Projects} \label{sec:ror_best_practives}
+Ruby is a open source programming language.
+
+Ruby and Ruby on Rails community members are, in general, addicted to best practices.
+However, in reality, many of those best practices are studied development methodologies.
+For instance, the majority of Ruby on Rails book authors speak about automated tests
+and there is a lot of interesting domain specific languages for it, like Cucumber or Rspec.
+
+It is also common to associate Ruby on Rails with Behaviour Driven Development (BDD) and Agile methodologies.
+
+Because of all this, the ruby community has great potential to be a starting point to understand the role of best practices, its benefits and how to measure it.
+In fact, there is already some work done.
+
+The web site
+\textsf{Rails Best Practices}\footnote{\url{http://www.rails-bestpractices.com/} is a web site created by Richard Huang,
+it was inspired by Wen-Tien Chang talk given at Kungfu RailsConf 2009 in Shanghai. Slides can be found here
+\url{http://www.slideshare.net/ihower/rails-best-practices}.},
+works in similar way to a web forum and its objective is to engage developers to discuss which practices
+should be considered best practices to follow, when building a RoR web application.
+The community involved with this web site is committed to build a
+gem\footnote{Ruby Libraries are called gems. Ruby gems can be easily managed using rubygems (rubygems is for Ruby as aptitude is for Debian or cpan for perl).}
+that produces a report about a given project.
+
+\begin{rubycode}{Cumber feature sample}{lst:cucumber}
+Feature: Search courses
+  In order to ensure better utilization of courses
+  Potential students should be able to search for courses
+
+  Scenario: Search by topic
+    Given there are 240 courses which do not have the topic "biology"
+    And there are 2 courses A001, B205 that each have "biology" as one of the topics
+    When I search for "biology"
+    Then I should see the following courses:
+      | Course code |
+      | A001        |
+      | B205        |
+\end{rubycode}
+
+
+
+
+
+%  In 2010 Richar Huang (flyerhzm) created Rails Best Practices (url), 
+%  inspired by a talk given by Wen-Tien Chang (ihower) at 2009 Kungfu RailsConf in Shanghai China 
+%  (http://www.slideshare.net/ihower/rails-best-practices).
+% 
+% O site tem como administradores estes dois e mais dois colaboradores.
+% O objectivo é discutir e chegar a consenso sobre boas praticas a seguir quando são criadas aplicações rails.
+% 
+% The web site contains two main sections:
+% 
+% 1. Best Practices
+%   All registered user can suggest best practices.
+%   Best practices are voted and commented by users.
+% 
+%   Qualquer utilizador registado pode sugerir uma boa pratica.
+%   Existe um sistema de votação constante
+%   E é possível na pagina dessa boa pratica discutir a mesma sob a forma de comentários
+%   O site tem cerca de 70 boas praticas a maioria sugerida pelo 2 autores
+%   Parece-me que a comunidade de votantes nas varias praticas é cerca de vinte pessoas
+%   Mas muitas destas paginas de boas praticas já foram visitadas por mais de 5000 pessoas
+%   Em parte estas pessoas devem advir da utilização criada pelo autor que valida automaticamente 
+%   as praticas no aplicação e apresenta um relatório com link para a pagina onde se da a discussão.
+%   Esta gem apenas tem implementadas 25 das 70 boas praticas.
+%  
+% Alem disto existe uma serie de gems para fazer diversas analises ao codigo, 
+% e até uma que agrega estas. Existe um video aqui que mostra estas em funcionamento:
+% http://media.railscasts.com/videos/252_metrics_metrics_metrics.mov
+% 
+% 2. Secção de questões:
+%   O site tem ainda uma área de perguntas e respostas. Tipo forum de discução.
+% 
+% 
+% Outro ponto interessante é que é mais fácil encontrar projectos ruby open source 
+% (por exemplo o próprio rails, ou gems que tratam diversos problemas), do que applicações rails.
+% Embora na realidade, provavelmente, existam mais aplicações rails do que projectos em ruby 
+% (claro que estas se podem incluir nos projectos ruby) isto acontece porque as aplicações rails são o produto final, 
+% fazem uso dos projectos ruby, mas na maior parte do caso não são reutilizadas.
+
+%I conclude that the biggest part of ruby developers are in fact Ruby on Rails or Web developers, they tend to write HTML, javascript, CSS and use ruby gems maintained by small rubists communities (Ruby on rails is in fact a compilation of small projects). Rails developers write ruby code inside their rails app, but in many cases they have never wrote a ruby gem.
+%There are a lot of frameworks and projects but I think that the only framework that deserves a big study is Ruby on Rails, all other frameworks have small communities compared to it. The other possibility is to find out best practices of ruby code in general, thinking of it as script code and not with a project structure.

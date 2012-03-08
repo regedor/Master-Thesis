@@ -1,13 +1,17 @@
 NAME=thesis
 
 all: *.tex *.bib
-	pdflatex $(NAME) 
+	xelatex $(NAME) 
 	bibtex $(NAME)
-	pdflatex $(NAME)
-	pdflatex $(NAME)
+	xelatex $(NAME)
+	xelatex $(NAME)
 	rm -f *.aux *.toc *. *.bbl *.blg  *.log *.nav *.out *.snm *.vrb
 	rm -f *.lo*
-	rm -f chapters/*.aux chapters/*.toc chapters/*. chapters/*.bbl chapters/*.blg  chapters/*.log chapters/*.nav chapters/*.out chapters/*.snm chapters/*.vrb chapters/*.lo*
+	rm -f chapters/*.aux chapters/*.toc chapters/*. chapters/*.bbl chapters/*.blg  chapters/*.log
+	rm -f chapters/*.nav chapters/*.out chapters/*.snm chapters/*.vrb chapters/*.lo*
+	rm -f minichapters/*.aux minichapters/*.toc minichapters/*. minichapters/*.bbl minichapters/*.blg  minichapters/*.log
+	rm -f minichapters/*.nav minichapters/*.out minichapters/*.snm minichapters/*.vrb minichapters/*.lo*
+	rm -f thesis.acn thesis.ist thesis.glo
 
 check:
 	aspell -l en -c -t *.tex
@@ -15,5 +19,9 @@ check:
 clean:
 	rm -f *.aux *.toc *. *.bbl *.blg  *.log *.nav *.out *.snm *.vrb
 	rm -f *.lo*
-	rm -f chapters/*.aux chapters/*.toc chapters/*. chapters/*.bbl chapters/*.blg  chapters/*.log chapters/*.nav chapters/*.out chapters/*.snm chapters/*.vrb chapters/*.lo*
+	rm -f chapters/*.aux chapters/*.toc chapters/*. chapters/*.bbl chapters/*.blg  chapters/*.log
+	rm -f chapters/*.nav chapters/*.out chapters/*.snm chapters/*.vrb chapters/*.lo*
+	rm -f minichapters/*.aux minichapters/*.toc minichapters/*. minichapters/*.bbl minichapters/*.blg  minichapters/*.log
+	rm -f minichapters/*.nav minichapters/*.out minichapters/*.snm minichapters/*.vrb minichapters/*.lo*
+	rm -f thesis.acn thesis.ist thesis.glo
 

@@ -1,6 +1,9 @@
 \thispagestyle{empty}
 \chapter{Software Metrics}\label{chap:software_metrics}
 
+In this chapter, you can learn the basics of software metrics. 
+It is given a brief explanation of quality attributes. Furthermore, we stand that, in the context of open source software, maintainability is the most relevant attribute. In addition, a few traditional software metrics are listed.
+
 
 %%--------------------------------------
 %% Assessing Open Source Software
@@ -166,9 +169,16 @@ Next a list of some free tools:
 \item\textsf{RATS} (Fortify) scans C, C++, Perl, PHP and Python source code for security problems like buffer overflows and Time Of Check, Time Of Use race conditions
 \item\textsf{SWAAT} simplistic tool for Java, JSP, ASP .Net, and PHP
 \item\textsf{Flawfinder} scans C and C++
+\item\textsf{Saikuro} is a Ruby cyclomatic complexity analyzer.
+\item\textsf{Reek} is a tool that examines Ruby classes, modules, methods and reports any code smells it finds.
+\item\textsf{Rails best practices} is another tool that examines Ruby classes, modules, methods and reports any code smells it finds.
+
+
+
+
 \end{itemize}
 
-Tools like the ones listed above analyze code without executing it, but point out what they consider to be potential weaknesses.
+Tools like the ones listed above analyze code without executing it and point out what they consider to be potential weaknesses.
 The most typical example of what those tools can find probably is calls to the emph{gets} function in
 the C programming language: this function is inherently insecure and can lead to buffer
 overflows. Specially crafted user input values can, for instance, allow an attacker to access
@@ -178,5 +188,5 @@ software.
 Because these tools need to "understand" the code being analyzed, they are necessarily very language specific.
 Furthermore, when analyzing a large amount of software projects, for instance Github projects,
 it is of great importance to have a previous knowledge of what kind of projects  are going to be found (programing languages, frameworks, and other attributes),
-this way tools can be adapted to get better results.
+this way tools can be adapted to get better results. 
 
