@@ -136,13 +136,13 @@ With that in mind, a system capable of analyzing and measuring a given OSSP,
 producing detailed quantitative and qualitative reports about it,
 would enable users to make better choices and, of course, developers to further improve the package.
 
-This paper discusses the concept of Quality when addressing an OSSP, and how to measure it (Section 2) using classic approaches.
+This paper discusses the concept of Quality when addressing an OSSP, and how to measure it (Section 3) using classic approaches.
 After that,  the notion of \emph{best practices} is introduced and  the impact  of
 taking their use into account when assessing an  OSSPs is explored.
 To make this proposal clearer and stronger,
 \textsf{Ruby}\footnote{Ruby is an open source programming language. Ruby community is relatively young but still very focused on following best practices.  }
-community is taken as a starting target (Section 3).
-At last but not least, to support our proposal a case-study is shown, in Section 4: seven Ruby OSSP are measured and compared.
+community is taken as a starting target (Section 4).
+At last but not least, to support our proposal a case-study is shown, in Section 5: seven Ruby OSSP are measured and compared.
 
 
 %%--------------------------------------
@@ -179,7 +179,7 @@ That might not be a good bet for a restaurant, but its proved to be a good one i
 \subsection{Open Source Software Development}
 Previously, in the introduction it was said that large industries have a strict organization model and
 that it is not the way open source communities operates.
-Open Source communities work in what can be called \textit{bazaar style}.
+Open Source communities work in \textit{bazaar style}.
 This term was introduced by \cite{raymondcathedral}. 
 
 Of course, OSS is not developed, all the time, in the same way. 
@@ -396,21 +396,25 @@ And, to get this same benefits, companies define standards, sets of rules for th
 However, those rules are defined by the few people on top and then spread down on the pyramid.
 Many times, those rules are not well thought by the project leaders and that can block the progress.
 In the other side, the apparently chaos of open source also need these rules, 
-but oppositely to companies coding standards and rules that work in top down system, 
-best practices happen in a bottom up or distributive system, 
+but contrary to the companies coding standards and rules, which work in a top down system, 
+best practices happen in a bottom up and distributive system, 
 everybody can try different ways of doing things, 
 but the ones with better results are most likely to be copied.
 
-A simple metaphor explains this difference:
+A simple metaphor exposes the difference:
 \begin{quote}\emph{
   Companies use traffic lights where open source communities use roundabouts.
 }\end{quote}
 
 Both, the strict company standards (traffic lights) and the OSP best practices (roundabouts) are ways to regulate intersections.
-The the results of traffic lights is more easy to predict, it system doesn't depend that much in the driver skills,
-but it will be often to have drivers stooped, alone, losing precious time, at the crossroads waiting for a green light.
-On the other side, the roundabout depends much more in the quality of the driver, 
-but if they are good enough, it open the possibility to a much more efficient traffic jam.
+The results of traffic lights is more easy to predict, it is a regulation that system 
+doesn't depend much on the driver skills,
+but because is so restrictive it will happen often to find drivers stooped, alone, losing precious time, 
+at the crossroads waiting for a green light.
+On the other side, the roundabout is a less restricted system, it 
+depends much more on the quality of the drivers, 
+but it open the possibility to a much more efficient traffic jam.
+
 
 There is little work done concerned with measuring coding standards by automatic analyzing source code.
 A plausible explanation for that is the fact that best practices are not a set of immutable rules,
