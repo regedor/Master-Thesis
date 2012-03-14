@@ -520,6 +520,7 @@ developed by a single user.
 These applications are so simple that many times the code is almost entirely created by RoR code generators.
 Usually, when code is not written by humans, it has few mistakes concerning those recommendations.
 
+
 \subsection{First Study}\label{subsec:first_study}
 Having taken the above into account, we decided to run the rails best practices gem on similar RoR (Ruby on Rails) projects.
 Seven \emph{time tracking} or \emph{project management} open source systems were chosen.
@@ -529,9 +530,9 @@ After running the gem and counting
   it identifies bad practices (similar to the detection of code smells).
   We decided to name those occurrences NBP.
 }
-occurrences, the following results were obtained:
+occurrences, the results in table~\ref{table:bestp1} were obtained:
 
-\begin{table}[H]
+\begin{table}[]
 \begin{center}{\scriptsize
   \begin{threeparttable}
   \begin{tabular}{|l||c|c|c|c|c|c|c|} \hline
@@ -575,7 +576,7 @@ occurrences, the following results were obtained:
 }
 \end{center}
 \caption{Results obtained by running the \emph{best practices analyzer gem} on the 7 Open Source Projects chosen (data produced on April, 2011).}
-\label{table:OSPHWebSites}
+\label{table:bestp1}
 \end{table}
 
 Rubytime seems to have the best results and Clockingit the worst.
@@ -599,9 +600,9 @@ Because of that we can get twisted results.
 To avoid this, the projects were sized.
 The size attribute is based on the quantity of models and controllers in the project.
 After that, we divided the values previously obtained  by the project size.
-By doing that, a new set of results emerge.
+By doing that, a new set of results emerge, see table ~\ref{table:bestp2}.
 
-\begin{table}[H]
+\begin{table}[]
 \begin{center}
 {\scriptsize
 \begin{threeparttable}
@@ -627,7 +628,7 @@ By doing that, a new set of results emerge.
 }
 \end{center}
 \caption{Results obtained by running the \emph{best practices analyzer gem} on the 7 Open Source Projects chosen, after normalization (data produced on April, 2011).}
-\label{table:OSPHWebSites}
+\label{table:bestp2}
 \end{table}
 
 Those results are much more likely to be helpful in terms of understanding if a project is or is not following
