@@ -1,0 +1,47 @@
+\begin{table}[H]
+\begin{center}{\scriptsize
+  \begin{threeparttable}
+  \begin{tabular}{|l||c|c|c|c|c|c|c|} \hline
+  \multicolumn{8}{|c|}{Rails Best Practices Results} \\ \hline
+  \textbf{Best Practice}& \textbf{A}& \textbf{B}& \textbf{C}&  \textbf{D}& \textbf{F}& \textbf{G}& \textbf{H} \\\hline\hline
+  \emph{\tnote{a}Add model virtual attribute           }              &   -  &   2  &   7  &   - &   - &   5 &   4  \\ \hline
+  \emph{Always add db index                   }              &   -  &   -  &   -  &  43 &   - &   - &  51  \\ \hline
+  \emph{Isolate seed data                     }              &   -  &   -  &   -  &   - &   - &  79 &  17  \\ \hline
+  \emph{Law of demeter                        }              &  20  &  38  &  45  &   6 &  30 & 164 &  85  \\ \hline
+  \emph{Move code into controller             }              &   -  &   -  &   -  &   - &   2 &   - &   4  \\ \hline
+  \emph{Move code into model                  }              &   -  &  26  &   -  &   7 &   1 &   3 &  19  \\ \hline
+  \emph{Move model logic into model           }              &   -  &   -  &  76  &  11 &  11 &  98 & 100  \\ \hline
+  \emph{Move finder to named\_scope           }              &   -  &   4  &   9  &   2 &   4 &  25 &   -  \\ \hline
+  \emph{Needless deep nesting                 }              &   -  &   -  &   -  &   1 &   - &   - &   -  \\ \hline
+  \emph{Not use default root                  }              &   -  &   1  &   1  &   - &   1 &   1 &   1  \\ \hline
+  \emph{Notes  use query attribute            }              &   -  &   2  &   -  &   - &   - &   - &   -  \\ \hline
+  \emph{Overuse route customizations          }              &   -  &   -  &   2  &   4 &   - &   2 &   2  \\ \hline
+  \emph{Remove trailing whitespace            }              &  68  &  57  & 126  & 110 & 330 & 316 & 100  \\ \hline
+  \emph{Use factory method                    }              &   -  &  15  &   9  &   5 &   1 &   8 &  19  \\ \hline
+  \emph{Replace instance var with local var   }              &  13  &   -  &  70  & 239 & 142 &  31 & 100  \\ \hline
+  \emph{Use before\_filter                    }              &   -  &   7  &   9  &   8 &   8 &  19 &  23  \\ \hline
+  \emph{Wrong email content\_type             }              &   -  &   3  &   -  &   - &   - &   - &   -  \\ \hline
+  \emph{Use query attribute                   }              &   -  &   -  &  11  &   5 &   8 &  29 &   6  \\ \hline
+  \emph{Use say with time in migrations       }              &   -  &   -  &  24  &   - &  10 &  23 &  56  \\ \hline
+  \emph{Use scopes access                     }              &   -  &   -  &   -  &   - &   - &   - &  04  \\ \hline
+  \emph{User model association                }              &   -  &   -  &  12  &   9 &   - &   1 &  21  \\ \hline
+  \emph{Keep finders on their own model       }              &   8  &   4  &   1  &   - &  11 &   - &   -  \\ \hline
+  \emph{Total                                 }              & 109  & 156  & 402  & 450 & 559 & 834 & 864  \\ \hline
+  \end{tabular}
+  \begin{tablenotes}
+	\item Results obtained by running the \emph{best practices analyzer gem} on the 7 Open Source Projects chosen 
+	      (data produced on April, 2011).
+    \item \emph{A:} Rubytime
+    , \emph{B:} Notes
+    , \emph{C:} Tracks
+    , \emph{D:} Handy Ant
+    , \emph{F:} Retrospectiva
+    , \emph{G:} Redmine
+    , \emph{H:} Clockingit
+    \item Figures shown represent the number of times a project do not follow a best practice; is expected that \emph{smaller the number, better the project}.
+  \end{tablenotes}
+  \end{threeparttable}
+}
+\end{center}
+\caption{Best practices analyzer gem raw results using 7 open source projects}
+\end{table}

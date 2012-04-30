@@ -1,156 +1,191 @@
 \thispagestyle{empty}
 \chapter{Best Practices}\label{chap:best_practices}
 
-Best practices are not rules, they are standards followed by a specific community. 
-A best practice is something that most people agrees with, 
-although it might not be scientifically proven,
+Best practices are not rules, they are standards followed by a specific community.
+Something that most people agrees with, although it might not be scientifically proven,
 it seems to be the best way of handling a problem.
+
 In this chapter we will understand how important best practices are for open source communities, 
-and explorer some examples of best practices from the ruby community.
+how they give meaning to traditional software metrics
+and identify some examples of best practices from the ruby community.
 
 
+\section{Best Practices in Open Source Software Projects} \label{sec:best_practices_ossp}
+Open source communities have a tendency to create \emph{coding rules},
+i.e., \emph{principles governing the conduct of programmers and serving as a basis of measure or judgment}. 
+It is a natural and evolutive process for people surviving in an open space.
+We can call these natural rules: \emph{best practices}.
 
-\section{Best Practices in OSSP} \label{sec:best_practices_ossp}
-Open source communities have a tendency to create coding standards. It is a natural and evolutive process.
-We can call those natural standards as best practices. 
-Best practices are not rules, but instead the methods thought as being the way best to achieving something, 
+Best practices are  methods thought as being the  best way for achieving something;
 they are spread through the community and everybody does it that way.
-It obvious that when a developer follows standards and best practices, the project maintainability is increased.
+It is obvious that when a developer follows well established principles and best practices, 
+the project maintainability is increased.
 Consequently, project new comers will find it easier to understand the project code~\cite{dromey2002model}.
-But there is more than that: following best practices discourage:
+But there is more than that, following best practices discourage:
 \begin{itemize}
 \item Poor performance (due to bad patterns)
 \item Poor error checking (defensive programming)
 \item Inconsistent exception handling / Maintainability (long-term quality)
 \end{itemize}
 
-And, to get this same benefits, companies define standards, sets of rules for their workers.
-However, those rules are defined by the few people on top and then spread down on the pyramid.
+To attain the same benefits, companies define standards, this is, something considered by an authority 
+as a basis of comparison and a normal requirement for quality;
+by other words, an approved behavior model for their workers.
+However, these principles are defined by the few people on top and then spread down on the pyramid.
 Many times, those rules are not well thought by the project leaders and that can block the progress.
-In the other side, the apparently chaos of open source also need these rules, 
-but oppositely to companies coding standards and rules that work in top down system, 
-best practices happen in a bottom up or distributive system, 
-everybody can try different ways of doing things, 
+
+In the other way around, the apparent chaos of open source also requires some rules,
+but contrary to the companies coding standards, which work in a top down way,
+best practices happen in a bottom up and distributive mode,
+everybody can try different ways of doing things,
 but the ones with better results are most likely to be copied.
 
-A simple metaphor explains this difference:
+A simple metaphor exposes the difference:
 \begin{quote}\emph{
   Companies use traffic lights where open source communities use roundabouts.
 }\end{quote}
 
 Both, the strict company standards (traffic lights) and the OSP best practices (roundabouts) are ways to regulate intersections.
-The the results of traffic lights is more easy to predict, it system doesn't depend that much in the driver skills,
-but it will be often to have drivers stooped, alone, losing precious time, at the crossroads waiting for a green light.
-On the other side, the roundabout depends much more in the quality of the driver, 
-but if they are good enough, it open the possibility to a much more efficient traffic jam.
+The result of traffic lights is  easier to predict, however that regulation  system does not depend much on the drivers skills;
+because it is so restrictive it will happen often to find a driver stooped alone
+at the crossroads waiting for a green light, losing precious time.
+On the other hand, the roundabout system is a less restricted system and relies much more on the quality of the drivers,
+but it open the possibility to a much more efficient way to avoid a traffic jam.
 
-
-There is little work done concerned with measuring coding standards by automatic analyzing source code.
+There is little work done concerned with measuring coding best practices by automatic analyzing source code.
 A plausible explanation for that is the fact that best practices are not a set of immutable rules,
 they are a continuous evolution and improvement of development methodologies.
 Communities are constantly creating rules and best practices, even without noticing it.
 It is not possible to write down a list of best practices without some ambiguities.
-Nevertheless, it is still possible, to use metrics on the source code and, by analyzing their values,
-to find hints to help answering weather some methodological approaches
-were taken into account during the project development process.
+Nevertheless, it is still possible to use source code metrics and, by analyzing their values,
+to find weather some methodological approaches were taken into account during the project development process.
 
-At first glance, best practices metrics are for classic metrics as natural as medicine is for science.
+At first glance, best practices metrics seam to be for classic metrics as natural as medicine is for science.
 But, it is not the case.
 In fact, classic metrics, on their own, do not give much information about a project.
 In many cases, best practices can be the key to understand what should be the optimum value for a classic metric,
-for instance, how many lines of code should a ruby method have?
+for instance, to determine \emph{how many lines of code should a ruby method have}.
 
 Of course, those questions are subjective.
 However, by analyzing renowned projects, developers opinions and so on, it is possible to find out a best practice
-and that gives a plausible answer to the optimum value.
+that gives a plausible answer to the search for the \emph{most favorable value}.
 
 We believe that, actually, best practices can give a meaning to metrics.
 
-
-
-\section{Best practices Examples} \label{sec:best_practices_examples}
+\section{Identifying Best Practices} \label{sec:identifying_best_practices}
 We understood that software projects can benefit a lot from using best practices.
 However, what is a best practice after all?
 The truth is that everything can be a best practice, for example:
 the use of two spaces to indent code and no tabs, 
 writing unit tests for your code,
 the way files are organized inside a project, etc.
+
 Some of those things might look like a matter of taste,
 but every worthy ruby developer uses two spaces to indent code.
 This is the standard for the ruby community.
-JavaScript programers use 4 spaces
-and in the Java world 8 spaces is considered the best.
+Other communities, for instance JavaScript programers, prefer 4 spaces
+and in the Java world 8 spaces is considered the considered a good choice.
 
 It is important to notice,
-that we can find virtually no ruby programmers advocating different indentation, 
-but we can find Java communities with advocating different indentations.
-This fact can make you strongly sure that 2 spaces for ruby is a best practice,
-but not completly sure about the 8 spaces for Java since there is people advocating 4 spaces and 
-also tabs or no tabs.
+that we can find virtually no ruby programmer using a different indentation, 
+but we can find Java communities advocating different indentations.
 
-To consider this conventions a best practice, it is important to understand if the
-opinion is strong through the community.
+This fact shows that the ruby community agrees that 2 spaces is a the best option and
+can be considered a best practice.
+In contrast, we can not be completely sure about the 8 spaces for Java,
+since there is also a lot of developers advocating 4 spaces and also a good number using tabs instead.
+The Java community is divide, it almost possible to identify sub communities defending 
+different answers for the same questions. 
+It might be possible to identify conventions in those smaller communities, 
+but it will be harder to do it for the bigger community.
 
-When a best best practice is found, the first obvious benefit for using it,
+To consider this conventions a best practice, it is important to understand if that
+conventions are strong through the community in question. 
+
+Obviously, the first step is to identify the community:
+are we trying to find best practices for ruby programers general? for all programers in general? 
+for the programers working in a specific company or project?
+In smaller communities, it might be easier the achieve agreement and
+consequently find best practices.
+Nevertheless, practices created and followed by a small group of programers,
+are less likely to be considered best practices in general compared to 
+practices followed by the developers working on the top 10 open source projects.
+
+It is clear that best practices are specific to a certain community, 
+so, after correctly choosing a community, to find identify best practices we need
+to find out what patterns are used by its members,
+and try to prove that some benefit comes from using it.
+
+The most obvious benefit from using it,
 is that the project maintainability is increased,
-this happens simply because people in the community is expecting to found the code indented with two spaces.
+for example: people in the community might be expecting to find the code indented with two spaces or 
+methods named in camelcase, constants in upcase, etc.
 
-However, maybe something more can be inferred here:
-altho is does not make any difference to the program itself, 
-supposedly using two or more spaces does not affect directly the code quality, 
-it is reasonable to infer that the developer is new to ruby if he does not now the standards, 
-and the developer experience is likely related to the code quality. 
+Supposedly using two or more spaces does not affect directly the code quality (other than maintainability), 
+but it is reasonable to infer that a developer is new to ruby if he does not know it.
+In other words, following, or not, best practices has a relation with the developer knowledge and experience,
+and the developer experience is likely to be related with the code quality produced.
 
-In the end, having said it seems plausible to believe that there is a correlation between this two variables.
-The quantity of best practices followed
+Of course, best practices are not only related to naming,
+they can also be patterns for solving certain problems, working methodologies, etc.
+In those cases, they might be directly related to other quality attributes like performance and so on.
 
-It is understood that best practices are specific to a certain community.
+In the end, it seems plausible to believe that there is a correlation between this two variables.
+The quantity of best practices followed and the overall quality of the project. 
+
+Later in this document, this relation is proved.
 
 
-Best practices can be related to code formatting:
+\section{Ruby Best Practices Examples} \label{sec:best_practices_examples}
+In this section, different best practices categories are listed.
+These are best practices for the ruby community.
+
+Best practices related to code formatting:
 \begin{itemize}
-\item \emph{Use two spaces to indent code and no tabs}, it is a matter of taste but every worthy ruby developer do it that way.
+\item \emph{Use two spaces to indent code and no tabs}, every worthy ruby developer do it that way.
 \item \emph{Remove trailing whitespace}, trailing whitespace makes noises in version control systems.
 \end{itemize}
 
-Can be related to syntax:
+Related to syntax:
 \begin{itemize}
 \item \emph{Avoid return where not required}.
-\item \emph{Suppress superfluous parentheses}, when calling methods, but keep them when calling \"functions\" 
-(when you use the return value in the same line).
+\item \emph{Suppress superfluous parentheses}, when calling methods, 
+but keep them when calling \"functions\" (when you use the return value in the same line).
 \end{itemize}
 
-Can be related to naming:
+Related to naming:
 \begin{itemize}
 \item \emph{Use snake\_case for methods}.
 \item \emph{Other method naming conventions}: Use map over collect, find over detect, find\_all over select, size over length.
 \end{itemize}
 
-And can also be specific to a framework:
+Specific to a framework (Ruby on Rails in for the following examples):
 \begin{itemize}
 \item \emph{Law of Demeter}, A model should only talk to its immediate association.
 \item \emph{Move code into controller}, according to MVC architecture, there should not be logic codes in view.
 \item \emph{Isolate seed data}, do not insert seed data during migrations, a 
-rake task\footnote{ Rakefiles work in similar way to Makefiles but are written in ruby. It is a simple way to write code to automate repetitive tasks. }
-can be used instead.
+rake task\footnote{ 
+  Rakefiles work in similar way to Makefiles but are written in ruby. It is a simple way to write code to automate repetitive tasks. 
+} can be used instead.
 \item \emph{Do not use default route}, When using a RESTful design. The default RoR routes can cause a security problems.
 \item \emph{Replace Complex Creation with Factory Method}, Sometimes you will build a complex model with params, current\_user and other logics in controller, but it makes your controller too big, you should move them into model with a factory method.
 \end{itemize}
 
 
 
-
-
 %% RUBY
-\section{Best Practices in Rails Projects} \label{sec:ror_best_practives}
-Ruby is a open source programming language.
+\section{Ruby on Rails Best Practices} \label{sec:ror_best_practives}
 
-Ruby and Ruby on Rails community members are, in general, addicted to best practices.
-However, in reality, many of those best practices are studied development methodologies.
-For instance, the majority of Ruby on Rails book authors speak about automated tests
+Ruby and Ruby on Rails community members are, in general, known has been addicted to best practices.
+In reality, many of those best practices are studied development methodologies.
+It is also common to associate Ruby on Rails with Behaviour Driven Development (BDD) and Agile methodologies.
+Most developers, even language new commers, are worried about writing automated tests, and following best practices.
 and there is a lot of interesting domain specific languages for it, like Cucumber or Rspec.
 
-It is also common to associate Ruby on Rails with Behaviour Driven Development (BDD) and Agile methodologies.
+
+For instance, the majority of Ruby on Rails book authors speak convention over configuration,
+most those conventions can be also called best practices.
+
 
 Because of all this, the ruby community has great potential to be a starting point to understand the role of best practices, its benefits and how to measure it.
 In fact, there is already some work done.
@@ -164,22 +199,6 @@ should be considered best practices to follow, when building a RoR web applicati
 The community involved with this web site is committed to build a
 gem\footnote{Ruby Libraries are called gems. Ruby gems can be easily managed using rubygems (rubygems is for Ruby as aptitude is for Debian or cpan for perl).}
 that produces a report about a given project.
-
-\begin{rubycode}{Cumber feature sample}{lst:cucumber}
-Feature: Search courses
-  In order to ensure better utilization of courses
-  Potential students should be able to search for courses
-
-  Scenario: Search by topic
-    Given there are 240 courses which do not have the topic "biology"
-    And there are 2 courses A001, B205 that each have "biology" as one of the topics
-    When I search for "biology"
-    Then I should see the following courses:
-      | Course code |
-      | A001        |
-      | B205        |
-\end{rubycode}
-
 
 
 

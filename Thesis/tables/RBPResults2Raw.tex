@@ -1,0 +1,34 @@
+\begin{table}[H]
+\begin{center}
+{\scriptsize
+\begin{threeparttable}
+\begin{tabular}{|l||c|c|c|c|c|c|c|c|c|c|c|} \hline
+\multicolumn{12}{|c|}{Rails Best Practices Results} \\ \hline
+Projects & \textbf{Forks}         & \textbf{Watchers} & 
+C1       & C1 F.                  & \textbf{W. C1} & 
+C2       & C2 F.                  & \textbf{W.       C1} & 
+...      & T. NBPs                & \textbf{W.  T. NBPs} \\\hline\hline
+\emph{Rails Admin } & 30 & 2478 &  0 & 141 & \textbf{  0 }&  0 &  37 & \textbf{ 0} & ...&  50 & \textbf{ 739}  \\ \hline
+\emph{Rubytime    } & 12 &   82 & 24 & 161 & \textbf{149 }&  0 & 134 & \textbf{ 0} & ...& 146 & \textbf{1334}  \\ \hline
+\emph{Redmine     } & 30 & 1781 & 49 & 996 & \textbf{ 49 }&  1 & 362 & \textbf{ 2} & ...& 884 & \textbf{1402}  \\ \hline
+\emph{BrowserCMS  } & 30 &  784 & 11 & 234 & \textbf{ 47 }&  0 & 216 & \textbf{ 0} & ...& 268 & \textbf{1510}  \\ \hline
+\emph{Tracks      } & 17 &   87 & 46 & 842 & \textbf{ 54 }& 15 & 271 & \textbf{55} & ...& 569 & \textbf{2810}  \\ \hline
+\emph{...}&...&...&...&...&...&...&...&...&...&...&...\\ \hline
+\end{tabular} 
+
+\begin{tablenotes}
+  \item Results obtained by running the \emph{best practices analyzer gem} on the 40 Open Source Projects chosen, 
+        from GitHub (data produced on April, 2011). The full table can be found at www.study.gorgeouscode.com
+  \item{ \emph{C(x): }} The rails best practices gem has 29 checkers(when this study was carried), 
+                        each one tries to find occurrences of a different nbp in the project. 
+  \item{\emph{C(x) Files: }} The number of files in the project, where it tried to find nbps 
+                             (for instance, some checkers may only be concerned with html files, 
+                             some other checker nbps my only occur in model files, etc)
+  \item{\emph{W. C(x): }} Weighted C(x) = C(X) / C(x)Files * 1000 
+                          (A really small number is added to each variable to avoid divisions by zero).
+\end{tablenotes}
+\end{threeparttable}
+}
+\end{center}
+\caption{Best practices analyzer gem results using 40 open source projects}
+\end{table}

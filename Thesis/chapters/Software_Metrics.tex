@@ -68,7 +68,7 @@ Another example is the amount of codebase comments, if the code does not have an
 but it is obvious that it will decrease readability and maintainability~\cite{gousios2007software}.
 
 %% SOFTWARE METRICS
-\subsection{Classic Software Metrics}
+\section{Classic Software Metrics}
 To classify OSS with regards to a certain quality attribute, we need to find which factors influence it.
 Then we need a way to measure that attribute. If we need to measure we need metrics.
 
@@ -80,7 +80,7 @@ how to interpret their values and find
  to assess the quality attributes of an OSP.
 
 
-\subsubsection{Lines of Code}
+\subsection{Lines of Code}
 A line of code is any line of program text that is not a comment or blank line, 
 regardless of the number of statements or fragments of statements in the line. 
 This specifically includes all lines containing program headers, declarations, and executable and non-executable statements.~\cite{conte1986software}
@@ -104,7 +104,7 @@ Next, the most common variations are described~\cite{jones1986programming}:
 \end{itemize}
 
 
-\subsubsection{Cyclomatic Complexity}
+\subsection{Cyclomatic Complexity}
 The measurement of cyclomatic complexity~\cite{mccabe1976complexity} was designed to indicate a program's testability and maintainability.
 It is the classical graph theory cyclomatic number, indicating the number of regions in a graph.
 As applied to software, it directly measures the number of linearly independent paths through a program source code.
@@ -122,7 +122,7 @@ where
 \end{itemize}
 
 
-\subsubsection{Fan-In and Fan-Out}
+\subsection{Fan-In and Fan-Out}
 Fan-in and fan-out are perhaps the most common design structure metrics, which are based on the ideas of coupling~\cite{yourdon1979structured}:
 \begin{itemize}
 \item \emph{Fan-in } is a count of the modules that call a given module
@@ -134,7 +134,7 @@ In contrast, modules that are large and complex are likely to have a small fan-i
 There is also the theory that high fan-outs represent a high number of method calls and thus are undesirable,
 while high fan-ins represent a high level of reuse~\cite{wang2007dynamic}.
 
-\subsubsection{Object-Oriented Metrics}
+\subsection{Object-Oriented Metrics}
 Classes and methods are the basic constructs of OO technology.
 The amount of function provided by an OO software can be estimated based on the number of identified classes and methods or their variants.
 Therefore, it is natural that the basic OO metrics are related to classes, methods and their size.
@@ -155,7 +155,7 @@ but based on his experience in OO software development, Lorenz proposed eleven m
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% AVAILABLE TOOLS
-\subsection{Available Tools}
+\section{Available Tools}
 Tools are intended to make a task easier.
 Codebase analysis tools are designed turn the task of analyse and measure source code easier,
 Those tools help in the process of finding software flaws and can also serve as aids for assessing the quality of software.

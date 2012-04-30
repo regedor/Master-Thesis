@@ -1,30 +1,26 @@
 \thispagestyle{empty}
-\chapter{Ruby and Ruby on Rails}\label{chap:ruby_on_rails}
+\chapter{Ruby on Rails Framework}\label{chap:ruby_on_rails}
 
-We cannot talk about the 
-\textsf{web application framework}\footnote{
+The \textsf{web application framework}\footnote{
   A web application framework aims to minimize the overhead associated with common activities performed in Web development. 
   For example, it might provide libraries for database access, templating frameworks or session management. 
   It often promotes code reuse.
-}
-Ruby on Rails without talking first about the Ruby programming language.
+} Ruby on Rails (Rails) is an excellent example of a successful open source project.
+However, we cannot talk about Rails without first talking about the Ruby programming language.
 
-One common misconception is to confuse Ruby with Ruby on Rails. 
-Although closely related, they are distinct things. 
-Ruby and Rails helped propel movements like 
-Test Driven Development, 
-Pair Programming 
-and other 
-Agile Methodologies, 
+It is a common misconception to confuse Ruby with Ruby on Rails. 
+Although closely related, they are distinct things.
+When someone says Ruby, it is referring to a programming language.
+Ruby on Rails refers to a full-stack framework to develop web applications that was created using Ruby.
+Rails helped propel movements like 
+Test Driven Development, Pair Programming and other Agile Methodologies, 
 and it played a major role in Ruby adoption. 
-But when someone says Ruby they are referring to the programming language.
-Ruby on Rails refers to a full-stack framework to develop web applications using Ruby.
-
 
 In this chapter you can read a brief history about the Ruby language
 and learn its most distinct characteristics.
-After that, you will find out how Ruby on Rails turned to be one of the 
+After that, you will find out how Rails turned to be one of the 
 most recognized frameworks for developing web applications. 
+
 
 
 \section{The Ruby Programing Language} 
@@ -63,7 +59,7 @@ The code can be run in
 \textsf{IRB}\footnote{Interactive Ruby Shell.}, this tool is of great help for ruby programers,
 and an easy way for new comers to start learning.
 
-\begin{rubycode}{Simple ruby code example}{lst:ruby_objects}
+\begin{rubycode}{Sample Ruby Code}{lst:ruby_objects}
   >> # You can call methods on directly on numbers because they are objects.
   >> 1.to_s
   => "1"
@@ -85,26 +81,26 @@ Ruby is dynamic and interpreted at run time with "duck typing":
 If it walks like a duck and quacks like a duck, then it is a duck! This means that you do not make assumptions.
 
 Ruby has open classes, that means programmers are allowed to change predefined classes.
-The truth is that depending on the usage it can be either a good or bad thing. 
+The truth is that depending on the usage it can be either a good or a bad thing. 
 An example of this is 
 \textsf{Monkey patching}\footnote{
   The term monkey patch means any dynamic modification to a class and 
   is often used as a synonym for dynamically modifying any class at runtime.
 },
-, doing it clearly violates the object oriented principle of encapsulation.
+doing it clearly violates the object oriented principle of encapsulation.
 However, if it was not for those characteristics, 
-rails would not have been able to easily change some of ruby basic datatypes. 
-Consequently, developers would not be able to write amazingly readable code like shown in~\ref{lst:ruby_date_calculations}.
+rails would not have been able to easily change some of ruby basic datatypes and 
+consequently developers would not be able to write amazingly readable code like shown in~\ref{lst:ruby_date_calculations}.
 
-\begin{rubycode}{Simple ruby code example}{lst:ruby_date_calculations}
+\begin{rubycode}{Sample Ruby Code (Rails Environment)}{lst:ruby_date_calculations}
   >> # Calling the method \"today\" on the class \"Date\" 
-  >> returns a date object.
+  >> # returns a date object.
   >> Date.today 
   => Sat, 11 Feb 2012
 
   >> # It is possible to do calculations on those objects, 
   >> # rails extends the Fixnum class with nice methods to 
-  >> help on those calculations
+  >> # help on those calculations
   >> Date.today + 3.months - 7.day
   => Fri, 04 May 2012
 \end{rubycode}
@@ -115,7 +111,7 @@ The ruby language has drawn devoted coders worldwide.
 The reason behind that can only be its elegant syntax that is natural to read and easy to write. 
 In addition, many of the philosophies that are present in the Ruby on Rails framework are also shared by Ruby language.
 Examples of such philosophies include the "Don't Repeat Yourself" (DRY) and "Principle of Least Surprise".
-Most ruby programs are easy to read and understand, even for a new comer. 
+Ruby programs are easy to read and understand, even for a new comer. 
 All this makes ruby projects highly maintainable.
 As its inventor, Matsumoto, concluded in his presentation at the ACM Finals in Japan of 2007: 
 \begin{quote}\emph{
@@ -189,125 +185,169 @@ The Rails philosophy includes several guiding principles:
       organizing your application around resources and standard HTTP verb is the fastest way to go.
 \end{itemize}
 
-\subsection{Model–view–controller} 
+
+
+\section{Model-View-Controller} 
 MVC is an architectural pattern used in software engineering. 
 Successful use of the pattern isolates business logic from user interface considerations, 
 resulting in an application where it is easier to modify either the visual appearance of the application 
 or the underlying business rules without affecting the other.
 MVC was first described in 1979 by Trygye Reenskaug.
 
+\begin{figure}[h!]
+  \caption{Model-View-Controller Diagram}
+  \centering
+  \includegraphics[width=0.5\textwidth]{Images/ModelViewController}
+\end{figure}
+
 \begin{itemize}
-\item A model represents the information of the application and the rules to manipulate that data. In the Rails, models are used for managing the rules of interaction with a corresponding database table. In most cases, one table in your database will correspond to one mode in your application. Your application logic will be concentrated in the models.
-\item A view represents the user interface of your application. In Rails, views are often HTML files with embedded Ruby code (which we call erb templates) to performs tasks related to the presentation of the data. Views handle the job of providing data to the web browser or other tool that is used to make request from you application.
-\item Controllers provide the “glue” between model and views. In Rails, controllers are responsible for processing the incoming requests from the web browser, interrogating the models for data, and passing the data to the views for presentation.
+\item A \emph{model} represents the information of the application and the rules to manipulate that data. In the Rails, models are used for managing the rules of interaction with a corresponding database table. In most cases, one table in your database will correspond to one mode in your application. Your application logic will be concentrated in the models.
+\item A \emph{view} represents the user interface of your application. In Rails, views are often HTML files with embedded Ruby code (which we call erb templates) to performs tasks related to the presentation of the data. Views handle the job of providing data to the web browser or other tool that is used to make request from you application.
+\item \emph{Controllers} provide the “glue” between model and views. In Rails, controllers are responsible for processing the incoming requests from the web browser, interrogating the models for data, and passing the data to the views for presentation.
 \end{itemize}
 
-MVC benefits include: 
-\begin{itemize}
-\item Isolation of business logic from the user interface.
-\item Ease of keeping code DRY.
-\item Making it clear where different types of code belong for easier maintenance.
-\end{itemize}
+The benefits of using MVC include the isolation of business logic from the user interface,
+in addition it becomes easier to keep the code DRY and 
+it makes clear where different types of code belong for easier maintenance.
 
 
 
-
-
-
-\subsection{Convention over Configuration} 
+\section{Convention over Configuration} 
 Traditionally, frameworks need multiple configuration files, each with many settings. 
 These provide information specific to each project, ranging from URLs to mappings between classes and database tables. 
 With the complexity of an application, the size and number of those files grows as well. 
 Most of the time it is very hard to maintain a lot of configurations files. 
-Rails was developed to minimize these issues by following the Convention over Configuration (CoC) paradigm.
+Rails was developed to minimize these issues by following the \emph{Convention over Configuration} paradigm.
 
-CoC aims to simplify the development without losing the application flexibility. 
+\emph{Convention over Configuration} aims to simplify the development without losing the application flexibility. 
 It means you do not need to write configuration files to have a flexible application. 
 This leads to less code and less repetition.
 The Rails creator calls this “Intelligent Patterns”. 
 If you do not want to configure anything, just follow the conventions and the framework will know what to do.
-To better understand CoC, let's see how Rails analyses a URL such as the following:
 
-/account/show/1
-By default, the framework will interpret this URL as follows: aa.account – AccountController class that extends the ApplicationController class.
-bb.show – The show method of the AccountController class
-cc. 1 – a parameter called id with the value “1” In many others frameworks it is necessary to create one or more configuration files,
-normally a XML file.
-Another example of CoC is with respect to the persistence layer (which typically deals with a database). The only thing you need to do to map a Model to its table in the database is the following code:
-class Product < ActiveRecord::Base end
+To better understand \emph{Convention over Configuration}, 
+let's see how Rails analyses a URL such as the following:
+
+\begin{rubycode}{URL Example}{lst:rails_url}
+  /account/show/1
+
+\end{rubycode}
+By default, the framework will split the URL by “/” and expect things to be as follows: 
+
+\begin{itemize}
+\item \emph{account} – An AccountController class that extends the ApplicationController class show should exist and
+handle accounts related action.
+\item \emph{show} – The AccountController class show should have a show method, 
+this method will call model methods to fetch the needed data and pass it to a view, 
+which will render a nice page showing the account information.
+\item \emph{1} – This is parameter called id with the value “1”. 
+It means that user want to see information about the account whose id is 1. 
+\end{itemize}
+
+Although, it fairly easy to change behavior (in fact, it is a best practice to change it a little bit), 
+without writing one line a rails application freshly created expect all those things, 
+we just need to create the controller, a view, and have a database, with the correct names and everything works by itself. 
+In many others frameworks it is necessary to create one or more configuration files, normally a XML file.
+
+Another example of \emph{Convention over Configuration} is with respect to the persistence layer 
+(which typically deals with a database). 
+The only thing you need to do to map a Model to its table in the database is the following code:
+\begin{rubycode}{Sample Model file “product.rb”}{lst:rails_product_model}
+class Product < ActiveRecord::Base 
+end
+\end{rubycode}
+
 That is enough for the class to be bound by the framework with a table in the database called Products and all of its columns will be accessible for use without creating a configuration file to map it. Note as well that you do not need to create getter and setter methods.
 Rails has a concept of pluralize, which means a model Product will have a table Products in the database, or a model Customer will need have a table Customers and so on.
 
 
-\subsection{Don’t Repeat Yourself} 
 
-Don’t Repeat Yourself (DRY) is a process philosophy aimed at reducing duplication. The philosophy emphasizes that information should not be duplicated, because duplicates increase the difficulty for code maintenance, decrease clarity, and lead to opportunities for inconsistencies.
-DRY is applied quite broadly to include database schemas, test plans, the build system, and even documentation. When the DRY principle is applied successfully, a modification of any single element of a system does not change other logically-unrelated elements.
-DRY code is created by data transformation, which allows the software developer to avoid copy and paste operations. DRY code usually makes large software system easier to maintain, as long as the data transformations are easy to create and maintain.
-DRY is not about just avoiding code duplication, but more generally about avoiding multiple and possibly diverging ways to express every piece of knowledge: e.g., logic, database schemas, and constants.
-If we are always repeating the same code, refactoring will be in order to keep your code DRY compliant. In Rails we can replace these repeated codes for helpers and partials, for example.
+\section{Don’t Repeat Yourself} 
+Don’t Repeat Yourself (DRY) is a process philosophy aimed at reducing duplication. 
+The philosophy emphasizes that information should not be duplicated, 
+because duplicates increase the difficulty for code maintenance, 
+decrease clarity and lead to opportunities for inconsistencies.
+
+DRY is applied quite broadly to include database schemas, 
+test plans, the build system, and even documentation. 
+When the DRY principle is applied successfully, 
+a modification of any single element of a system does not change other logically-unrelated elements.
+DRY code is created by data transformation, which allows the software developer to avoid copy and paste operations.
+DRY code usually makes large software system easier to maintain, 
+as long as the data transformations are easy to create and maintain.
+DRY is not about just avoiding code duplication, 
+but more generally about avoiding multiple and possibly diverging ways to express every piece of knowledge: 
+e.g., logic, database schemas, and constants.
+If we are always repeating the same code, 
+refactoring will be in order to keep your code DRY compliant. 
+
+In Rails we can replace these repeated codes for helpers and partials, for example.
 
 
 
+\section{The Framework Structure} 
+Every rails application follows the same file structure organization. 
+This way everything should be in the right spot.
+After generating a new Rails application (this is achieve by running a single command line: rails new name\_of\_the\_appliction),
+folder looking like FIG shoulb be created. 
+It is a ready to run web application.
+In fact, the folder called \emph{app}, 
+is where the majority of the application code goes (models, views, controllers, helpers, etc).
+The rest of the folder or destined to documentation, configuration, third party code, temporary files, etc.
 
+Rails is a meta-framework (a framework composed of frameworks), it is composed of the following frameworks:
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Framework structure} 
-
-O Rails é um "meta-framework" (ou seja, um framework de frameworks), composto pelos seguintes frameworks:
-
-
-3.6.1 Active Record
+\subsection{Active Record}
 Active Record connect business object and database tables to create a persistable domain model where logic and data are presented in on wrapping. It’s an implementation of the object-relational mapping (ORM) pattern by the same name as described by Martin Fowler.
 Active Record is the base for the models in a Rails application. It provides database independence, basic CRUD (Create, Read, Update, and Delete) functionality, advanced finding capabilities, and the ability to relate models to one another, among other services.
-3.6.2 Action Pack
+
+\subsection{Action Pack} 
 Action Pack splits the response to a web request into a controller part (performing the logic) and a view part (rendering a template). This two-step approach is known as an action, which will normally create, read, update, or delete some sort of mode part (often backed by a database) before choosing either to render a template or redirecting to another action.
 Action Pack implements these actions as public methods on Action Controllers and uses Action Views to implement the template rendering. Action Controllers are then responsible for handling all the action relating to a certain part of an application, like listing, creating, deleting, and updating records.
 Action View templates are written using embedded Ruby in tags mingled in with the HTML. To avoid cluttering the templates with code, a bunch of helps classes provide common behavior for forms, dates, and strings. And it is easy to add specific helpers to keep the separations as the application evolves.
-3.6.3 Action Mailer
+
+\subsection{Action Mailer}  
 Action Mailer is a framework for building e-mail services. You can use Action Mailer to send emails based on flexible templates, or to receive and process incoming email.
-3.6.4 Active Support
+
+\subsection{Active Support} Active 
 Active Support is an extensive collection of utility classes and standard Ruby library extensions that are used in the Rails. All these additions have hence been collected in this bundle as way to gather all that sugar that makes Ruby sweeter.
 
-Active Record
-O Active Record é uma camada de mapeamento objeto-relacional (object-relational mapping layer), responsável pela interoperabilidade entre a aplicação e o banco de dados e pela abstração dos dados.
 
-Action Pack
-Compreende o Action View (geração de visualização de usuário, como HTML, XML, JavaScript, entre outros) e o Action Controller (controle de fluxo de negócio).
+\section{The Rails Community} 
+The biggest part of Ruby developers are in fact Rails developers. 
+They are web developers, they write HTML, javascript and CSS.
+Moreover, Rails is considered the biggest responsible for Ruby popularity
+(tens of thousands of Rails applications are online).
+The Ruby and Ruby on Rails community has been growing up in the last years. 
+Programmers from other languages like Java, .NET are discovering the power of Ruby and how easy is the development using Rails.
 
-Action Mailer
-O Action Mailer é um framework responsável pelo serviço de entrega e até mesmo de recebimento de e-mails. É relativamente pequeno e simples, porém poderoso e capaz de realizar diversas operações apenas com chamadas de entrega de correspondência.
-
-Activ
-e Support
-
-
-
-Moreover, the web framework Ruby on Rails is considered the biggest responsible for Ruby popularity
-( tens of thousands of Rails applications are online).
-%I conclude that the biggest part of ruby developers are in fact Ruby on Rails or Web developers, they tend to write HTML, javascript, CSS and use ruby gems maintained by small rubists communities (Ruby on rails is in fact a compilation of small projects). Rails developers write ruby code inside their rails app, but in many cases they have never wrote a ruby gem.
-%There are a lot of frameworks and projects but I think that the only framework that deserves a big study is Ruby on Rails, all other frameworks have small communities compared to it. The other possibility is to find out best practices of ruby code in general, thinking of it as script code and not with a project structure.
-
-Ruby and Ruby on Rails community members are, in general, addicted to best practices.
-However, in reality, many of those best practices are studied development methodologies.
-For instance, the majority of Ruby on Rails book authors speak about automated tests, written using specific DSLs, like Cucumber or Rspec.
+Ruby and Ruby on Rails community members love conventions and best practices.
 It is also common to associate Ruby on Rails with Behaviour Driven Development (BDD) and Agile methodologies.
+For instance, a lot of Ruby on Rails book authors speak about automated tests, 
+written using specific domain specific languages (DSLs), like Cucumber or Rspec, 
+this might seam advanced stuff, writing automated tests in ruby is fairly easy,
+and of course those DSLs follow the human/natural philosophy of ruby.
 
-Because of all this, the ruby community has great potential to be a starting point to understand the role of best practices, its benefits and how to measure it.
-In fact, there is already some work done.
+In lst:cucumber a simple cucumber test file shows how readable tests can be.
+It might look like a use-case, but this is an automated test.
 
+\begin{rubycode}{Cumber feature}{lst:cucumber}
+Feature: Search courses
+  Potential students should be able to search for courses
 
-\subsection{The Rails Community} 
-The Ruby and Ruby on Rails community has been growing up in the last years. Programmers from other languages like Java, .NET are discovering the power of Rails and how easy is the development using Rails.
-The community around Ruby on Rails is full of nice people who want to help others learn. Become part of the family, learn from others, and give something back when you can.
-You can find a lot of information about Ruby and Ruby on Rails through several communication channels such as mailing lists, forums, blogs, Wikis, Twitter, and IRC. There are also several good materials available such as tutorials, screen casts, and books.
+  Scenario: Search by topic
+    Given there are 34 courses which do not have the topic "math"
+    And there are 2 courses LEI, MEI that each have "math" as one of the topics
+    When I search for "math"
+    Then I should see the following courses:
+      | Course code |
+      | LEI         |
+      | MEI         |
+\end{rubycode}
 
-
-%
-%\subsection{Summary} 
-%This chapter introduced you to the Ruby on Rails web framework and its concepts like “Don’t Repeat Yourself” (DRY) and 
-%“Convention over Configuration” (CoC). Using these principals you can produce software faster and easily to maintain.
-%We talked about how the Rails community is nowadays, and how it has been growing up in the last years. 
-%Also we talked about what companies are already using Rails in their production environments.
-%
+There are a lot of frameworks, projects and communities. 
+However the characteristics of Rails, the various philosophies behind it,
+in conjunction with experience that I have developing Rails application,
+makes this community a great potential to be a starting point to understand the role of best practices, 
+its benefits and how to measure it.
 
