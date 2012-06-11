@@ -232,24 +232,36 @@
 
 
 
-\usepackage[hyperpageref]{backref}
-\renewcommand*{\backref}[1]{}
-\renewcommand*{\backrefalt}[4]{%
-\ifcase #1 %
-(Not cited.)%
-\or
- \textbf{Cited} on page~#2.%
-\else
- \textbf{Cited} on pages~#2.%
-\fi}
-\renewcommand*{\backrefsep}{, }
-\renewcommand*{\backreftwosep}{ and~}
-\renewcommand*{\backreflastsep}{ and~}
-\usepackage{natbib}
-\usepackage[algoruled,linesnumbered,shortend]{algorithm2e}
-%\usepackage{algorithmic}
+%\usepackage[hyperpageref]{backref}
+%\renewcommand*{\backref}[1]{}
+%\renewcommand*{\backrefalt}[4]{%
+%\ifcase #1 %
+%(Not cited.)%
+%\or
+% \textbf{Cited} on page~#2.%
+%\else
+% \textbf{Cited} on pages~#2.%
+%\fi}
+%\renewcommand*{\backrefsep}{, }
+%\renewcommand*{\backreftwosep}{ and~}
+%\renewcommand*{\backreflastsep}{ and~}
+%\usepackage{natbib}
+%\usepackage[algoruled,linesnumbered,shortend]{algorithm2e}
+%%\usepackage{algorithmic}
 
 
+\usepackage[colorlinks]{hyperref}
+\hypersetup{pdffitwindow=true,linkcolor=LightSkyBlue,citecolor=Sienna,urlcolor=Navy,menucolor=black}
+\RequirePackage[hyperpageref]{backref} 
+   \renewcommand*{\backref}[1]{}  
+   \renewcommand*{\backrefalt}[4]{
+      \ifcase #1 
+         No cited.
+      \or
+         Cited on page #2.
+      \else
+         Cited on pages #2.
+      \fi}
 
  
 

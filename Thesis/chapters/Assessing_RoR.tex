@@ -1,10 +1,6 @@
 \thispagestyle{empty}
 \chapter{Assessing Ruby on Rails Projects}\label{chap:assissing_ror}
 
-
-%%--------------------------------------
-%% ASSESSING RUBY ON RAILS PROJECTS
-\section{Assessing Ruby on Rails Projects} \label{sec:assessing_ror}
 After deciding that some \emph{procedure} is a \emph{best practice},
 it would be handy to find a way to automatically verify whether that practice is being followed by
 the developers of a given project.
@@ -22,7 +18,7 @@ developed by a single user.
 These applications are so simple that many times the code is almost entirely created by RoR code generators.
 Usually, when code is not written by humans, it has few mistakes concerning those recommendations.
 
-\subsection{First Study}\label{subsec:first_study}
+\section{First Study}\label{subsec:first_study}
 Having taken the above into account, we decided to run the rails best practices gem on similar RoR (Ruby on Rails) projects.
 Seven \emph{time tracking} or \emph{project management} open source systems were chosen.
 After running the gem and counting
@@ -65,7 +61,7 @@ best practices.
 The numbers reflect both the community reviews and our own estimates much more.
 
 
-\subsection{Second Study}\label{subsec:second_study}
+\section{Second Study}\label{subsec:second_study}
 After the first study reported above, we felt that it was time to make a bigger one;
 we should repeat the experiment over a larger sample. 
 In addition, there was the need to define an objective quality metric to compare the metrics results with.
@@ -98,7 +94,7 @@ Basically, after collecting the GitHub URLs for each project, we followed the ne
 Next, an excerpt of the obtained table is shown:
 \input{tables/RBPResults2Raw}
 
-\subsection{Results}\label{subsec:results}
+\section{Results}\label{subsec:results}
 After building a table containing the results for the 40 projects, we easily found correlations between columns.
 We discovered that the average correlation index, for the weighted C(x) columns, is -0.2. Only three of the weighted C(x) columns do not have negative correlation. This is quite good, considering the fact that there is an explanation for it. 
 Those three checkers (without negative correlation) aimed at finding  NBPs that almost non of the projects were committing, 
