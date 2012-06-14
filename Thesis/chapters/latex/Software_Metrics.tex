@@ -1,0 +1,192 @@
+\thispagestyle{empty}
+\chapter{Software Metrics}\label{chap:software_metrics}
+
+In this chapter, you can learn the basics of software metrics. 
+It is given a brief explanation of quality attributes. Furthermore, we stand that, in the context of open source software, maintainability is the most relevant attribute. In addition, a few traditional software metrics are listed.
+
+
+%%--------------------------------------
+%% Assessing Open Source Software
+\section{Assessing Open Source Software} \label{sec:assessing}
+The simplest operation in science and the lowest level of measurement is classification~\cite{kan2002metrics}.
+
+By assessing OSS we mean to sort OSS projects into an
+\textsf{ordinal scale}\footnote{Ordinal scale refers to the measurement operations through which the subjects can be compared in order.}
+This can be achieved by defining a
+\textsf{ranking system}\footnote{
+  Raking system example: to classify a quality attribute, for instance the project documentation, according to its quality with
+  five, four, three, two or one star.
+} and by placing OSS projects into quality categories with respect to certain quality attributes.
+First we need to find a way of quantifying those OSS quality attributes.
+
+%% Sofware Quality
+In software, quality is an abstract concept. It is commonly recognized as lack of "bugs", and the meeting of the functional requirements.
+However, quality can be perceived and interpreted differently based on the actual context, objectives and interests of each project.
+Many software development companies do monitor costumer satisfaction as a quality index,
+for instance, IBM ranks their software products in levels of CUPRIMDSO~\cite{kan2002metrics}:
+\begin{itemize}
+\item Capability/Functionality (refers to the software meeting its functional requirements)
+\item Usability (refers to the required effort to learn, and operate the software)
+\item Performance/Efficiency (refers to the software performance and resource consumption)
+\item Reliability (refers to software fault tolerance and recoverability)
+\item Instalability/Portability (refers to the required effort to install or transfer the software to another environment)
+\item Maintainability (refers to the required effort to modify the software)
+\item Documentation/Information (refers to the coverage and accessibility of the software documentation)
+\item Service (refers to the company monitoring and service)
+\item Overall (refers to an overall classification based on the other attributes)
+\end{itemize}
+Almost every big software company have similar quality attributes.
+ISO/IEC 9126 provides a framework for the evaluation of software quality (The goal is to achieve quality in use, in other words, quality from the user perspective)~\cite{bevan1999quality}
+IISO/IEC 912 defines six software quality attributes:
+\begin{itemize}
+\item Functionality (refers to the software meeting of the functional requirements)
+\item Reliability (refers to software fault tolerance and recoverability)
+\item Usability (refers to the required effort to learn, and operate the software)
+\item Efficiency (refers to the software performance and resource consumption)
+\item Maintainability (refers to the required effort to modify the software)
+\item Portability (refers to the required effort to transfer the software to another environment)
+\end{itemize}
+Quality attributes have interrelationships.
+They can be
+conflictive\footnote{Conflictive, negative influence, if one attribute is high it makes the other one low.} or
+support\footnote{Support, positive influence, if one attribute is high it makes the other one high too.} one another.
+For example, the higher the functional complexity of the software, the harder it becomes to achieve maintainability~\cite{kan2002metrics}.
+
+Because of the OSP bazaar style and continuous development process, it is intuitive that the maintainability and documentation attributes
+have a big influence on the overall quality and continuous progress of an OSP
+(maintainability and documentation have support relationships
+with usability, reliability and availability attributes, but might be conflictive with functionality and performance attributes).
+
+Failure to meet functionality often leads to late changes and increased costs in the development process.
+The software industry and researchers have been mostly interested on testing methodologies
+that focus on functional requirements and pay little attention to non-functional requirements~\cite{chung2009non}.
+
+There are several challenges and difficulties, in assessing non-functional quality attributes for software projects.
+For example, security is a non-functional requirement that needs to be addressed in every software project.
+Therefore a badly-written software may be functional, but subject to buffer overflow attacks.
+Another example is the amount of codebase comments, if the code does not have any comments it will not affect the functional requirements,
+but it is obvious that it will decrease readability and maintainability~\cite{gousios2007software}.
+
+%% SOFTWARE METRICS
+\section{Classic Software Metrics}
+To classify OSS with regards to a certain quality attribute, we need to find which factors influence it.
+Then we need a way to measure that attribute. If we need to measure we need metrics.
+
+Fortunately, there are around two thousand documented software metrics, but there is few information on how those metrics relate to each other.
+Most of them simply have different names but give similar information~\cite{fenton1999software}.
+The major challenge is to discover how important the information given by those metrics is, if the calculation effort pays off,
+how to interpret their values and find
+\textsf{correlations}\footnote{Correlation is probably the most widely used statistical method to assess relationships among observational data~\cite{kan2002metrics}.}
+ to assess the quality attributes of an OSP.
+
+
+\subsection{Lines of Code}
+A line of code is any line of program text that is not a comment or blank line, 
+regardless of the number of statements or fragments of statements in the line. 
+This specifically includes all lines containing program headers, declarations, and executable and non-executable statements.~\cite{conte1986software}
+The lines of code (LOC) metric is anything but simple. 
+The major problem comes from the ambiguity of the operational definition, the actual counting.
+In the early days of Assembler programming, in which one physical line was the same as one instruction, the LOC definition was clear.
+With the availability of high-level languages the one-to-one correspondence broke down.
+Differences between physical lines and instruction statements (or logical lines of code) 
+and differences among languages contribute to the huge variations in counting LOC.
+For instance, Boehm~\cite{boehm2009software} counts lines as physical lines and includes executable lines, data definitions, and comments. 
+Even within the same language, the methods and algorithms used by different counting tools can cause significant differences in the final counts.
+
+Next, the most common variations are described~\cite{jones1986programming}: 
+\begin{itemize}
+\item Count only executable lines. 
+\item Count executable lines plus data definitions. 
+\item Count executable lines, data definitions, and comments. 
+\item Count executable lines, data definitions, comments, and job control language. 
+\item Count lines as physical lines on an input screen. 
+\item Count lines as terminated by logical delimiters. 
+\end{itemize}
+
+
+\subsection{Cyclomatic Complexity}
+The measurement of cyclomatic complexity~\cite{mccabe1976complexity} was designed to indicate a program's testability and maintainability.
+It is the classical graph theory cyclomatic number, indicating the number of regions in a graph.
+As applied to software, it directly measures the number of linearly independent paths through a program source code.
+Basically it counts how many different executions a program can have. 
+For instance, one "if" statement will double the number of paths. 
+Therefore, a high number of control statements (ifs, loops, etc) in a program source code will result in a high cyclomatic complexity. 
+As such it can be used to indicate the effort required to test a program. To determine the paths, the program procedure is represented as a strongly connected graph with unique entry and exit points. The general formula to compute cyclomatic complexity is: 
+$$M = V(g) = e - n + 2p$$
+where
+\begin{itemize}
+\item \emph{$V(g)$} is the cyclomatic number of g 
+\item \emph{$e$   } is the number of edges 
+\item \emph{$n$   } is the number of nodes 
+\item \emph{$p$   } is the number of unconnected parts of the graph 
+\end{itemize}
+
+
+\subsection{Fan-In and Fan-Out}
+Fan-in and fan-out are perhaps the most common design structure metrics, which are based on the ideas of coupling~\cite{yourdon1979structured}:
+\begin{itemize}
+\item \emph{Fan-in } is a count of the modules that call a given module
+\item \emph{Fan-out} is a count of modules that are called by a given module
+\end{itemize}
+
+In general, modules with a large fan-in are relatively small and simple, and are usually located at the lower layers of the design structure.
+In contrast, modules that are large and complex are likely to have a small fan-in.
+There is also the theory that high fan-outs represent a high number of method calls and thus are undesirable,
+while high fan-ins represent a high level of reuse~\cite{wang2007dynamic}.
+
+\subsection{Object-Oriented Metrics}
+Classes and methods are the basic constructs of OO technology.
+The amount of function provided by an OO software can be estimated based on the number of identified classes and methods or their variants.
+Therefore, it is natural that the basic OO metrics are related to classes, methods and their size.
+
+The pertinent question therefore is what should the optimum value be for OO metrics. There may not be one correct answer,
+but based on his experience in OO software development, Lorenz proposed eleven metrics as OO design metrics called rules of thumb~\cite{lorenz1994object}.
+\begin{itemize}
+\item \emph{Average Method Size (LOC)}: Should be less than 8 LOC for Smalltalk and 24 LOC for C++
+\item \emph{Average Number of Methods per Class}: Should be less than 20. Bigger averages indicate too much responsibility in too few classes.
+\item \emph{Average Number of Instance Variables per Class}: Should be less than 6. More instance variables indicate that one class is doing more than it should.
+\item \emph{Class Hierarchy Nesting Level (Depth of Inheritance Tree, DIT)}: Should be less than 6, starting from the framework classes or the root class.
+\item \emph{Number of Class/Class Relationships in Each Subsystem}: Should be relatively high. This item relates to high cohesion of classes in the same subsystem. If one or more classes in a subsystem don't interact with many of the other classes, they might be better placed in another subsystem.
+\item \emph{Average Number of Comment Lines (per Method)}: Should be greater than 1.
+\end{itemize}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% AVAILABLE TOOLS
+\section{Available Tools}
+Tools are intended to make a task easier.
+Codebase analysis tools are designed turn the task of analyse and measure source code easier,
+Those tools help in the process of finding software flaws and can also serve as aids for assessing the quality of software.
+
+Next a list of some free tools:
+\begin{itemize}
+\item\textsf{FindBugs} find "bugs" in Java Programs
+\item\textsf{FxCop (Microsoft)} analyses managed code assemblies and reports information about the assemblies
+\item\textsf{PMD} scans Java source code and looks for potential code problems
+\item\textsf{PreFast} (Microsoft) is a static analysis tool that identifies defects in C/C++ programs
+\item\textsf{RATS} (Fortify) scans C, C++, Perl, PHP and Python source code for security problems like buffer overflows and Time Of Check, Time Of Use race conditions
+\item\textsf{SWAAT} simplistic tool for Java, JSP, ASP .Net, and PHP
+\item\textsf{Flawfinder} scans C and C++
+\item\textsf{Saikuro} is a Ruby cyclomatic complexity analyzer.
+\item\textsf{Reek} is a tool that examines Ruby classes, modules, methods and reports any code smells it finds.
+\item\textsf{Rails best practices} is another tool that examines Ruby classes, modules, methods and reports any code smells it finds.
+
+
+
+
+\end{itemize}
+
+Tools like the ones listed above analyze code without executing it and point out what they consider to be potential weaknesses.
+The most typical example of what those tools can find probably is calls to the emph{gets} function in
+the C programming language: this function is inherently insecure and can lead to buffer
+overflows. Specially crafted user input values can, for instance, allow an attacker to access
+or modify confidential data or even take control of any computer executing that piece of
+software.
+
+Because these tools need to "understand" the code being analyzed, they are necessarily very language specific.
+Furthermore, when analyzing a large amount of software projects, for instance Github projects,
+it is of great importance to have a previous knowledge of what kind of projects  are going to be found (programing languages, frameworks, and other attributes),
+this way tools can be adapted to get better results. 
+

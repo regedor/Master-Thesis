@@ -1,27 +1,37 @@
 \thispagestyle{empty}
 \chapter{Assessing Ruby on Rails Projects}\label{chap:assissing_ror}
 
-After deciding that some \emph{procedure} is a \emph{best practice},
-it would be handy to find a way to automatically verify whether that practice is being followed by
-the developers of a given project.
-With that in mind, an open source ruby gem was created (by the authors of Rails best practices web site) 
-with the objective of automatically producing a report that shows where,
-in the source code,  a project is failing to obey to consensual practices.
-At the moment of writing, this gem can check for 28 kinds of best practices (from the 70 described in that web site).
+To assess the quality of a software project is not an easy task.
+To many variables should be taken into consideration and most of their values can be considered subjective.
 
-However, one of the first things that we have noticed when we have applied this gem to OSS projects,
-is that the biggest and most renown projects have much more errors than the smaller and unknown projects.
-This nonsense has a simple  interpretation.
-%The majority of RoR projects found in github are simple projects, in most cases, developed by a single user.
-Small projects (like the majority of RoR projects found in github) are simple software packages,  often 
-developed by a single user.
-These applications are so simple that many times the code is almost entirely created by RoR code generators.
-Usually, when code is not written by humans, it has few mistakes concerning those recommendations.
+Our thesis is that an open source project quality is somehow influenced by the best practices followed 
+by its contributors.
+
+Furthermore, since Rails community has been our object of study we decided to conduct a series of studies, 
+with the objective of finding correlations between best practices defined by the Rails community and
+the quality of projects following it.
+
+With the objective of automatically verify whether or not best practices are being followed by
+a given Rails project, the open source ruby gem rails\_best\_practices 
+was created (by the authors of Rails best practices web site).
+We agreed on using it as starting point for our work.
+
+This chapter reports the different studies carried out, the main difficulties and the results obtained.
+
+
 
 \section{First Study}\label{subsec:first_study}
-Having taken the above into account, we decided to run the rails best practices gem on similar RoR (Ruby on Rails) projects.
+One of the first things that we have noticed when we applied this gem to OSS projects,
+is that the biggest and most renown projects have much more errors than the smaller and unknown projects.
+This nonsense has a simple  interpretation.
+Small projects (like the majority of Rails projects found in GitHub) are simple software packages,
+often developed by a single user, projects carried out for simple learning purposes.
+These applications are so simple that many times the code is almost entirely created by Rails code generators.
+Usually, when code is not written by humans, it has few mistakes concerning those recommendations.
+
+Having taken the above into account, we decided to run the rails best practices gem on similar Rails projects.
 Seven \emph{time tracking} or \emph{project management} open source systems were chosen.
-After running the gem and counting
+After running the gem and counting the
 \textsf{not best practices (NBPs)}\footnote{In fact, Rails best practices gem does not find best practices in the source code.
   It does the opposite, it discovers when the code is not written according to a best practice, in other words, 
   it identifies bad practices (similar to the detection of code smells).
@@ -95,7 +105,7 @@ Next, an excerpt of the obtained table is shown:
 \input{tables/RBPResults2Raw}
 
 \section{Results}\label{subsec:results}
-After building a table containing the results for the 40 projects, we easily found correlations between columns.
+After building the table containing the results for the 40 projects, we easily found correlations between columns.
 We discovered that the average correlation index, for the weighted C(x) columns, is -0.2. Only three of the weighted C(x) columns do not have negative correlation. This is quite good, considering the fact that there is an explanation for it. 
 Those three checkers (without negative correlation) aimed at finding  NBPs that almost non of the projects were committing, 
 so there is no correlation.
@@ -110,5 +120,204 @@ Observing that Table, it is possible to notice that the forks correlation is big
 We believe that if it happens, it is because forking a project shows intensions of digging into the code and, 
 of course, it easier to understand others code when it follows good practices.
 
-As future work, we are considering more correlations with other variables that are already available, but we haven't used yet. The most relevant ones: the number of commiters, starting date of the project, last commit data, and total number of commits. We believe that those variables can strongly be related with the forks, watchers and of course, in the end, the quality of the project.
+
+
+
+\section{Third Study}\label{subsec:thrid_study}
+After the previous studied, it turned out that we have a achieved a new metric for classifying the quality of Rails projects.
+By inverting the total number of NBPs and scaling it, we can create a tool to automatically give a score to the projects.
+
+That is exactly what we did, we created a simple application that receives the path for a GitHub rails project. 
+As result by automating everything, it was possible to run the application against a bigger set of projects.
+A list of analyzed projects can be found at \url{www.study.gourgeouscode.com}.
+
+
+
+
+
+\subsection{Best Practices Considered}\label{subsec:second_study}
+
+
+\subsubsection{Remove Tab}
+  Make sure there are no tabs in files.
+ 
+  % See the best practice details here \url{http://rails-bestpractices.com/posts/81-remove-tab}
+   
+\subsubsection{Remove Trailing Whitespace }  
+  Make sure there are no trailing whitespace in codes.
+ 
+  % See the best practice details here \url{http://rails-bestpractices.com/posts/60-remove-trailing-whitespace}
+   
+\subsubsection{Add Model Virtual Attribute}
+  Make sure to add a model virual attribute to simplify model creation.
+ 
+  % See the best practice details here \url{http://rails-bestpractices.com/posts/4-add-model-virtual-attribute}
+       
+\subsubsection{Always Add Db Index}
+  Review db/schema.rb file to make sure every reference key has a database index.
+ 
+  % See the best practice details here \url{http://rails-bestpractices.com/posts/21-always-add-db-index}
+       
+\subsubsection{Dry Bundler In Capistrano}
+  Review config/deploy.rb file to make sure using the bundler's capistrano recipe.
+ 
+  % See the best practice details here \url{http://rails-bestpractices.com/posts/51-dry-bundler-in-capistrano}
+   
+\subsubsection{Isolate Seed Data }
+  Make sure not to insert data in migration, move them to seed file.
+ 
+  % See the best practice details here \url{http://rails-bestpractices.com/posts/20-isolating-seed-data.}
+   
+\subsubsection{Keep Finders On Their Own Model}
+  Review model files to ake sure finders are on their own model.
+ 
+  % See the best practice details here \url{http://rails-bestpractices.com/posts/13-keep-finders-on-their-own-model.}
+   
+\subsubsection{Law Of Demeter }
+  Review to make sure not to avoid the law of demeter.
+ 
+  % See the best practice details here \url{http://rails-bestpractices.com/posts/15-the-law-of-demeter.}
+   
+\subsubsection{Move Code Into Controller}
+  Review a view file to make sure there is no finder, finder should be moved to controller.
+ 
+  % See the best practice details here \url{http://rails-bestpractices.com/posts/24-move-code-into-controller.}
+   
+\subsubsection{Move Code Into Helper }
+  Review a view file to make sure there is no complex options\_for\_select message call.
+ 
+  % See the best practice details here \url{http://rails-bestpractices.com/posts/26-move-code-into-helper.}
+   
+\subsubsection{Move Code Into Model }
+  Review a view file to make sure there is no complex logic call for model.
+ 
+  % See the best practice details here \url{http://rails-bestpractices.com/posts/25-move-code-into-model.}
+     
+\subsubsection{Move Finder To Named Scope }
+  Review a controller file to make sure there are no complex finder.
+ 
+  % See the best practice details here \url{http://rails-bestpractices.com/posts/1-move-finder-to-named_scope.}
+   
+\subsubsection{Move Model Logic Into Model}
+  Review a controller file to make sure that complex model logic should not exist in controller, should be moved into a model.
+ 
+  % See the best practice details here \url{http://rails-bestpractices.com/posts/7-move-model-logic-into-the-model.}
+   
+\subsubsection{Needless Deep Nesting}
+  Review config/routes.rb file to make sure not to use too deep nesting routes.
+ 
+  % See the best practice details here \url{http://rails-bestpractices.com/posts/11-needless-deep-nesting.}
+   
+\subsubsection{Not Use Default Route}
+  Review config/routes file to make sure not use default route that rails generated.
+ 
+  % See the best practice details here \url{http://rails-bestpractices.com/posts/12-not-use-default-route-if-you-use-restful-design}
+   
+\subsubsection{Not Use Time Ago In Words}
+  Review view and helper files to make sure not use time\_ago\_in\_words or distance\_of\_time\_in\_words\_to\_now.
+ 
+  % See the best practice details here \url{http://rails-bestpractices.com/posts/105-not-use-time_ago_in_words.}
+   
+\subsubsection{Overuse Route Customizations}
+  Review config/routes.rb file to make sure there are no overuse route customizations.
+ 
+  % See the best practice details here \url{http://rails-bestpractices.com/posts/10-overuse-route-customizations.}
+   
+\subsubsection{Protect Mass Assignment}
+  Review model files to make sure to use attr\_accessible or attr\_protected to protect mass assignment.
+ 
+  See the best practices details here \url{http://rails-bestpractices.com/posts/148-protect-mass-assignment.}
+   
+\subsubsection{Remove Empty Helpers Review}
+  Review a helper file to make sure it is not an empty moduel.
+ 
+  % See the best practice details here \url{http://rails-bestpractices.com/posts/72-remove-empty-helpers.}
+   
+\subsubsection{Remove Unused Methods In Controllers}
+  Find out unused methods in controllers.
+   
+\subsubsection{Remove Unused Methods In Helpers}
+  Find out unused methods in helpers.
+       
+\subsubsection{Remove Unused Methods In Models}
+  Find out unused methods in models.
+   
+\subsubsection{Replace Complex Creation With Factory Method}
+  Review a controller file to make sure that complex model creation should not exist in controller, should be replaced with factory method.
+ 
+  % See the best practice details here \url{http://rails-bestpractices.com/posts/6-replace-complex-creation-with-factory-method.}
+   
+\subsubsection{Replace Instance Variable With Local Variable}
+  Review a partail view file to make sure there is no instance variable.
+ 
+  % See the best practice details here \url{http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable.}
+   
+\subsubsection{Restrict Auto Generated Routes}
+  Review a route file to make sure all auto-generated routes have corresponding actions in controller.
+ 
+  % See the best practice details here \url{http://rails-bestpractices.com/posts/86-restrict-auto-generated-routes}
+   
+\subsubsection{Simplify Render In Controllers}
+  Review a controller file to make sure using simplified syntax for render.
+ 
+  % See the best practice details here \url{http://rails-bestpractices.com/posts/62-simplify-render-in-controllers.}
+   
+\subsubsection{Simplify Render In Views}
+  Review a view file to make sure using simplified syntax for render.
+ 
+  % See the best practice details here \url{http://rails-bestpractices.com/posts/61-simplify-render-in-views.}
+   
+\subsubsection{Use Before Filter}
+  Review a controller file to make sure to use before\_filter to remove duplicated first code line in different action.
+ 
+  % See the best practice detailed here \url{http://rails-bestpractices.com/posts/22-use-before_filter.}
+   
+\subsubsection{Use Model Association}
+  review a controller file to make sure to use model association instead of foreign key id assignment.
+ 
+  % See the best practice details here \url{http://rails-bestpractices.com/posts/2-use-model-association.}
+   
+\subsubsection{Use Multipart Alternative As Content Type Of Email}
+  Make sure to use multipart/alternative as content\_type of email.
+ 
+  % See the best practice details here \url{http://rails-bestpractices.com/posts/41-use-multipart-alternative-as-content\_type-of-email.}
+   
+\subsubsection{Use Observer}
+  Make sure to use observer (sorry we only check the mailer deliver now).
+ 
+  % See the best practice details here \url{http://rails-bestpractices.com/posts/19-use-observer.}
+   
+\subsubsection{Use Query Attribute}
+  Make sure to use query attribute instead of nil?, blank? and present?.
+ 
+  % See the best practice details here \url{http://rails-bestpractices.com/posts/56-use-query-attribute.}
+   
+\subsubsection{Use Say With Time In Migrations}
+  Review a migration file to make sure to use say or say\_with\_time for customized data changes to produce a more readable output.
+ 
+  % See the best practice details here \url{http://rails-bestpractices.com/posts/46-use-say-and-say\_with\_time-in-migrations-to-make-a-useful-migration-log.}
+   
+\subsubsection{Use Scope Access}
+  Review a controller to make sure to use scope access instead of manually checking current\_user and redirect.
+ 
+  % See the best practice details here \url{http://rails-bestpractices.com/posts/3-use-scope-access.}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
