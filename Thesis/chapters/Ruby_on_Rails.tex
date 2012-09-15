@@ -59,7 +59,12 @@ A class object will respond to the method class returning the class object "Clas
 The class "Class" can be considered a metaclass, because their instances are classes to.
 In~\ref{lst:ruby_objects} a simple snippet of ruby code shows this tricky characteristic.
 The code can be run in 
-\textsf{IRB}\footnote{Interactive Ruby Shell.}, this tool is of great help for ruby programers,
+\textsf{IRB}\footnote{
+  Interactive Ruby Shell (IRB) is a shell for programming in the object-oriented scripting language Ruby.
+  It can be launched from a command line and allows the execution of Ruby commands with immediate response, 
+  experimenting in real-time.
+ },
+this tool is of great help for ruby programers,
 and an easy way for new comers to start learning.
 
 \begin{rubycode}{Sample Ruby Code}{lst:ruby_objects}
@@ -80,17 +85,26 @@ and an easy way for new comers to start learning.
   => Class
 \end{rubycode}
 
-Ruby is dynamic and interpreted at run time with "duck typing": 
-If it walks like a duck and quacks like a duck, then it is a duck! This means that you do not make assumptions.
+Ruby is dynamic and interpreted at run time with 
+\textsf{duck typing}\footnote{
+  Duck typing, in object oriented programing languages, 
+  is a style of dynamic typing in which the object methods and properties determine the valid semantics, 
+  rather than its inheritance from a particular class or implementation of a specific interface.
+} 
+"If it walks like a duck and quacks like a duck, then it is a duck!".
 
-Ruby has open classes, that means programmers are allowed to change predefined classes.
-The truth is that depending on the usage it can be either a good or a bad thing. 
-An example of this is 
+Ruby has open classes, this means that at any moment it is possible to change 
+any class methods and definitions. That also means that programmers are allowed to change predefined classes.
+The truth is that depending on the usage it can be either a good or a bad thing.
+Doing some of those things clearly violates the object oriented principle of encapsulation. 
+An example of a bad usage would be to 
 \textsf{Monkey patching}\footnote{
   The term monkey patch means any dynamic modification to a class and 
   is often used as a synonym for dynamically modifying any class at runtime.
-},
-doing it clearly violates the object oriented principle of encapsulation.
+} 
+the size or length method of String objects to do not take into consideration white spaces.
+It might be useful for a certain situation, 
+but it might give a big headache to someone coming to the project few time later.
 However, if it was not for those characteristics, 
 rails would not have been able to easily change some of ruby basic datatypes and 
 consequently developers would not be able to write amazingly readable code like shown in~\ref{lst:ruby_date_calculations}.
@@ -108,7 +122,8 @@ consequently developers would not be able to write amazingly readable code like 
   => Fri, 04 May 2012
 \end{rubycode}
 
-Some of this ruby characteristics are seen by some people as amazing features but by other as "black magic".
+Some of this ruby characteristics are seen by some people as amazing features 
+but many careful programers call it.
 
 The ruby language has drawn devoted coders worldwide.
 The reason behind that can only be its elegant syntax that is natural to read and easy to write. 
@@ -145,7 +160,7 @@ to avoid what he saw as repetitive coding inherent in platforms such as Java,
 ruby was almost unknown at the time.
 
 The framework he created was later released as an open source project, separately from the project management tool. 
-The name of this open source web framework is Ruby On Rails.
+The name of this open source web framework is Ruby on Rails.
 
 In 2005, Hansson called the attention of the community with a legendary video named "Creating a Weblog in 15 minutes". 
 It was an introduction describing how to develop with Rails.
