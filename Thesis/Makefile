@@ -24,4 +24,6 @@ clean:
 	rm -f minichapters/*.aux minichapters/*.toc minichapters/*. minichapters/*.bbl minichapters/*.blg  minichapters/*.log
 	rm -f minichapters/*.nav minichapters/*.out minichapters/*.snm minichapters/*.vrb minichapters/*.lo*
 	rm -f thesis.acn thesis.ist thesis.glo
+open:
+	open $(NAME).pdf
 
