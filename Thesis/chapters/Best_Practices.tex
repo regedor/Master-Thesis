@@ -1,13 +1,13 @@
 \thispagestyle{empty}
 \chapter{Best Practices}\label{chap:best_practices}
 
-Best practices are not rules, they are standards followed by a specific community.
+Best practices are not standards, they are recommendations followed by a specific community.
 Something that most people agrees with, although it might not be scientifically proven,
 it seems to be the best way of handling a problem.
 
 In this chapter we will understand how important best practices are for open source communities, 
 how they give meaning to traditional software metrics
-and identify some examples of best practices from the ruby community.
+and identify some examples of best practices from the Ruby community.
 
 
 \section{Best Practices in Open Source Software Projects} \label{sec:best_practices_ossp}
@@ -83,27 +83,27 @@ writing unit tests for your code;
 the way files are organized inside a project; etc.
 
 Some of those things might look like a matter of taste,
-but the truth is that every worthy ruby developer uses two spaces to indent code.
+but the truth is that every worthy Ruby developer uses two spaces to indent code.
 This is the standard for the ruby community. 
 Other communities, for instance JavaScript programers, prefer 4 spaces
-and in the Java world 8 spaces is considered the considered a good choice.
+and in the Java world 8 spaces is considered to be a good choice.
 
 It is important to notice,
-that we can find virtually no ruby programmer using a different indentation, 
+that we can find virtually no Ruby programmer using a different indentation, 
 but we can find Java communities advocating different indentations.
 This fact shows that the ruby community agrees that 2 spaces is a the best option and
 can be considered a best practice.
 In contrast, we can not be completely sure about the 8 spaces for Java,
 since there is also a lot of developers advocating 4 spaces and also a good number using tabs instead.
-The Java community is divide, it almost possible to identify sub communities defending 
+The Java community is divide, it is almost possible to identify sub communities defending 
 different answers for the same questions. 
 It might be possible to identify conventions in those smaller communities, 
-but it will be harder to do it for the bigger community.
+but it will be harder to do it for the biggest community.
 
 To consider this conventions as a best practice, it is important to understand if that
 conventions are strong through the community in question. 
 Because of that, it is obvious that the first step before finding best practices is to identify the community:
-are we trying to find best practices for ruby programers general? for all programers in general? 
+are we trying to find best practices for Ruby programers general? for all programers in general? 
 for the programers working in a specific company or project?
 
 In smaller communities, it might be easier to achieve agreement and
@@ -113,7 +113,7 @@ are less likely to be considered strong best practices compared to
 best practices followed by the developers working on the top 10 open source projects.
 
 It is clear that best practices are specific to a certain community, 
-so, after correctly choosing a community, to find identify best practices we need
+so, after correctly choosing a community, to identify best practices we need
 to find out what patterns are used by its members, 
 and to prove that they are real best practices that should be followed, 
 it is important to prove that some benefit comes from using it.
@@ -139,9 +139,10 @@ Later in this document, this relation between these variables relation is proved
 
 
 \section{Best Practices Examples} \label{sec:best_practices_examples}
-In this section, different best practices categories are listed.
+In this section, different best practices categories are identified and some examples listed.
+These are best practices for the Ruby community, nevertheless some of them can be applied to other communities.
+Best practices can be related to different things.
 
-These are best practices for the ruby community.
 
 Best practices related to code formatting:
 \begin{itemize}
@@ -153,7 +154,7 @@ Related to syntax:
 \begin{itemize}
 \item \emph{Avoid return where not required}.
 \item \emph{Suppress superfluous parentheses}, when calling methods, 
-but keep them when calling \"functions\" (when you use the return value in the same line).
+but keep them when calling "functions" (when you use the return value in the same line).
 \end{itemize}
 
 Related to naming:
@@ -181,8 +182,8 @@ rake task\footnote{
 
 Ruby and Ruby on Rails community members are, in general, known has been addicted to best practices.
 In reality, many of those best practices are studied development methodologies.
-It is common to associate Ruby on Rails with Behaviour Driven Development (BDD) and Agile methodologies.
-And, most ruby developers, even language new comers, are worried about following Rails philosophies and best practices.
+As previously said it is common to associate Ruby on Rails with Behaviour Driven Development (BDD) and Agile methodologies.
+And, most Ruby developers, even language new comers, are worried about following Rails philosophies and best practices.
 The majority of Ruby on Rails book authors speak about convention over configuration,
 those conventions can be be seen as best practices too.
 
@@ -193,6 +194,7 @@ The first step is to define the community: Rails developers.
 After that, we need to find procedures or methodologies that most of people, in the community, agrees to consider it as best practice.
 The simplest way is to ask people in the community. 
 In fact, there was already some work done here.
+
 The web site
 \textsf{Rails Best Practices}\footnote{\url{http://www.rails-bestpractices.com/} is a web site created by Richard Huang,
 it was inspired by Wen-Tien Chang talk given at Kungfu RailsConf 2009 in Shanghai. Slides can be found here
@@ -212,15 +214,17 @@ With that in mind, an open source ruby
 }, 
 called rails\_best\_practices, was created (by the authors of Rails best practices web site) 
 based on the most voted best practices. 
-After installing the gem, it is possible to run it against any Rails project.
+After installing the gem, it is possible to run it on any Rails project.
 and it will automatically produce a report that shows where,
 in the source code, a project is failing to obey to consensual best practices.
 It is important to notice that the rails\_best\_practices gem does not say if a project is following best practices,
 it does the opposite, shows where the project is failing.
 
 At the moment of writing, this gem can check for 33 different best practices from more then 70 described in the web site.
-We did a few commits to this gem source code, to improve and correct some bugs, 
-everybody is welcome to do it and to help with the writing of more best practices failing detectors.
+During the study carried out during this thesis, 
+we end up forking this project as a starting point for the creation of global best practices metric,
+we also did a few commits to this gem source code, that are now in the official version, to improve and correct some bugs. 
+Everybody is welcome to do it and to help with the writing of more best practices failing detectors.
 
 
 
