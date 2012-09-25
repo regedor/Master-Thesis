@@ -13,6 +13,7 @@ all: *.tex *.bib
 	rm -f minichapters/*.nav minichapters/*.out minichapters/*.snm minichapters/*.vrb minichapters/*.lo*
 	rm -f appendix/*.aux appendix/*.toc appendix/*. appendix/*.bbl appendix/*.blg  appendix/*.log
 	rm -f appendix/*.nav appendix/*.out appendix/*.snm appendix/*.vrb appendix/*.lo*
+	rm -f thesis.brf
 	rm -f thesis.acn thesis.ist thesis.glo
 
 check:
@@ -27,6 +28,7 @@ clean:
 	rm -f minichapters/*.nav minichapters/*.out minichapters/*.snm minichapters/*.vrb minichapters/*.lo*
 	rm -f appendix/*.aux appendix/*.toc appendix/*. appendix/*.bbl appendix/*.blg  appendix/*.log
 	rm -f appendix/*.nav appendix/*.out appendix/*.snm appendix/*.vrb appendix/*.lo*
+	rm -f thesis.brf
 	rm -f thesis.acn thesis.ist thesis.glo
 
 edit:
