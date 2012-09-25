@@ -183,18 +183,17 @@ rake task\footnote{
 Ruby and Ruby on Rails community members are, in general, known has been addicted to best practices.
 In reality, many of those best practices are studied development methodologies.
 As previously said it is common to associate Ruby on Rails with Behaviour Driven Development (BDD) and Agile methodologies.
-And, most Ruby developers, even language new comers, are worried about following Rails philosophies and best practices.
+In addition, most Ruby developers, even language new comers, are worried about following Rails philosophies and best practices.
 The majority of Ruby on Rails book authors speak about convention over configuration,
 those conventions can be be seen as best practices too.
 
 Because of all this, the Rails community has great potential to be a starting point to understand the role of best practices, 
 what benefits come from using it and how to measure best practices.
 
-The first step is to define the community: Rails developers. 
+To start our studies the first step is to define the community: Rails developers. 
 After that, we need to find procedures or methodologies that most of people, in the community, agrees to consider it as best practice.
-The simplest way is to ask people in the community. 
+The simplest way to achieve this seems to be by asking people in the community. 
 In fact, there was already some work done here.
-
 The web site
 \textsf{Rails Best Practices}\footnote{\url{http://www.rails-bestpractices.com/} is a web site created by Richard Huang,
 it was inspired by Wen-Tien Chang talk given at Kungfu RailsConf 2009 in Shanghai. Slides can be found here
@@ -214,7 +213,7 @@ With that in mind, an open source ruby
 }, 
 called rails\_best\_practices, was created (by the authors of Rails best practices web site) 
 based on the most voted best practices. 
-After installing the gem, it is possible to run it on any Rails project.
+After installing the gem, it is possible to run it on any Rails project
 and it will automatically produce a report that shows where,
 in the source code, a project is failing to obey to consensual best practices.
 It is important to notice that the rails\_best\_practices gem does not say if a project is following best practices,
@@ -222,10 +221,14 @@ it does the opposite, shows where the project is failing.
 
 At the moment of writing, this gem can check for 33 different best practices from more then 70 described in the web site.
 It is possible to read more details about these 33 best practices in the appendix~\ref{app:rails_best_practices}.
-During the study carried out during this thesis, 
+
+During the studies carried out during this thesis, 
 we end up forking this project as a starting point for the creation of global best practices metric,
-we also did a few commits to this gem source code, that are now in the official version, to improve and correct some bugs. 
-Everybody is welcome to do it and to help with the writing of more best practices failing detectors.
+we also did a few commits to this gem source code, that are now in the official version, to improve it and correct some bugs. 
+
+All the source code is open source and can be found at GitHub (\url{http://www.github.net/regedor}).
+Everybody is welcome to contribute to this projects by writing more best practices failing detectors,
+by forking, correcting bugs or improving it in any way.
 
 
 
