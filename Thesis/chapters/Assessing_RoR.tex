@@ -32,7 +32,7 @@ Usually, when code is not written by humans, it has few mistakes concerning thos
 Having taken the above into account, we decided to run the rails best practices gem on similar Rails projects.
 Seven \emph{time tracking} or \emph{project management} open source systems were chosen.
 After running the gem and counting the
-\textsf{not best practices (NBPs)}\footnote{In fact, Rails best practices gem does not find best practices in the source code.
+\textsf{not best practices (NBPs)}\footnote{In fact, Rails Best Practices gem does not find best practices in the source code.
   It does the opposite, it discovers when the code is not written according to a best practice, in other words, 
   it identifies bad practices (similar to the detection of code smells).
   We decided to name those occurrences NBP.
@@ -66,7 +66,7 @@ By doing that, a new set of results emerge.
 
 \input{tables/RBPResults1}
 
-Those results are much more likely to be helpful in terms of understanding if a project is or is not following 
+Those results (in Table~\ref{tab:rbpresults_1}) are much more likely to be helpful in terms of understanding if a project is or is not following 
 best practices.
 The numbers reflect both the community reviews and our own estimates much more.
 
@@ -74,9 +74,12 @@ The numbers reflect both the community reviews and our own estimates much more.
 \section{Second Study}\label{subsec:second_study}
 After the first study reported above, we felt that it was time to make a bigger one;
 we should repeat the experiment over a larger sample. 
-In addition, there was the need to define an objective quality metric to compare the metrics results with.
-As a second target for this new phase, it was decide to find an objective quality rate (a reputation ranking) for each project in the sample, 
-to be possible to compare with the results computed for the best practices metrics.
+As a second target for this new phase, it was decide to find an objective quality rate (a reputation ranking) 
+for each project in the sample.
+There was the need to define an objective quality metric to compare the metrics results with.
+This way it would be possible to prove that there is a statistical relation between the quality of the project
+and the results of our best practices metric based on NBPs.
+
 
 For the second study, we selected 40 Ruby on Rails projects hosted in github and
 decided to consider the number of 
@@ -85,15 +88,23 @@ decided to consider the number of
 that each project has on github, 
 as a \emph{project reputation} metric. 
 
-The objective was to prove that a negative correlation exists, between the NBPs of a project and its followers and forks. 
+The objective was then to prove that a negative correlation exists, between the NBPs of a project and its followers and forks. 
 
 The previous study has shown us the need to apply different weights to each NBP. 
 By diving the NBPs by the project size, in the first study, seemed like we got better results.
-However, not all NBPs depend on the project size. 
+However, not all NBPs depend on the project size.
+It turned out to be clear, that each best NBP should be weight in a different way depending
+on the nature of the best practice related and characteristics of the project.
 Therefore, we altered the rails best practices gem to make it possible to know how much project files were analyzed 
 by each rails best practice checker.
+What this means is that if a NBP checker is just trying to find occurrences of errors in the models files of the project
+we will weight this result just based in the number and size of models.
+This is not the perfect solution yet, but it gives much better results than diving all the best practices by the project size.
+In the first study we used 7 project, but now we have 40, obviously this time we had to start automating some things.
 
-Basically, after collecting the GitHub URLs for each project, we followed the next steps:
+
+Basically the work flow to get the information of this project, is described in a few steps
+ after collecting the GitHub URLs for each project, we followed the next steps:
 \begin{itemize}
 \item \emph{Retrieve GitHub information}, in this step we get the followers and forks(and more info that might be used in further analyses).
 \item \emph{Download the project repository}.
