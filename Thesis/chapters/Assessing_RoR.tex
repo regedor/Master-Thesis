@@ -4,7 +4,7 @@
 To assess the quality of a software project is not an easy task.
 To many variables should be taken into consideration and most of their values can be considered subjective.
 
-Our thesis is that an open source project quality is somehow influenced by the best practices followed 
+Our thesis is that the quality of an open source project is somehow influenced by the best practices followed 
 by its contributors.
 
 Furthermore, since Rails community has been our object of study we decided to conduct a series of studies, 
@@ -21,7 +21,7 @@ This chapter reports the different studies carried out, the main difficulties an
 
 
 \section{First Study}\label{subsec:first_study}
-One of the first things that we have noticed when we applied this gem to OSS projects,
+One of the first things that we have noticed, when we applied the rails\_best\_practices gem to OSS projects,
 is that the biggest and most renown projects have much more errors than the smaller and unknown projects.
 This nonsense has a simple  interpretation.
 Small projects (like the majority of Rails projects found in GitHub) are simple software packages,
@@ -91,20 +91,18 @@ as a \emph{project reputation} metric.
 The objective was then to prove that a negative correlation exists, between the NBPs of a project and its followers and forks. 
 
 The previous study has shown us the need to apply different weights to each NBP. 
-By diving the NBPs by the project size, in the first study, seemed like we got better results.
+By diving the NBPs by the size of project we achieved better better results.
 However, not all NBPs depend on the project size.
-It turned out to be clear, that each best NBP should be weight in a different way depending
+It turned out to be clear, that each NBP should be weight in a different way depending
 on the nature of the best practice related and characteristics of the project.
 Therefore, we altered the rails best practices gem to make it possible to know how much project files were analyzed 
 by each rails best practice checker.
 What this means is that if a NBP checker is just trying to find occurrences of errors in the models files of the project
 we will weight this result just based in the number and size of models.
 This is not the perfect solution yet, but it gives much better results than diving all the best practices by the project size.
-In the first study we used 7 project, but now we have 40, obviously this time we had to start automating some things.
 
-
-Basically the work flow to get the information of this project, is described in a few steps
- after collecting the GitHub URLs for each project, we followed the next steps:
+In the first study, we analyzed 7 projects, but now we have 40, obviously this time we had to start automating some things.
+The work flow to get the information of a project is described in a few steps:
 \begin{itemize}
 \item \emph{Retrieve GitHub information}, in this step we get the followers and forks(and more info that might be used in further analyses).
 \item \emph{Download the project repository}.
@@ -112,14 +110,28 @@ Basically the work flow to get the information of this project, is described in 
 \item \emph{Calculate the Weighted Global NBPs}, the evaluation algorithm consists in dividing the value returned by each NBP checker  by the number of files checked and, then sum it.
 \end{itemize}
 
-Next, an excerpt of the obtained table is shown:
+After collecting the GitHub URLs for the 40 project, we used a script to apply the described steps for each project
+and stored all the information about the projects in a CSV table.
+
 \input{tables/RBPResults2Raw}
+Table~\ref{tab:rbpresults_2_raw} is an excerpt of the obtained table, the full table can be found online: 
+
+\url{http://study.gorgeouscode.com/files/rbp-study.pdf}
+
+
+
 
 \section{Results}\label{subsec:results}
-After building the table containing the results for the 40 projects, we easily found correlations between columns.
-We discovered that the average correlation index, for the weighted C(x) columns, is -0.2. Only three of the weighted C(x) columns do not have negative correlation. This is quite good, considering the fact that there is an explanation for it. 
-Those three checkers (without negative correlation) aimed at finding  NBPs that almost non of the projects were committing, 
-so there is no correlation.
+After building the table containing the results for the 40 projects, 
+we started trying to find correlation in the different values. 
+It was easy to find that our best practice metric was strongly related with the number of forks and watchers of the project.
+We discovered that the average correlation index, for the weighted C(x) columns, is -0.2. 
+Only three of the weighted C(x) columns do not have negative correlation. 
+This is quite good, considering the fact that there is a simple explanation for it. 
+Those three checkers (without negative correlation) aimed at finding NBPs that almost non of the projects were committing, 
+so there is no correlation. 
+It is obvious that if every project follows a best practice, we can not really use it to distinguish the quality of the project.
+In the end, if you do not consider those best practices the relation is even bigger.
 
 
 The most important results are in the next table:
@@ -129,13 +141,10 @@ These correlation indexes show that if we just count the nbps there is no relati
 
 Observing that Table, it is possible to notice that the forks correlation is bigger. 
 We believe that if it happens, it is because forking a project shows intensions of digging into the code and, 
-of course, it easier to understand others code when it follows good practices.
-
-
-
-
-\section{Third Study}\label{subsec:thrid_study}
-After the previous studied, it turned out that we have a achieved a new metric for classifying the quality of Rails projects.
+of course, it easier to understand code from other people when it follows best practices.
+Nevertheless, by proving that this correlation exists we can certify that the Weighted NBPs 
+is in fact a metric of quality ( mainly in terms of maintainability but not only ) 
+, it turned out that we have a achieved a new metric for classifying the quality of Rails projects.
 By inverting the total number of NBPs and scaling it, we can create a tool to automatically give a score to the projects.
 
 That is exactly what we did, we created a simple application that receives the path for a GitHub rails project. 
