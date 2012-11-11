@@ -140,16 +140,34 @@ The most important results are in the next table:
 These correlation indexes show that if we just count the nbps there is no relation between them and the number of forks and watchers. Nevertheless, the Weighted NBPs have a quite perceptible negative correlation both with watchers and forks. 
 
 Observing that Table, it is possible to notice that the forks correlation is bigger. 
-We believe that if it happens, it is because forking a project shows intensions of digging into the code and, 
-of course, it easier to understand code from other people when it follows best practices.
-Nevertheless, by proving that this correlation exists we can certify that the Weighted NBPs 
-is in fact a metric of quality ( mainly in terms of maintainability but not only ) 
-, it turned out that we have a achieved a new metric for classifying the quality of Rails projects.
-By inverting the total number of NBPs and scaling it, we can create a tool to automatically give a score to the projects.
+We believe that happens because forking a project shows intensions of digging into the code and 
+it obviously easier to understand code from other people when it follows best practices.
 
-That is exactly what we did, we created a simple application that receives the path for a GitHub rails project. 
-As result by automating everything, it was possible to run the application against a bigger set of projects.
-A list of analyzed projects can be found at \url{www.study.gourgeouscode.com}.
+Nevertheless, by proving that this correlation truly exists we feel now confidante that 
+the Weighted NBPs can be used as a metric of quality for Rails projects.
+We have a achieved a new metric for classifying the quality of Rails projects, in terms of maintainability,
+but not only, has it was previously spoken in this document many of the best practices
+proposed by the Rails Best Practices Project members are in fact also related with performance improvements.
+
+However, there is one problem when using the Weighted Global NBPs to certify the quality of a Rails project, 
+although it is intuitive to understand that a small number in this metric is a good result
+( it means that the project failed few times in terms of best practices), as sad as it is, 
+no project of normal size was found with zero occurrences of NPBs.
+Consequently, by simply saying that a project has 450 Weighted Global NBPs it is hard for a user or developer
+to understand what if that is a good or bad result.
+
+Zero is without a doubt the best possible score, but there is no limit for the worst possible value.
+To retrieve some real meaning from this metric we need to compare the project results with other projects.
+Therefore, a simple solution for this would be to analize as many rails projects as possible, to determine and average value.
+After that, we would have a reference value, to consider a single project above or under average.
+
+That is exactly what we did next, 
+we created a simple web application to certify the quality of Rails projects concerning to the best practices followed. 
+By using this database of reports its possible to dynamically update this number 
+and use it as a reference value to invert the Weighted Global NBPs of project and scaling it. 
+In the end, we can give a final score to the project in a scale from 1 to 5, being 5 the best.
+
+The mentioned application was developed and its project reports can be consulted online: \url{www.study.gourgeouscode.com}.
 
 
 
