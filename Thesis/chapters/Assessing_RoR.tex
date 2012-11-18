@@ -71,6 +71,7 @@ best practices.
 The numbers reflect both the community reviews and our own estimates much more.
 
 
+
 \section{Second Study}\label{subsec:second_study}
 After the first study reported above, we felt that it was time to make a bigger one;
 we should repeat the experiment over a larger sample. 
@@ -79,7 +80,6 @@ for each project in the sample.
 There was the need to define an objective quality metric to compare the metrics results with.
 This way it would be possible to prove that there is a statistical relation between the quality of the project
 and the results of our best practices metric based on NBPs.
-
 
 For the second study, we selected 40 Ruby on Rails projects hosted in github and
 decided to consider the number of 
@@ -139,15 +139,15 @@ The most important results are in the next table:
 
 These correlation indexes show that if we just count the nbps there is no relation between them and the number of forks and watchers. Nevertheless, the Weighted NBPs have a quite perceptible negative correlation both with watchers and forks. 
 
-Observing that Table, it is possible to notice that the forks correlation is bigger. 
+Observing Table~\ref{tab:rbpresults_2}, it is possible to notice that the forks correlation is bigger. 
 We believe that happens because forking a project shows intensions of digging into the code and 
 it obviously easier to understand code from other people when it follows best practices.
 
-Nevertheless, by proving that this correlation truly exists we feel now confidante that 
+In addition, after proving that this correlation truly exists we feel now confidante that 
 the Weighted NBPs can be used as a metric of quality for Rails projects.
-We have a achieved a new metric for classifying the quality of Rails projects, in terms of maintainability,
-but not only, has it was previously spoken in this document many of the best practices
-proposed by the Rails Best Practices Project members are in fact also related with performance improvements.
+In fact, we have a achieved a new metric for classifying the quality of Rails projects in terms of maintainability,
+but not only, has it was previously said in this document many of the best practices
+proposed by the Rails Best Practices Project members are also related with performance improvements.
 
 However, there is one problem when using the Weighted Global NBPs to certify the quality of a Rails project, 
 although it is intuitive to understand that a small number in this metric is a good result
@@ -158,16 +158,18 @@ to understand what if that is a good or bad result.
 
 Zero is without a doubt the best possible score, but there is no limit for the worst possible value.
 To retrieve some real meaning from this metric we need to compare the project results with other projects.
-Therefore, a simple solution for this would be to analize as many rails projects as possible, to determine and average value.
+Therefore, a simple solution for this would be to analyze as many rails projects as possible, to determine and average value.
 After that, we would have a reference value, to consider a single project above or under average.
 
 That is exactly what we did next, 
-we created a simple web application to certify the quality of Rails projects concerning to the best practices followed. 
-By using this database of reports its possible to dynamically update this number 
-and use it as a reference value to invert the Weighted Global NBPs of project and scaling it. 
-In the end, we can give a final score to the project in a scale from 1 to 5, being 5 the best.
+we created a simple web application capable of certifying the quality of Rails projects concerning to the best practices followed. 
+By using this database of reports it is possible to dynamically update the average value for the quality of a project 
+and use it as a reference value. During this process it is also essential to eliminate any outliers. 
+Putting it all together it is just a matter of inverting the Weighted Global NBPs of project and scaling it. 
+In the end, we can give a final score to any Rails project in a scale from 1 to 5, being 5 the best.
 
-The mentioned application was developed and its project reports can be consulted online: \url{www.study.gourgeouscode.com}.
+The mentioned application was the ultimate result of this studies it was developed using Ruby on Rails
+and it actually possible to consult the an extensive list of analyzed projects online: \url{www.study.gourgeouscode.com}.
 
 
 
