@@ -1,103 +1,447 @@
 \thispagestyle{empty}
 \chapter{Rails Best Practices}\label{app:rails_best_practices}
 
+In this appendix we list the best practices implemented by the rails best practices analyzer gem,
+when the studies described in this documents were carried out.
+All of this best practices are a subset from the best practices proposed by rails best practices website users.
 
+A brief explanation of what the code analyzer does is given and
+the words of the person that first suggested it in the rails best practices web site is presented
+together with the number of comments and score obtained in the web site.
+The data presented below were collected during the year 2012.
+
+%------------------%
 \section{Remove Tab}
-  Make sure there are no tabs in files.
- 
-  % See the best practice details here \url{http://rails-bestpractices.com/posts/81-remove-tab}
+
+\begin{quote}\emph{
+Using tabs can mess up the spacing since some IDE's use 4 spaces for a tab, 
+while others use 2, and some people don't use tabs at all, 
+a mix of tabs and spaces causes things to not line up in most cases.
+\begin{flushright}
+Richard Huang July 04, 2011
+\end{flushright}
+}\end{quote}
+
+It scored 1 point (user votes). 
+The discussion page has 7585 views and 7 comments.
+
+What does the code analyzer:
+
+Makes sure there are no tabs in files.
+
+The full discussion can be seen here:
+
+\url{http://rails-bestpractices.com/posts/81-remove-tab}
+
+%----------------------------------%
+\section{Remove Trailing Whitespace}  
+
+\begin{quote}\emph{
+Trailing whitespace always makes noises in version control system, it is meaningless. 
+We should remove trailing whitespace to avoid annoying other team members.
+\begin{flushright}
+Richard Huang December 02, 2010
+\end{flushright}
+}\end{quote}
+
+It scored 16 points (user votes). 
+The discussion page has 15609 views and 11 comments.
+
+What does the code analyzer:
+
+Make sure there are no trailing whitespace in codes.
+
+The full discussion can be seen here:
+
+\url{http://rails-bestpractices.com/posts/60-remove-trailing-whitespace}
    
-\section{Remove Trailing Whitespace }  
-  Make sure there are no trailing whitespace in codes.
- 
-  % See the best practice details here \url{http://rails-bestpractices.com/posts/60-remove-trailing-whitespace}
-   
+%-----------------------------------%
 \section{Add Model Virtual Attribute}
-  Make sure to add a model virual attribute to simplify model creation.
  
-  % See the best practice details here \url{http://rails-bestpractices.com/posts/4-add-model-virtual-attribute}
+\begin{quote}\emph{
+Do not assign the model's attributes directly in controller. 
+Add model virtual attribute to move the assignment to model.
+\begin{flushright}
+Wen-Tien Chang July 21, 2010
+\end{flushright}
+}\end{quote}
+
+It scored 5 points (user votes). 
+The discussion page has 12866 views and 0 comments.
+
+What does the code analyzer:
+
+Make sure to add a model virual attribute to simplify model creation.
+
+The full discussion can be seen here:
+
+\url{http://rails-bestpractices.com/posts/4-add-model-virtual-attribute}
+
+%---------------------------------%
        
 \section{Always Add Db Index}
-  Review db/schema.rb file to make sure every reference key has a database index.
- 
-  % See the best practice details here \url{http://rails-bestpractices.com/posts/21-always-add-db-index}
-       
+  
+\begin{quote}\emph{
+Always add index for foreign key, columns that need to be sorted, 
+lookup fields and columns that are used in a GROUP BY. 
+This can improve the performance for sql query. 
+If you're not sure which column need to index,
+I recommend to use \url{http://github.com/eladmeidar/rails\_indexes}, which provide rake tasks to find missing indexes.
+\begin{flushright}
+Wen-Tien Chang July 24, 2010
+\end{flushright}
+}\end{quote}
+
+It scored 5 points (user votes). 
+The discussion page has 15849 views and 16 comments.
+
+What does the code analyzer:
+
+Review db/schema.rb file to make sure every reference key has a database index.
+
+The full discussion can be seen here:
+
+\url{http://rails-bestpractices.com/posts/21-always-add-db-index}
+
+%-------------------------------------%       
 \section{Dry Bundler In Capistrano}
-  Review config/deploy.rb file to make sure using the bundler's capistrano recipe.
+
+\begin{quote}\emph{
+There are a few posts told you how to integrate bundler into capistrano, but they are out of date now. After bundler 1.0 released, you can add only one line in capistrano to use bundler.
+\begin{flushright}
+Richard Huang July 20, 2010
+\end{flushright}
+}\end{quote}
+
+It scored 16 points (user votes). 
+The discussion page has 20958 views and 4 comments.
+
+What does the code analyzer:
+
+Review config/deploy.rb file to make sure using the bundler's capistrano recipe.
+
+The full discussion can be seen here:
  
-  % See the best practice details here \url{http://rails-bestpractices.com/posts/51-dry-bundler-in-capistrano}
-   
-\section{Isolate Seed Data }
-  Make sure not to insert data in migration, move them to seed file.
+\url{http://rails-bestpractices.com/posts/51-dry-bundler-in-capistrano}
+
+%-----------------------------------%
+\section{Isolate Seed Data}
+
+\begin{quote}\emph{
+Rails 2.3.4 provides db:seed task that is the best way to insert seed data for set up a new application.
+\begin{flushright}
+Wen-Tien Chang July 24, 2010
+\end{flushright}
+}\end{quote}
+
+It scored 11 points (user votes). 
+The discussion page has 10030 views and 8 comments.
+
+What does the code analyzer:
+
+Make sure not to insert data in migration, move them to seed file.
+
+The full discussion can be seen here:
  
-  % See the best practice details here \url{http://rails-bestpractices.com/posts/20-isolating-seed-data.}
-   
+\url{http://rails-bestpractices.com/posts/20-isolating-seed-data.}
+
+%-----------------------------%
 \section{Keep Finders On Their Own Model}
-  Review model files to ake sure finders are on their own model.
- 
-  % See the best practice details here \url{http://rails-bestpractices.com/posts/13-keep-finders-on-their-own-model.}
-   
+
+\begin{quote}\emph{
+Rails 2.3.4 provides db:seed task that is the best way to insert seed data for set up a new application.
+\begin{flushright}
+Wen-Tien Chang July 23, 2010
+\end{flushright}
+}\end{quote}
+
+It scored 5 points (user votes). 
+The discussion page has 3038 views and 5 comments.
+
+What does the code analyzer:
+
+Review model files to ake sure finders are on their own model.
+
+The full discussion can be seen here:
+
+\url{http://rails-bestpractices.com/posts/13-keep-finders-on-their-own-model.}
+
+%------------------------------------------%
 \section{Law Of Demeter }
-  Review to make sure not to avoid the law of demeter.
- 
-  % See the best practice details here \url{http://rails-bestpractices.com/posts/15-the-law-of-demeter.}
-   
+
+\begin{quote}\emph{
+According to the law of demeter, a model should only talk to its immediate association,
+don't talk to the association's association and association's property,
+it is a case of loose coupling.
+\begin{flushright}
+Wen-Tien Chang July 24, 2010
+\end{flushright}
+}\end{quote}
+
+It scored 19 points (user votes). 
+The discussion page has 10697 views and 13 comments.
+
+What does the code analyzer:
+
+Review to make sure not to avoid the law of demeter.
+
+The full discussion can be seen here:
+
+\url{http://rails-bestpractices.com/posts/15-the-law-of-demeter.}
+
+%--------------------------------%
 \section{Move Code Into Controller}
-  Review a view file to make sure there is no finder, finder should be moved to controller.
- 
-  % See the best practice details here \url{http://rails-bestpractices.com/posts/24-move-code-into-controller.}
+
+\begin{quote}\emph{
+According to MVC architecture, there should not be logic codes in view, in this practice,
+I will introduce you to move codes into controller.
+\begin{flushright}
+Wen-Tien Chang July 24, 2010
+\end{flushright}
+}\end{quote}
+
+It scored 10 points (user votes). 
+The discussion page has 4558 views and 0 comments.
+
+What does the code analyzer:
+
+Review a view file to make sure there is no finder, finder should be moved to controller.
+
+The full discussion can be seen here:
+
+\url{http://rails-bestpractices.com/posts/24-move-code-into-controller.}
+
+%----------------------------%
    
 \section{Move Code Into Helper }
-  Review a view file to make sure there is no complex options\_for\_select message call.
+
+\begin{quote}\emph{
+According to MVC architecture, there should not be logic codes in view,
+in this practice,I will introduce you to move codes into helper.
+\begin{flushright}
+Wen-Tien Chang July 24, 2010
+\end{flushright}
+}\end{quote}
+
+It scored 10 points (user votes). 
+The discussion page has 5126 views and 2 comments.
+
+What does the code analyzer:
+
+Review a view file to make sure there is no complex options\_for\_select message call.
+
+The full discussion can be seen here:
  
-  % See the best practice details here \url{http://rails-bestpractices.com/posts/26-move-code-into-helper.}
-   
-\section{Move Code Into Model }
-  Review a view file to make sure there is no complex logic call for model.
- 
-  % See the best practice details here \url{http://rails-bestpractices.com/posts/25-move-code-into-model.}
+\url{http://rails-bestpractices.com/posts/26-move-code-into-helper.}
+
+%-------------------------------%
+\section{Move Code Into Model}
+
+\begin{quote}\emph{
+According to MVC architecture, there should not be logic codes in view, 
+in this practice, I will introduce you to move codes into model.
+\begin{flushright}
+Wen-Tien Chang July 24, 2010
+\end{flushright}
+}\end{quote}
+
+It scored 10 points (user votes). 
+The discussion page has 5289 views and 8 comments.
+
+What does the code analyzer:
+
+Review a view file to make sure there is no complex logic call for model.
+
+The full discussion can be seen here:
+
+\url{http://rails-bestpractices.com/posts/25-move-code-into-model.}
+
+%------------------------------------%
      
-\section{Move Finder To Named Scope }
-  Review a controller file to make sure there are no complex finder.
- 
-  % See the best practice details here \url{http://rails-bestpractices.com/posts/1-move-finder-to-named_scope.}
-   
+\section{Move Finder To Named Scope}
+
+\begin{quote}\emph{
+Complex finders in controller make application hard to maintain. 
+Move them into the model as named\_scope can make the controller simple
+and the complex find logics are all in models.
+\begin{flushright}
+Wen-Tien Chang July 24, 2010
+\end{flushright}
+}\end{quote}
+
+It scored 11 points (user votes). 
+The discussion page has 6591 views and 3 comments.
+
+What does the code analyzer:
+
+Review a controller file to make sure there are no complex finder.
+
+The full discussion can be seen here:
+
+\url{http://rails-bestpractices.com/posts/1-move-finder-to-named_scope.}
+
+%-----------------------------------------%
 \section{Move Model Logic Into Model}
-  Review a controller file to make sure that complex model logic should not exist in controller, should be moved into a model.
- 
-  % See the best practice details here \url{http://rails-bestpractices.com/posts/7-move-model-logic-into-the-model.}
-   
+
+\begin{quote}\emph{
+In MVC model, controller should be simple, the business logic is model's responsibility.
+So we should move logic from controller into the model.
+\begin{flushright}
+Wen-Tien Chang July 21, 2010
+\end{flushright}
+}\end{quote}
+
+It scored 3 points (user votes). 
+The discussion page has 7078 views and 5 comments.
+
+What does the code analyzer:
+
+Review a controller file to make sure that complex model logic should not exist in controller,
+should be moved into a model.
+
+The full discussion can be seen here:
+
+\url{http://rails-bestpractices.com/posts/7-move-model-logic-into-the-model.}
+
+%------------------------------------%
 \section{Needless Deep Nesting}
-  Review config/routes.rb file to make sure not to use too deep nesting routes.
- 
-  % See the best practice details here \url{http://rails-bestpractices.com/posts/11-needless-deep-nesting.}
-   
+
+\begin{quote}\emph{
+Some people will define 3 or more level nested routes, 
+it's a kind of over design and not recommended.
+\begin{flushright}
+Wen-Tien Chang July 22, 2010
+\end{flushright}
+}\end{quote}
+
+It scored 4 points (user votes). 
+The discussion page has 5947 views and 4 comments.
+
+What does the code analyzer:
+
+Review config/routes.rb file to make sure not to use too deep nesting routes.
+
+The full discussion can be seen here:
+
+\url{http://rails-bestpractices.com/posts/11-needless-deep-nesting.}
+
+%------------------------------------%
 \section{Not Use Default Route}
-  Review config/routes file to make sure not use default route that rails generated.
+
+\begin{quote}\emph{
+If you use RESTful design, you should NOT use default route. 
+It will cause a security problem. I explain at \url{http://ihower.tw/blog/archives/3265} too.
+\begin{flushright}
+Wen-Tien Chang July 22, 2010
+\end{flushright}
+}\end{quote}
+
+It scored 9 points (user votes). 
+The discussion page has 4215 views and 0 comments.
+
+What does the code analyzer:
+
+Review config/routes file to make sure not use default route that rails generated.
  
-  % See the best practice details here \url{http://rails-bestpractices.com/posts/12-not-use-default-route-if-you-use-restful-design}
-   
+The full discussion can be seen here:
+  
+\url{http://rails-bestpractices.com/posts/12-not-use-default-route-if-you-use-restful-design}
+
+%--------------------------------------%
 \section{Not Use Time Ago In Words}
-  Review view and helper files to make sure not use time\_ago\_in\_words or distance\_of\_time\_in\_words\_to\_now.
+
+\begin{quote}\emph{
+It's very common for a rails developer to use time\_ago\_in\_words to display time like "5 minutes ago",
+but it's too expensive to calculate the time in server side,
+you should utilize client cpu to calculate the time ago.
+\begin{flushright}
+Richard Huang 10 February, 2012
+\end{flushright}
+}\end{quote}
+
+It scored 23 points (user votes). 
+The discussion page has 13550 views and 11 comments.
+
+What does the code analyzer:
+
+Review view and helper files to make sure not use time\_ago\_in\_words or distance\_of\_time\_in\_words\_to\_now.
+
+The full discussion can be seen here:
  
-  % See the best practice details here \url{http://rails-bestpractices.com/posts/105-not-use-time_ago_in_words.}
-   
+\url{http://rails-bestpractices.com/posts/105-not-use-time_ago_in_words.}
+
+%-------------------------------------------%
 \section{Overuse Route Customizations}
-  Review config/routes.rb file to make sure there are no overuse route customizations.
- 
-  % See the best practice details here \url{http://rails-bestpractices.com/posts/10-overuse-route-customizations.}
+
+\begin{quote}\emph{
+According to Roy Fieldingâ€™s doctoral thesis, 
+we should use restful routes to represent the resource and its state.
+Use the default 9 actions without overusing route customizations.
+\begin{flushright}
+Richard Huang 22 July, 2010
+\end{flushright}
+}\end{quote}
+
+It scored 4 points (user votes). 
+The discussion page has 3950 views and 0 comments.
+
+What does the code analyzer:
+Review config/routes.rb file to make sure there are no overuse route customizations.
+
+The full discussion can be seen here:
+
+\url{http://rails-bestpractices.com/posts/10-overuse-route-customizations.}
+
+%-----------------------------%
    
 \section{Protect Mass Assignment}
-  Review model files to make sure to use attr\_accessible or attr\_protected to protect mass assignment.
+
+\begin{quote}\emph{
+Rails mass assignment feature is really useful, but it may be a security issue,
+it allows an attacker to set any models' attributes you may not expect.
+To avoid this, we should add attr\_accessbile or attr\_protected to all models.
+\begin{flushright}
+Richard Huang 06 March, 2012
+\end{flushright}
+}\end{quote}
+
+It scored 7 points (user votes). 
+The discussion page has 11969 views and 3 comments.
+
+What does the code analyzer:
+
+Review model files to make sure to use attr\_accessible or attr\_protected to protect mass assignment.
  
-  See the best practices details here \url{http://rails-bestpractices.com/posts/148-protect-mass-assignment.}
-   
+See the best practices details here:
+
+\url{http://rails-bestpractices.com/posts/148-protect-mass-assignment.}
+
+%------------------------------%
 \section{Remove Empty Helpers Review}
-  Review a helper file to make sure it is not an empty moduel.
+
+\begin{quote}\emph{
+If you use rails generator to create scaffolds or controllers,
+it will also create some helpers, most of the helpers are useless, just remove them.
+\begin{flushright}
+Richard Huang 09 April, 2011
+\end{flushright}
+}\end{quote}
+
+It scored 12 points (user votes). 
+The discussion page has 8399 views and 6 comments.
+
+What does the code analyzer:
+
+Review a helper file to make sure it is not an empty module.
+
+See the best practices details here:
  
-  % See the best practice details here \url{http://rails-bestpractices.com/posts/72-remove-empty-helpers.}
-   
+\url{http://rails-bestpractices.com/posts/72-remove-empty-helpers.}
+
+%--------------------------%
 \section{Remove Unused Methods In Controllers}
+
+
   Find out unused methods in controllers.
    
 \section{Remove Unused Methods In Helpers}
@@ -105,66 +449,276 @@
        
 \section{Remove Unused Methods In Models}
   Find out unused methods in models.
-   
+
+%-------------------------------------%
 \section{Replace Complex Creation With Factory Method}
-  Review a controller file to make sure that complex model creation should not exist in controller, should be replaced with factory method.
+
+\begin{quote}\emph{
+Sometimes you will build a complex model with params,
+current\_user and other logics in controller, but it makes your controller too big,
+you should move them into model with a factory method.
+\begin{flushright}
+Wen-Tien Chang 21 July, 2010
+\end{flushright}
+}\end{quote}
+
+It scored 8 points (user votes). 
+The discussion page has 4696 views and 0 comments.
+
+What does the code analyzer:
+
+Review a controller file to make sure that complex model creation should not exist in controller, should be replaced with factory method.
+
+See the best practices details here:
  
-  % See the best practice details here \url{http://rails-bestpractices.com/posts/6-replace-complex-creation-with-factory-method.}
-   
+\url{http://rails-bestpractices.com/posts/6-replace-complex-creation-with-factory-method.}
+
+%---------------------------------%
 \section{Replace Instance Variable With Local Variable}
-  Review a partail view file to make sure there is no instance variable.
+
+\begin{quote}\emph{
+In partial view, we can use the instance variable directly,
+but it may be confused and make it hard to reuse anywhere,
+because we don't know exactly which instance variable can be used,
+so use the local variable in partial with explicitly assignment.
+\begin{flushright}
+Wen-Tien Chang 24 July, 2010
+\end{flushright}
+}\end{quote}
+
+It scored 23 points (user votes). 
+The discussion page has 14592 views and 13 comments.
+
+What does the code analyzer:
+
+Review a partail view file to make sure there is no instance variable.
+
+See the best practices details here:
  
-  % See the best practice details here \url{http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable.}
-   
+\url{http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable.}
+
+%------------------------%
 \section{Restrict Auto Generated Routes}
-  Review a route file to make sure all auto-generated routes have corresponding actions in controller.
+
+\begin{quote}\emph{
+By default, Rails generates seven RESTful routes(new,edit,create,destroy,index,show, update)
+for a resource, sometime the resource only needs one or two routes,
+so just user :only or :except while defining routes to speedup the routing.
+\begin{flushright}
+Andy Wang 19 August, 2011
+\end{flushright}
+}\end{quote}
+
+It scored 12 points (user votes). 
+The discussion page has 11901 views and 5 comments.
+
+What does the code analyzer:
+
+Review a route file to make sure all auto-generated routes have corresponding actions in controller.
+
+See the best practices details here:
  
-  % See the best practice details here \url{http://rails-bestpractices.com/posts/86-restrict-auto-generated-routes}
-   
+\url{http://rails-bestpractices.com/posts/86-restrict-auto-generated-routes}
+
+%-------------------------------%
 \section{Simplify Render In Controllers}
-  Review a controller file to make sure using simplified syntax for render.
+
+\begin{quote}\emph{
+Like the simplify render in views, from rails 2.3,
+we can also simplify render in controllers.
+\begin{flushright}
+Richard Huang 12 December, 2010
+\end{flushright}
+}\end{quote}
+
+It scored 8 points (user votes). 
+The discussion page has 9773 views and 6 comments.
+
+What does the code analyzer:
+
+Review a controller file to make sure using simplified syntax for render.
+
+See the best practices details here:
  
-  % See the best practice details here \url{http://rails-bestpractices.com/posts/62-simplify-render-in-controllers.}
-   
+\url{http://rails-bestpractices.com/posts/62-simplify-render-in-controllers.}
+
+%----------------------------%
 \section{Simplify Render In Views}
-  Review a view file to make sure using simplified syntax for render.
- 
-  % See the best practice details here \url{http://rails-bestpractices.com/posts/61-simplify-render-in-views.}
-   
+
+\begin{quote}\emph{
+render is one of the often used view helpers, we can pass object,
+collection or local variables. From rails 2.3, more simplified syntax for render are provided.
+\begin{flushright}
+Richard Huang 04 December, 2010
+\end{flushright}
+}\end{quote}
+
+It scored 8 points (user votes). 
+The discussion page has 9773 views and 6 comments.
+
+What does the code analyzer:
+
+Review a view file to make sure using simplified syntax for render.
+
+See the best practices details here:
+
+\url{http://rails-bestpractices.com/posts/61-simplify-render-in-views.}
+
+%--------------------%
 \section{Use Before Filter}
-  Review a controller file to make sure to use before\_filter to remove duplicated first code line in different action.
+
+\begin{quote}\emph{
+Don't repeat yourself in controller, use before\_filter to avoid duplicated codes.
+\begin{flushright}
+Wen-Tien Chang 24 July, 2010
+\end{flushright}
+}\end{quote}
+
+It scored -6 points (user votes). 
+The discussion page has 67294 views and 25 comments.
+
+What does the code analyzer:
+
+Review a controller file to make sure to use before\_filter to remove duplicated first code line in different action.
+
+See the best practices details here:
  
-  % See the best practice detailed here \url{http://rails-bestpractices.com/posts/22-use-before_filter.}
-   
+\url{http://rails-bestpractices.com/posts/22-use-before_filter.}
+
+%----------------------%
 \section{Use Model Association}
-  review a controller file to make sure to use model association instead of foreign key id assignment.
+
+\begin{quote}\emph{
+Use model association to avoid assigning reference in controller.
+\begin{flushright}
+Wen-Tien Chang 19 July, 2010
+\end{flushright}
+}\end{quote}
+
+It scored 8 points (user votes). 
+The discussion page has 10281 views and 7 comments.
+
+What does the code analyzer:
+
+Review a controller file to make sure to use model association instead of foreign key id assignment.
+
+See the best practices details here:
  
-  % See the best practice details here \url{http://rails-bestpractices.com/posts/2-use-model-association.}
-   
+\url{http://rails-bestpractices.com/posts/2-use-model-association.}
+
+%----------------------%
 \section{Use Multipart Alternative As Content Type Of Email}
-  Make sure to use multipart/alternative as content\_type of email.
+
+\begin{quote}\emph{
+Rails uses plain/text as the default content\_type for sending email,
+you should change it to multipart/alternative that email clients can display html
+formatted email if they support and display plain text email if they don't support html format.
+\begin{flushright}
+Richard Huang 05 August, 2010
+\end{flushright}
+}\end{quote}
+
+It scored 4 points (user votes). 
+The discussion page has 10861 views and 3 comments.
+
+What does the code analyzer:
+
+Make sure to use multipart/alternative as content\_type of email.
+
+See the best practices details here:
  
-  % See the best practice details here \url{http://rails-bestpractices.com/posts/41-use-multipart-alternative-as-content\_type-of-email.}
-   
+\url{http://rails-bestpractices.com/posts/41-use-multipart-alternative-as-content\_type-of-email.}
+
+%----------------------------%
 \section{Use Observer}
-  Make sure to use observer (sorry we only check the mailer deliver now).
- 
-  % See the best practice details here \url{http://rails-bestpractices.com/posts/19-use-observer.}
-   
+
+\begin{quote}\emph{
+Observer serves as a connection point between models and some other subsystem
+whose functionality is used by some of other classes, such as email notification.
+It is loose coupling in contract with model callback.
+\begin{flushright}
+Wen-Tien Chang 24 July, 2010
+\end{flushright}
+}\end{quote}
+
+It scored 31 points (user votes). 
+The discussion page has 15702 views and 7 comments.
+
+What does the code analyzer:
+
+Make sure to use observer (sorry we only check the mailer deliver now).
+
+See the best practices details here:
+
+\url{http://rails-bestpractices.com/posts/19-use-observer.}
+
+%----------------------------%
 \section{Use Query Attribute}
-  Make sure to use query attribute instead of nil?, blank? and present?.
- 
-  % See the best practice details here \url{http://rails-bestpractices.com/posts/56-use-query-attribute.}
+
+\begin{quote}\emph{
+Do you always check if ActiveRecord's attributes exist or not by nil?, blank? or present? ?
+Don't do that again, rails provides a cleaner way by query attribute.
+\begin{flushright}
+Richard Huang 03 October, 2010
+\end{flushright}
+}\end{quote}
+
+It scored 19 points (user votes). 
+The discussion page has 11265 views and 14 comments.
+
+What does the code analyzer:
+
+Make sure to use query attribute instead of nil?, blank? and present?.
+
+See the best practices details here:
+
+\url{http://rails-bestpractices.com/posts/56-use-query-attribute.}
+
+%---------------------------%
    
-\section{Use Say With Time In Migrations}
-  Review a migration file to make sure to use say or say\_with\_time for customized data changes to produce a more readable output.
+\section{Use say and say\_with\_time in migrations to make a useful migration log}
+
+\begin{quote}\emph{
+Use say\_with\_time and say in migrations will produce a more readable output in migrations.
+And if use correctly it could be a helpful friend when something goes wrong because
+normally it is stored in the deploy log.
+\begin{flushright}
+Gillermo 19 August, 2010
+\end{flushright}
+}\end{quote}
+
+It scored 14 points (user votes). 
+The discussion page has 5743 views and 2 comments.
+
+What does the code analyzer:
+
+Review a migration file to make sure to use say or say\_with\_time for customized data changes to produce a more readable output.
+
+See the best practices details here:
  
-  % See the best practice details here \url{http://rails-bestpractices.com/posts/46-use-say-and-say\_with\_time-in-migrations-to-make-a-useful-migration-log.}
-   
+\url{http://rails-bestpractices.com/posts/46-use-say-and-say\_with\_time-in-migrations-to-make-a-useful-migration-log.}
+
+%----------------------------------------%
 \section{Use Scope Access}
-  Review a controller to make sure to use scope access instead of manually checking current\_user and redirect.
+
+\begin{quote}\emph{
+You can use scope access to avoid checking the permission by comparing the owner
+of object with current\_user in controller.
+\begin{flushright}
+Wen-Tien Chang 20 JUly, 2010
+\end{flushright}
+}\end{quote}
+
+It scored 16 points (user votes). 
+The discussion page has 6775 views and 4 comments.
+
+What does the code analyzer:
+
+Review a controller to make sure to use scope access instead of manually checking current\_user and redirect.
+
+See the best practices details here:
  
-  % See the best practice details here \url{http://rails-bestpractices.com/posts/3-use-scope-access.}
+\url{http://rails-bestpractices.com/posts/3-use-scope-access.}
 
 
 
