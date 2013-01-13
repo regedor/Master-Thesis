@@ -12,7 +12,8 @@ Those websites, usually in conjunction with a Version Control System (VCS), make
 to collaborate in Open Source Software Projects (OSSP), and also act as a way to make software available to users.
 
 %Nevertheless, OSPHW are not the only prof of OSS establishment.
-According to \textsf{NetCraft}\footnote{\url{http://news.netcraft.com/archives/2010/05/14/may\_2010\_web\_server\_survey.html/}, accessed on 2010/12/21.},
+The OSS establishment is clear,
+according to \textsf{NetCraft}\footnote{\url{http://news.netcraft.com/archives/2010/05/14/may\_2010\_web\_server\_survey.html/}, accessed on 2010/12/21.},
 the market share for top servers across the million busiest sites was 66.82\% for the open source web server, Apache,
 much higher than the 16.87\% for Microsoft web servers in May 2010.
 Even governments started noticing open source, during the last few years, and in some case adopted it\cite{hahn2002government}.
@@ -59,18 +60,41 @@ An OSSP is built up from hundreds, sometimes thousands, of files. It can be code
 To  analyze manually a software project is a very hard and time consuming task,
 and not all users have the ability to answer the previous questions by looking at the source code~\cite{crowston2003defining}.
 
-However, open source communities are constantly creating and improving their working methodologies.
-And even without noticing, communities create rules and best practices.
-By following those \emph{best practices}, software projects increase their maintainability level.
-
 With that in mind, a system capable of analyzing and measuring a given OSSP,
 producing detailed quantitative and qualitative reports about it,
 would enable users to make better choices and, of course, developers to further improve the package.
+There is no doubt regarding the benefits of such system but
+to create a system like that many things should be taken into consideration and 
+that can be subject of huge discussion.
 
-This paper discusses the concept of Quality when addressing an OSSP, and how to measure it (Section 2) using classic approaches.
-After that,  the notion of \emph{best practices} is introduced and  the impact  of
-taking their use into account when assessing an  OSSPs is explored.
-To make this proposal clearer and stronger,
-\textsf{Ruby}\footnote{Ruby is an open source programming language. Ruby community is relatively young but still very focused on following best practices.  }
-community is taken as a starting target (Section 3).
-At last but not least, to support our proposal a case-study is shown, in Section 4: seven Ruby OSSP are measured and compared.
+Open source communities are constantly creating and improving their working methodologies.
+And even without noticing, communities create rules and best practices.
+This document supports the idea that by following \emph{best practices}, 
+software projects increase their maintainability level,
+which is a quality attribute of great importance for OSSP.
+This assumption of a relation between the quality of projects and the best practices followed
+is be the foundation for the creation of system capable of automatic evaluate if a project 
+is developed accordingly to the community defined best practices, 
+as simple way to assess OSSP quality. 
+
+This document can be divided in 7 chapters.
+After the introduction, in Chapter \ref{chap:open_source} the open source world is explored,
+the differences of open source and close source development process
+are as obvious as the need to assess the quality of this OSSP in new ways.
+There are numerous communities in the open source universe, but like it is shown in Chapter \ref{chap:ruby_on_rails},
+the characteristics of Rails and the various philosophies underlying it, 
+makes this community the best starting point to understand the role of best practices in assessing OSS.
+This chapter is not only about the Rails community, it provides a quick introduction to the \textsf{Ruby Language}\footnote{
+  Ruby is an open source programming language. Ruby community is relatively young but still very focused on following best practices.
+} and the Rails Framework.
+In Chapter \ref{chap:software_metrics}, the current state software metrics is exposed,
+the concept of Quality when addressing an OSSP, and how to measure it using classic approaches.
+After that, chapter \ref{chap:best_practices} discusses the concept of best practices in general and, 
+in the particularly, the Rails community.
+At last but not least, to support this proposal a case-study is shown, in Chapter \ref{chap:assissing_ror}: 
+various Rails OSSP are measured and compared. 
+In the end, it was possible to create new tool to assess the quality of Rails projects and 
+Chapter {chap:conclusion}, the conclusion, describes not only what was achieved but what is still to come.
+
+A lot of resources and the source code developed during the writing of this document is accessible at 
+\url{study.gorgeouscode.com}.
