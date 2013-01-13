@@ -126,12 +126,14 @@ After building the table containing the results for the 40 projects,
 we started trying to find correlation in the different values. 
 It was easy to find that our best practice metric was strongly related with the number of forks and watchers of the project.
 We discovered that the average correlation index, for the weighted C(x) columns, is -0.2. 
-Only three of the weighted C(x) columns do not have negative correlation. 
-This is quite good, considering the fact that there is a simple explanation for it. 
-Those three checkers (without negative correlation) aimed at finding NBPs that almost non of the projects were committing, 
-so there is no correlation. 
-It is obvious that if every project follows a best practice, we can not really use it to distinguish the quality of the project.
-In the end, if you do not consider those best practices the relation is even bigger.
+Only three of the weighted C(x) columns do not have negative correlation which is quite a good result. 
+Moreover, the positive positive correlation shown in these three columns,
+is due the fact that the respective checkers (without negative correlation) are
+aimed at finding NBPs that almost non of the projects were committing.
+This explains why there is no correlation.
+It is obvious that if every project follows a best practice, we can not really use it to distinguish the quality of the project, 
+nevertheless it turn it even more clear that it is a something that should be followed.
+In the end, when you do not consider those best practices this relation is even more substantial.
 
 
 The most important results are in the next table:
@@ -141,23 +143,23 @@ These correlation indexes show that if we just count the nbps there is no relati
 
 Observing Table~\ref{tab:rbpresults_2}, it is possible to notice that the forks correlation is bigger. 
 We believe that happens because forking a project shows intensions of digging into the code and 
-it obviously easier to understand code from other people when it follows best practices.
+it is obviously easier to understand code from other people when it follows best practices.
 
 In addition, after proving that this correlation truly exists we feel now confidante that 
 the Weighted NBPs can be used as a metric of quality for Rails projects.
-In fact, we have a achieved a new metric for classifying the quality of Rails projects in terms of maintainability,
+In fact, we have achieved a new metric for classifying the quality of Rails projects in terms of maintainability,
 but not only, has it was previously said in this document many of the best practices
 proposed by the Rails Best Practices Project members are also related with performance improvements.
 
 However, there is one problem when using the Weighted Global NBPs to certify the quality of a Rails project, 
 although it is intuitive to understand that a small number in this metric is a good result
-( it means that the project failed few times in terms of best practices), as sad as it is, 
+(it means that the project failed few times in terms of best practices), as sad as it is, 
 no project of normal size was found with zero occurrences of NPBs.
 Consequently, by simply saying that a project has 450 Weighted Global NBPs it is hard for a user or developer
-to understand what if that is a good or bad result.
+to understand if that is a good or bad result.
 
-Zero is without a doubt the best possible score, but there is no limit for the worst possible value.
-To retrieve some real meaning from this metric we need to compare the project results with other projects.
+Zero is definitely the best possible score, but there is no limit for the worst possible value.
+To retrieve some real meaning from this metric we need to compare the project results with other ones.
 Therefore, a simple solution for this would be to analyze as many rails projects as possible, to determine and average value.
 After that, we would have a reference value, to consider a single project above or under average.
 
@@ -166,10 +168,10 @@ we created a simple web application capable of certifying the quality of Rails p
 By using this database of reports it is possible to dynamically update the average value for the quality of a project 
 and use it as a reference value. During this process it is also essential to eliminate any outliers. 
 Putting it all together it is just a matter of inverting the Weighted Global NBPs of project and scaling it. 
-In the end, we can give a final score to any Rails project in a scale from 1 to 5, being 5 the best.
+In the end, we can give a final score to any Rails project in a scale from 1 to 5, being 5 the best possible score.
 
-The mentioned application was the ultimate result of this studies it was developed using Ruby on Rails
-and it actually possible to consult the an extensive list of analyzed projects online: \url{app.study.gourgeouscode.com}.
+The mentioned application was the ultimate result of this studies.
+It was developed using Ruby on Rails and it is actually possible to consult all the results in an extensive list of analyzed projects online: \url{app.study.gourgeouscode.com}.
 
 
 
