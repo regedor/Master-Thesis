@@ -170,8 +170,21 @@ and use it as a reference value. During this process it is also essential to eli
 Putting it all together it is just a matter of inverting the Weighted Global NBPs of project and scaling it. 
 In the end, we can give a final score to any Rails project in a scale from 1 to 5, being 5 the best possible score.
 
-The mentioned application was the ultimate result of this studies.
-It was developed using Ruby on Rails and it is actually possible to consult all the results in an extensive list of analyzed projects online: \url{app.study.gourgeouscode.com}.
+\begin{figure}[h!]
+  \caption{Ruby on Rails Best Practices Report}\label{fig:rbp_s}
+  \centering
+  \includegraphics[scale=0.75]{Images/rbp_s}
+\end{figure}
+
+The mentioned application was developed using Ruby on Rails and it is actually possible to consult an extensive list of analyzed projects online at \url{app.study.gourgeouscode.com}. For each project a page like the show in Figure~\ref{fig:rbp_s} is generated, 
+it contains the overall score, a brief possibly explanation for the actual score and a table pointing out the 
+NBPs found. If a row shows in red, it means that the score of the project was significantly lowered because 
+it does not follow that specific best practice, in other words this should be the first place to improve the code,
+which will also increase the quality of the project.
+
+This application was the ultimate result of this studies.
+
+
 
 
 
