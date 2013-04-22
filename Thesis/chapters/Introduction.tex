@@ -3,69 +3,69 @@
 
 
 Nowadays, Open Source Software (OSS) is well disseminated.
-Thousands of OSS packages can be found online, and free to download,
+Thousands of OSS packages can be found online and are free to download,
 in Open Source Project Hosting Websites (OSPHW) like
 \textsf{SourceForge}\footnote{\url{http://sourceforge.net/}.},
 \textsf{Google Code}\footnote{\url{http://code.google.com/}.}, or
 \textsf{GitHub     }\footnote{\url{https://github.com/}.}.
-Those websites, usually in conjunction with a Version Control System (VCS), make it easy for developers, all around the globe,
-to collaborate in Open Source Software Projects (OSSP), and also act as a way to make software available to users.
+Those websites, usually in conjunction with a Version Control System (VCS), make it easy for developers all around the globe
+to collaborate in Open Source Software Projects (OSSP). They also act as a way to make software available to users.
 
 %Nevertheless, OSPHW are not the only prof of OSS establishment.
-The OSS establishment is clear,
+The OSS establishment is clear;
 according to \textsf{NetCraft}\footnote{\url{http://news.netcraft.com/archives/2010/05/14/may\_2010\_web\_server\_survey.html/}, accessed on 2010/12/21.},
-the market share for top servers across the million busiest sites was 66.82\% for the open source web server, Apache,
+the market share for top servers across the million busiest sites was 66.82\% for the open source web server Apache,
 much higher than the 16.87\% for Microsoft web servers in May 2010.
-Even governments started noticing open source, during the last few years, and in some case adopted it\cite{hahn2002government}.
-The broad acceptance of OSS means that now OSS is not only used by computer specialists.
+Even governments started noticing open source during the last few years, and in some cases adopted it\cite{hahn2002government}.
+The broad acceptance of OSS means that now OSS is used by more people than just computer specialists.
 
 \textsf{John Powell}\footnote{John Powell is CEO, President, and Co-founder, Alfresco Software Inc.}
-has declared that measuring the savings that people are making in license fees, the open-source industry is worth 60 billion dollars.
+has declared that by measuring the savings that people are making in license fees, the open-source industry is worth 60 billion dollars.
 \textsf{Matt Asay}\footnote{Matt Asay is chief operating officer at Canonical, the company behind the Ubuntu Linux operating system.}
-shares the view that from the customers perspective open source can be now considered the largest software industry in the world.
+shares that from the customer's perspective, open source can be now considered the largest software industry in the world.
 The full review can be found at \textsf{CNET News}\footnote{\url{http://news.cnet.com/8301-13505\_3-9944923-16.html/} accessed on 2010/12/21.}.
 
 Usually large industries have a strict organization model, that is not the way open source communities operates.
 Open Source communities work in a kind of \textit{bazaar style}.
-~\cite{raymondcathedral} compares the traditional software development process to built cathedrals,
-few specialized individuals working in isolation.
-While open source development seemed to resemble a great babbling \textit{bazaar}.
-But OSS is not developed, all the time, in \textit{bazaar style} and each community can have particular habits.
+~\cite{raymondcathedral} compares the traditional software development process to build cathedrals,
+consisting of a few specialized individuals working in isolation.
+Open source development seemed to resemble a great babbling \textit{bazaar}.
+But OSS is not developed all the time in \textit{bazaar style}, and each community can have particular habits.
 Currently, big open source projects can have companies supporting them.
-However, most projects are not that big and sometimes it is hard to distinguish the project developers from the project customers/users,
-because of that bug reports and wanted features can get indistinguishable too.
+However, most projects are not that big, and sometimes it is hard to distinguish the project developers from the project customers/users.
+Because of this, bug reports and wanted features can become indistinguishable, too.
 The specification of an open source software project evolves in an organic way~\cite{capiluppicathedral}.
 
 Can software that is developed in such chaotic way be trusted as a high quality product?
-The shock is that in fact the \textit{bazaar style} seemed to work~\cite{halloran2002high}.
+Shockingly, \textit{bazaar style} seemed to work~\cite{halloran2002high}.
 Some big projects, for instance Linux distributions such as \textsf{Ubuntu}\footnote{\url{http://www.ubuntu.com}.
 Ubuntu is a free \& open source operating system.},
-are the proof of it.
+are proof.
 However, how can the quality of this software be measured?
 
-The most basic meaning of software quality is commonly recognized as lack of "bugs", and the meeting of the functional requirements.
+The most basic concept of software quality is commonly recognized as lack of "bugs", and the meeting of the functional requirements.
 But quality is not simply based on that~\cite{gousios2007software}.
 The quality of a software system depends, among other things, on update frequency, quantity of documentation, test coverage,
 number and type of its dependencies and good programming practices.
-By analysing those parameters a user can make a better choice when picking software for a specific task~\cite{marchenko2007predicting}.
+By analysing those parameters a user can make a better choice when selecting software for a specific task~\cite{marchenko2007predicting}.
 
 When a user/developer finds a new OSSP, for example in
-GitHub, the things that will most influence the time needed to have a better understanding of the project, to use, or collaborate in it,
+GitHub, the things that will most influence the time needed to have a better understanding of the project, to use, or to collaborate in it
 are the quality of the documentation and the source code readability.
 Although the OSPHWs provide plenty of useful information about the hosted projects,
-currently, they do not give a quick answer to the following questions:
+they do not currently give a quick answer to the following questions:
 Does this project have good documentation? Does the code follow standards? How similar is it to other projects?
 
 An OSSP is built up from hundreds, sometimes thousands, of files. It can be coded in many different computer languages.
-To  analyze manually a software project is a very hard and time consuming task,
+To manually analyze a software project is a very hard and time-consuming task,
 and not all users have the ability to answer the previous questions by looking at the source code~\cite{crowston2003defining}.
 
 With that in mind, a system capable of analyzing and measuring a given OSSP,
 producing detailed quantitative and qualitative reports about it,
-would enable users to make better choices and, of course, developers to further improve the package.
+would enable users to make better choices and developers to further improve the package.
 There is no doubt regarding the benefits of such system but
-to create a system like that many things should be taken into consideration and 
-that can be subject of huge discussion.
+to create this system, many things should be taken into consideration that 
+can become the subject of huge discussion.
 
 Open source communities are constantly creating and improving their working methodologies.
 And even without noticing, communities create rules and best practices.
@@ -73,28 +73,27 @@ This document supports the idea that by following \emph{best practices},
 software projects increase their maintainability level,
 which is a quality attribute of great importance for OSSP.
 This assumption of a relation between the quality of projects and the best practices followed
-is be the foundation for the creation of system capable of automatic evaluate if a project 
-is developed accordingly to the community defined best practices, 
-as simple way to assess OSSP quality. 
+is the foundation for the creation of system capable of automatic evaluation of a well-developed
+project, according to the community defined best practices.
 
 This document can be divided in 7 chapters.
-After the introduction, in Chapter \ref{chap:open_source} the open source world is explored,
-the differences of open source and close source development process
-are as obvious as the need to assess the quality of this OSSP in new ways.
+After the introduction, Chapter \ref{chap:open_source} explores the open source world,
+including the differences of open source and close source development process
+and the need to assess the quality of this OSSP in new ways.
 There are numerous communities in the open source universe, but like it is shown in Chapter \ref{chap:ruby_on_rails},
-the characteristics of Rails and the various philosophies underlying it, 
+the characteristics of Rails and the various philosophies underlying it 
 makes this community the best starting point to understand the role of best practices in assessing OSS.
-This chapter is not only about the Rails community, it provides a quick introduction to the \textsf{Ruby Language}\footnote{
+This chapter is not only about the Rails community; it provides a quick introduction to the \textsf{Ruby Language}\footnote{
   Ruby is an open source programming language. Ruby community is relatively young but still very focused on following best practices.
 } and the Rails Framework.
 In Chapter \ref{chap:software_metrics}, the current state software metrics is exposed,
 the concept of Quality when addressing an OSSP, and how to measure it using classic approaches.
-After that, chapter \ref{chap:best_practices} discusses the concept of best practices in general and, 
+After that, Chapter \ref{chap:best_practices} discusses the concept of best practices in general and, 
 in the particularly, the Rails community.
-At last but not least, to support this proposal a case-study is shown, in Chapter \ref{chap:assissing_ror}: 
-various Rails OSSP are measured and compared. 
+Last but not least, to support this proposal a case-study is shown in Chapter \ref{chap:assissing_ror}: 
+the measurement and comparison of various Rails OSSP.
 In the end, it was possible to create new tool to assess the quality of Rails projects and 
-Chapter {chap:conclusion}, the conclusion, describes not only what was achieved but what is still to come.
+Chapter {chap:conclusion} describes not only what was achieved, but what is still to come.
 
 A lot of resources and the source code developed during the writing of this document is accessible at 
 \url{study.gorgeouscode.com}.
