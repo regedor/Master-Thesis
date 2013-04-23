@@ -7,75 +7,70 @@ freely downloaded in platforms like GitHub,
 the web-based hosting service for projects using the Git revision control system that 
 hosts more than 1 million open source projects.
 
-Throughout this study the need of assessing the quality of this open source software projects became clear.
-Maintainability turned out to be a crucial attribute to assess their quality, 
-this happens obviously because of the community driven orientation of this type of projects, 
+Throughout this study the need for assessing the quality of these open source software projects became clear.
+Maintainability turned out to be a crucial attribute in assessing their quality, 
+obviously because of the community-driven orientation of these types of projects, 
 described in chapter \ref{chap:open_source}. 
 However, this statement does not mean that maintainability is not also a quality attribute of great importance
-for closed source software projects too. 
-In fact most standards, studies and tools within the field of measuring the quality of software projects 
+for closed source software projects as well. 
+In fact, most standards, studies and tools within the field of measuring the quality of software projects 
 were conducted by private companies with the purpose of improving and assuring the quality of their projects,
-usually closed source software projects. This idea together with the concepts of software quality and 
+which were usually closed source software projects. This idea together with the concepts of software quality and 
 quality attributes were explored in chapter \ref{chap:software_metrics}.
 
 Few people have the ability to quickly assess the quality of a project by looking at source code. 
-An application, able to perform automatic analysis of a software projects and to generate a hight level overview of the code,
-is beneficial for assessing the quality of general software projects, independently of the license being open source or not.
+An application, able to perform automatic analysis of software projects and to generate a high-level overview of the code,
+is beneficial for assessing the quality of general software projects, independent of whether the license is open source.
 
-Nevertheless, open source and closed source usually end up having a different development process, 
-because of that they should obviously be analyzed in different ways.
-In the open source world there are no strict development rules, 
-but as time goes by and projects get bigger something similar to rules
-or standard behaviors start to emerge in an spontaneous way, we call them best practices,
-this topic was discussed in chapter \ref{chap:best_practices}.
-There is the belief that by following this best practices better results will be achieved.
+Nevertheless, open source and closed source usually end up having a different development processes, and 
+because of this they should obviously be analyzed in different ways.
+In the open source world there are no strict development rules; 
+however, as time goes by and projects get bigger, something similar to rules
+or standard behaviors start to emerge in an spontaneous way, called best practices.This topic was discussed in chapter \ref{chap:best_practices}.
+There is the belief that by following these best practices, better results will be achieved.
 
-In fact, the existence of common guide lines in software projects intuitively seems to be potenciator of their 
+In fact, the existence of common guidelines in software projects intuitively seems to be a potenciator of their 
 maintainability to every developer.
 But just like popular sayings, their value is ambiguous if there is no scientific proof and 
 its application could be considered a matter of taste.
 
 However, we strongly believe that best pratices hold an extremely important value.
-Best practices are not rigid as standards which means that their usage is also more flexible.
+Best practices are not rigid as standards, which means that their usage is also more flexible.
 Despite this, our belief since the beginning of this investigation is that if 
 a project follows best practices, it has a higher probability of being a better project when it comes to quality standards.
 Following this idea we focused our research towards proving the existence of
 a correlation between the quality of the GitHub open source projects and the amount of best practices followed,
 as explained in detail in chapter \ref{chap:assissing_ror}.
 
-Inicially, when we first started to elaborate this work it seemed like there was no work done 
-concerning the measurement of best practices by automatic analyzing source code.
-As a good surprise and backing up the ideas described in this document, simultaneously to this research, 
-several projects appeared in scene based on similar ideas and concepts.
+Initially, when we first started to elaborate this work it seemed like there was no work done 
+concerning the measurement of best practices by automatic source code analysis.
+As a good surprise and back-up for the ideas described in this document, simultaneous with this research, 
+several projects appeared on the scene based on similar ideas and concepts.
 
-In the particular context of Ruby Community, we found that some efforts have already been taken in this exact direction,
-defining best practices and create scripts to automatically analyze the source code.
-A project called Rails Best Practices, started by Richard Huang, 
-which managed to put in practice some of our initial ideas of defining best practices with 
-the help of a specific community input and opinions, in this case Rails developers,
-and even started to create code analyzers to detect if a project is following them.
+In the particular context of Ruby Community, we found that some efforts have already been made in this exact direction,
+defining best practices and creating scripts to automatically analyze the source code.
+A project called Rails Best Practices, started by Richard Huang, managed to put into practice some of our initial ideas of defining best practices with 
+the help of the Rails developers' input and opinions, and even started to create code analyzers to detect whether a project is following them.
 The aforementioned project is described in chapter \ref{chap:best_practices}.
 
-However, like most of the reports generated by the existent source code analyzers
-the Rails best practices gem implementation is only spotting the occurrence of bad smells.
-Not really identifying the best practices, but instead those that are not best practices. 
-In chapter \ref{chap:assissing_ror} we named this concept of NBPs.
-This way it is possible to verify if a best practice is not being followed, 
-since most of the time it is easier to identify incorrection unlike correction, 
-this is actually a cleaver idea.
- 
-These NBPs reports are helpful, fact that allows the improvement of rails projects, although this is not enough.
-There was the need to interpret those results to end up with a high level quality statement.
-The expectation was that by analyzing a massive amount of open source projects, it would be possible to start understanding
+However, like most of the reports generated by the existent source code analyzers,
+the Rails best practices gem implementation is only spotting the occurrence of bad smells:
+not really identifying the best practices, but instead those that are not best practices. 
+In chapter \ref{chap:assissing_ror} we named this concept concept of NBPs.
+This way it is possible to verify whether a best practice is not being followed, 
+since most of the time it is easier to identify incorrection instead of correction.
+This turns out to be a clever idea.
+These NBP reports are helpful, although not enough, but is a fact that allows the improvement of rails projects.
+There existed the need to interpret those results to end up with a high level quality statement.
+It was expected that by analyzing a massive amount of open source projects, it would be possible to start understanding
 the meaning of the values given by simple metrics,
-thus to judge the impact of this numbers in the quality of the project. 
-Consequently, find new ways to assess the quality, close related with the level of maintainability of an open source project.
-The final objective was to create a new higher level metric capable of quantify the best practices followed by a given project.
-Something as simple as "from 1 to 5, this project has 4 stars in terms of best practices".
+and thus to judge the impact of these numbers in the quality of the project. 
+Consequently, we would find new ways to assess the quality, which is closely related to the level of maintainability, of an open source project.
+The final objective was to create a new higher-level metric capable of quantifying the best practices followed by a given project; something as simple as "from 1 to 5, this project has 4 stars in terms of best practices".
 
 To achieve this we started looking for Rails projects hosted in GitHub, 
-applying the different metrics and running the NBPs checkers and gathering all this information.
-As it was said before, by itself those values are useless, yet
+applying the different metrics and running the NBP checkers, and gathering all this information.
+As it was said before, by itself those values are useless; yet
 by comparing projects, it was possible to start understanding how to interpret those values.
 For instance, obvious things like considering the \emph{size of the project}
 (it is intuitive that a project with 10 lines of code and 10 errors is worse than a project with 1000 and 20 errors),
@@ -85,37 +80,36 @@ From the studies we carried out,
 we also have learned that each best practice has a different importance level:
 1 NBP that affects security or performance is, for sure, worse than 10 NBPs related to indentation;
 or 10 NBPs related to naming conventions are worse than the indentation mistakes.
-But never forgetting, that as best practices defined by the community, 
-its individual importance should also be defined by the community,
-in this case by the votes comments and reactions of users from the Rails best practices web site.
+However, one should not forget that as best practices defined by the community, 
+its individual importance should also be defined by the community, which 
+in this case includes the votes, comments, and reactions of users from the Rails best practices web site.
 
-Lots of scripts were written to automate the code analyses process during the initial studies, 
+Lots of scripts were written to automate the code analysis process during the initial studies, 
 and after analyzing more than 50 projects it was possible to find correlations
-between the usage of best practices describe and discussed in rails best projects project and
-the activity and popularity of projects in GitHub (number of projects forks, project contributors and people following updates).
-Along the paper, we gave arguments in order to make evident that it is worthwhile to detect on the source code
-that the author follows the best practices recommended by the respective community, 
-and after finding the correlations it was undeniable.
-Having proved this thesis it was straight forward to build a web application that 
-given a set of projects can generate a NBPs report and also a global score, 
-a score from 1 to 5 in terms of following best practices.
+between the usage of best practices described and discussed in Rails best projects, and
+the activity and popularity of projects in GitHub (number of project forks, project contributors and people following updates).
+Along with the paper, we gave arguments in order to emphasize that it is worthwhile to detect on the source code
+whether the author follows the best practices recommended by the respective community.
+After finding correlations, it was undeniable evidence of this.
+Having proved this thesis it was straightforward to build a web application, that, 
+given a set of projects, can generate an NBP report as well as a global score from 1 to 5 in terms of following best practices.
 
 As future work, more correlations should be explored
-Some of those variables have been already identified as of great value: the number of commiters, starting date of the project, last commit data, and total number of commits. 
-Those variables are also strongly related with the forks, watchers and of course, in the end, the quality of the project.
-For instance, when the last commit of the project is to old it can probably be the justification for a bad score, 
-since best practices are always being renewed, hardly an old project can be following it in an exemplary manner.
+.Some of those variables have already been identified as of great value: the number of commiters, starting date of the project, last commit data, and total number of commits. 
+Those variables are also strongly related with the forks, watchers, and in the end, the quality of the project.
+For instance, when the last commit of the project is too old, it may likely be the justification for a bad score. 
+Since best practices are always being renewed, old projects can rarely follow it in an exemplary manner.
 
-Some of this subtleties are already partly taken into account in the developed application.
-But for now, just as a way to justify the obtained score. 
-There are countless variables that do require study, and can possibly improve this project.
+Some of these subtleties are already partly taken into account in the developed application, but for now, just as a way to justify the obtained score. 
+There are countless variables that do require study and can possibly improve this project.
 Nevertheless, it was already possible to run the application against a big set of projects.
-More than 100 projects were already analyzed.
+More than 100 projects have already been analyzed.
 A list of analyzed projects can be found at \url{app.study.gourgeouscode.com}.
-The reports and the overall score can be of great help not only for users when comparing projects as well as
-for open source developers whiling to contribute to those amazing projects.
+The reports and the overall score can be of great help not only for users when comparing projects,
+but also for open source developers willing to contribute to those amazing projects.
 
-Software projects, societies or any other point of human interaction do need some kind of order.
-Strict rules are accepted as necessary evil, the only solution, always defined from the top of the pyramid,
-always cutting the freedom, but without freedom no advance is possible.
-On the other hand, best practices are the minimal necessary order in a free world.
+Software projects, societies or any other point of human interaction do require some kind of order.
+Strict rules are accepted as necessary evil, the only solution seemingly always defined from the top of the pyramid,
+and always cutting the freedom.
+Without freedom, however, no advance is possible.
+Best practices are the minimal necessary order in a free world.
